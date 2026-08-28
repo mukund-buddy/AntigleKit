@@ -2,6 +2,12 @@
 
 Free, privacy-first tools you can use online or run locally. Your tools, your files, your device.
 
+> Live demo: Open the tools in your browser (no install required): https://mukund-buddy.github.io/AntigleKit/#/
+>
+> Direct link: https://mukund-buddy.github.io/AntigleKit/#/
+>
+> You can bookmark the link or share it — everything runs client-side in your browser.
+
 ## What is AntigleKit?
 
 AntigleKit is a collection of practical utilities for everyday tasks — text processing, developer tools, PDF and document handling, image editing, mathematics, Minecraft blueprints, and more.
@@ -34,6 +40,9 @@ Every tool runs entirely in your browser. No uploads, no accounts, no data leavi
 ## Online Usage
 
 Visit the deployed site and start using tools immediately. No installation required.
+
+- Open the live site: https://mukund-buddy.github.io/AntigleKit/#/
+- If you want to open a specific tool directly, append the tool route after the hash (for example: https://mukund-buddy.github.io/AntigleKit/#/text-tools).
 
 ## Run Locally (Offline)
 
