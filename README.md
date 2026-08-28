@@ -4,7 +4,6 @@ Free, privacy-first tools you can use online or run locally. Your tools, your fi
 
 > Live demo: Open the tools in your browser (no install required): https://mukund-buddy.github.io/AntigleKit/#/
 >
-> Direct link: https://mukund-buddy.github.io/AntigleKit/#/
 >
 > You can bookmark the link or share it — everything runs client-side in your browser.
 
