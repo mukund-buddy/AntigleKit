@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="AntigleKit — free privacy-first tools you can use online or run locally. Your tools, your files, your device." />
+  <meta name="theme-color" content="#2E073F" />
+  <title>AntigleKit — Free Tools, Online or Offline</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+  <link rel="preconnect" href="https://esm.sh" crossorigin />
+  <script type="importmap">
+  {
+    "imports": {
+      "marked": "https://esm.sh/marked@14.1.2",
+      "dompurify": "https://esm.sh/dompurify@3.1.6",
+      "mermaid": "https://esm.sh/mermaid@11.4.0",
+      "mathjs": "https://esm.sh/mathjs@13.2.0",
+      "pdf-lib": "https://esm.sh/pdf-lib@1.17.1",
+      "pdfjs-dist": "https://esm.sh/pdfjs-dist@4.7.76",
+      "docx": "https://esm.sh/docx@8.5.0",
+      "mammoth": "https://esm.sh/mammoth@1.9.0",
+      "papaparse": "https://esm.sh/papaparse@5.4.1",
+      "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.mjs",
+      "js-yaml": "https://esm.sh/js-yaml@4.1.0",
+      "fast-xml-parser": "https://esm.sh/fast-xml-parser@4.5.0",
+      "qrcode": "https://esm.sh/qrcode@1.5.4",
+      "js-beautify": "https://esm.sh/js-beautify@1.15.1",
+      "spark-md5": "https://esm.sh/spark-md5@3.0.2"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#/" aria-label="AntigleKit home">
+        <img src="assets/img/logo.png" alt="AntigleKit" class="brand-logo" width="32" height="32" style="border-radius:6px" onerror="this.src='assets/img/logo.svg'" />
+        <span class="brand-name">AntigleKit</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="#/" data-nav="home">Home</a>
+        <a href="#/t/wordcount" data-nav="tools">Tools</a>
+        <a href="#/about" data-nav="about">About</a>
+        <a href="#/faq" data-nav="faq">FAQ</a>
+        <a href="#/open-source">Open Source</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle color theme" aria-pressed="false">🌗</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap main" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-lock">🔒 All tools run 100% in your browser. Your files are never uploaded to any server.</p>
+      <p class="muted">Built around open-source technologies with proper attribution. <a href="#/open-source">Open Source &amp; Credits</a> · <a href="#/faq">FAQ</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

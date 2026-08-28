@@ -1,0 +1,17 @@
+{
+  "name": "antiglekit",
+  "version": "1.0.0",
+  "description": "AntigleKit — free privacy-first tools you can use online or run locally. Text, developer, PDF, image, math, Minecraft and more.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["tools", "pdf", "image", "developer", "text", "design", "online-tools", "privacy", "client-side"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
