@@ -1,0 +1,24 @@
+# Cloudflare Pages headers — /_headers
+# Applies security headers globally; cache settings per path.
+# Rules: a more specific matching rule wins for duplicate names.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://i.ytimg.com https://www.youtube.com; media-src 'self'; frame-src https://assets.pinterest.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Versioned/immutable static assets (rename file content → bust cache)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Tool data may change; short public cache
+/data/*.json
+  Cache-Control: public, max-age=3600
+/assets/data/*.json
+  Cache-Control: public, max-age=3600

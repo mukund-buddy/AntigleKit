@@ -1,0 +1,67 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     CANONICAL NAV — templates/nav.html
+     Copy into every page verbatim; keep this file in sync.
+     Do not edit a page's nav in isolation.
+     ═══════════════════════════════════════════════════════════════ -->
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="C:\Users\Welcome" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="/assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="C:\Users\Welcome">Home</a>
+      <a href="/tools/">Tools</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="/tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="C:\Users\Welcome">Home</a>
+  <a href="/tools/">Tools</a>
+  <a href="/about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay (canonical; copy with nav) -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>

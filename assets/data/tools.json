@@ -1,0 +1,1641 @@
+{
+  "tools": [
+    {
+      "id": "manifest-generator",
+      "slug": "manifest-generator",
+      "name": "Manifest Generator",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Generate a valid manifest.json for Bedrock resource, behavior, world-template, and script packs.",
+      "status": "live",
+      "href": "/tools/manifest-generator/",
+      "keywords": [
+        "manifest.json",
+        "bedrock",
+        "addon",
+        "resource pack",
+        "behavior pack",
+        "world template",
+        "minecraft",
+        "pack"
+      ],
+      "related": [
+        "manifest-validator",
+        "identifier-validator",
+        "json-formatter"
+      ],
+      "sortOrder": 10
+    },
+    {
+      "id": "manifest-validator",
+      "slug": "manifest-validator",
+      "name": "Manifest Validator",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Validate an existing manifest.json against Bedrock rules — required fields, UUID format, integer versions.",
+      "status": "live",
+      "href": "/tools/manifest-validator/",
+      "keywords": [
+        "validate manifest",
+        "manifest check",
+        "bedrock",
+        "format_version"
+      ],
+      "related": [
+        "manifest-generator",
+        "identifier-validator"
+      ],
+      "sortOrder": 20
+    },
+    {
+      "id": "identifier-validator",
+      "slug": "identifier-validator",
+      "name": "Identifier Validator",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Check namespaces and resource identifiers against Bedrock's allowed character rules.",
+      "status": "live",
+      "href": "/tools/identifier-validator/",
+      "keywords": [
+        "identifier",
+        "namespace",
+        "minecraft",
+        "id",
+        "validation"
+      ],
+      "related": [
+        "manifest-validator",
+        "json-validator"
+      ],
+      "sortOrder": 30
+    },
+    {
+      "id": "pack-structure-checker",
+      "slug": "pack-structure-checker",
+      "name": "Pack Structure Checker",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Verify an add-on's folder layout against what Bedrock expects inside an .mcpack.",
+      "status": "live",
+      "href": "/tools/pack-structure-checker/",
+      "keywords": [
+        "pack structure",
+        "addon folder",
+        "mcpack",
+        "bedrock",
+        "layout"
+      ],
+      "related": [
+        "manifest-generator",
+        "pack-version-generator"
+      ],
+      "sortOrder": 40
+    },
+    {
+      "id": "pack-version-generator",
+      "slug": "pack-version-generator",
+      "name": "Pack Version Generator",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Pick the correct next version for your pack, with bumping and consistency checks.",
+      "status": "live",
+      "href": "/tools/pack-version-generator/",
+      "keywords": [
+        "version",
+        "pack",
+        "semver",
+        "bedrock",
+        "manifest"
+      ],
+      "related": [
+        "manifest-generator",
+        "json-formatter"
+      ],
+      "sortOrder": 50
+    },
+    {
+      "id": "mc-title-studio",
+      "slug": "mc-title-studio",
+      "name": "MC Title Studio",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Turn a photo into a Bedrock resource pack that fills the full title screen — cropped, packed, and downloaded in your browser.",
+      "status": "live",
+      "href": "/tools/mc-title-studio/",
+      "keywords": [
+        "minecraft",
+        "bedrock",
+        "title screen",
+        "background",
+        "mcpack",
+        "resource pack",
+        "wallpaper",
+        "json ui"
+      ],
+      "related": [
+        "manifest-generator",
+        "pack-structure-checker"
+      ],
+      "sortOrder": 55
+    },
+    {
+      "id": "thumbnail-fetcher",
+      "slug": "thumbnail-fetcher",
+      "name": "Thumbnail Fetcher",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Get a video's thumbnail URL from its link — no login, no account.",
+      "status": "live",
+      "href": "/tools/thumbnail-fetcher/",
+      "keywords": [
+        "youtube",
+        "thumbnail",
+        "video",
+        "image",
+        "url"
+      ],
+      "related": [
+        "thumbnail-downloader",
+        "timestamp-generator"
+      ],
+      "sortOrder": 60
+    },
+    {
+      "id": "thumbnail-downloader",
+      "slug": "thumbnail-downloader",
+      "name": "Thumbnail Downloader",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Download a video thumbnail in several sizes — default, hq, maxres.",
+      "status": "live",
+      "href": "/tools/thumbnail-downloader/",
+      "keywords": [
+        "youtube",
+        "thumbnail",
+        "download",
+        "maxres",
+        "image"
+      ],
+      "related": [
+        "thumbnail-fetcher",
+        "video-downloader"
+      ],
+      "sortOrder": 70
+    },
+    {
+      "id": "video-downloader",
+      "slug": "video-downloader",
+      "name": "Video & Audio Downloader",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Paste a link and jump straight to cobalt.tools — save video or audio from YouTube, TikTok, Instagram, X, Reddit, Facebook and 20+ more sites.",
+      "status": "live",
+      "href": "/tools/video-downloader/",
+      "keywords": [
+        "video downloader",
+        "youtube download",
+        "audio download",
+        "mp3",
+        "tiktok",
+        "instagram",
+        "twitter",
+        "x",
+        "reddit",
+        "facebook",
+        "cobalt"
+      ],
+      "related": [
+        "thumbnail-downloader",
+        "thumbnail-fetcher",
+        "pinterest-downloader"
+      ],
+      "sortOrder": 75
+    },
+    {
+      "id": "timestamp-generator",
+      "slug": "timestamp-generator",
+      "name": "Timestamp Generator",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Convert a list of minute/second markers into clean, copy-ready timestamps.",
+      "status": "live",
+      "href": "/tools/timestamp-generator/",
+      "keywords": [
+        "youtube",
+        "timestamp",
+        "chapters",
+        "minutes",
+        "seconds"
+      ],
+      "related": [
+        "chapter-formatter",
+        "description-generator"
+      ],
+      "sortOrder": 80
+    },
+    {
+      "id": "chapter-formatter",
+      "slug": "chapter-formatter",
+      "name": "Chapter Formatter",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Format raw notes into YouTube's accepted chapter lines with headings and times.",
+      "status": "live",
+      "href": "/tools/chapter-formatter/",
+      "keywords": [
+        "youtube",
+        "chapters",
+        "format",
+        "timestamps"
+      ],
+      "related": [
+        "timestamp-generator",
+        "description-generator"
+      ],
+      "sortOrder": 90
+    },
+    {
+      "id": "description-generator",
+      "slug": "description-generator",
+      "name": "Description Formatter",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Format video descriptions — credits, links, and timestamps — consistently.",
+      "status": "live",
+      "href": "/tools/description-generator/",
+      "keywords": [
+        "youtube",
+        "description",
+        "format",
+        "credits",
+        "links"
+      ],
+      "related": [
+        "chapter-formatter",
+        "hashtag-formatter"
+      ],
+      "sortOrder": 100
+    },
+    {
+      "id": "title-length-checker",
+      "slug": "title-length-checker",
+      "name": "Title Length Checker",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Check titles against length limits and see how they may be truncated.",
+      "status": "live",
+      "href": "/tools/title-length-checker/",
+      "keywords": [
+        "youtube",
+        "title",
+        "length",
+        "truncate",
+        "characters"
+      ],
+      "related": [
+        "hashtag-formatter",
+        "description-generator"
+      ],
+      "sortOrder": 110
+    },
+    {
+      "id": "hashtag-formatter",
+      "slug": "hashtag-formatter",
+      "name": "Hashtag Formatter",
+      "category": "youtube",
+      "categoryLabel": "YouTube",
+      "tagline": "Clean, deduplicate, and count hashtags; check against tag limits.",
+      "status": "live",
+      "href": "/tools/hashtag-formatter/",
+      "keywords": [
+        "youtube",
+        "hashtag",
+        "format",
+        "tags",
+        "count"
+      ],
+      "related": [
+        "description-generator",
+        "title-length-checker"
+      ],
+      "sortOrder": 120
+    },
+    {
+      "id": "meta-tag-generator",
+      "slug": "meta-tag-generator",
+      "name": "Meta Tag Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Generate title, description, canonical, Open Graph, and Twitter tags.",
+      "status": "live",
+      "href": "/tools/meta-tag-generator/",
+      "keywords": [
+        "meta tags",
+        "seo",
+        "og",
+        "twitter cards",
+        "html"
+      ],
+      "related": [
+        "open-graph-generator",
+        "robots-generator",
+        "sitemap-generator"
+      ],
+      "sortOrder": 130
+    },
+    {
+      "id": "robots-generator",
+      "slug": "robots-generator",
+      "name": "robots.txt Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Build a robots.txt with allowed and disallowed paths and a sitemap line.",
+      "status": "live",
+      "href": "/tools/robots-generator/",
+      "keywords": [
+        "robots.txt",
+        "seo",
+        "crawl",
+        "allow",
+        "disallow"
+      ],
+      "related": [
+        "sitemap-generator",
+        "meta-tag-generator"
+      ],
+      "sortOrder": 140
+    },
+    {
+      "id": "sitemap-generator",
+      "slug": "sitemap-generator",
+      "name": "sitemap.xml Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Generate sitemap.xml entries from a pasted list of URLs.",
+      "status": "live",
+      "href": "/tools/sitemap-generator/",
+      "keywords": [
+        "sitemap",
+        "xml",
+        "seo",
+        "url",
+        "google"
+      ],
+      "related": [
+        "robots-generator",
+        "meta-tag-generator"
+      ],
+      "sortOrder": 150
+    },
+    {
+      "id": "open-graph-generator",
+      "slug": "open-graph-generator",
+      "name": "Open Graph Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Build and preview Open Graph tags for social sharing cards.",
+      "status": "live",
+      "href": "/tools/open-graph-generator/",
+      "keywords": [
+        "open graph",
+        "og tags",
+        "social share",
+        "preview"
+      ],
+      "related": [
+        "meta-tag-generator",
+        "favicon-generator"
+      ],
+      "sortOrder": 160
+    },
+    {
+      "id": "json-formatter",
+      "slug": "json-formatter",
+      "name": "JSON Formatter",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Format and indent JSON for readability.",
+      "status": "live",
+      "href": "/tools/json-formatter/",
+      "keywords": [
+        "json",
+        "format",
+        "indent",
+        "pretty",
+        "minify"
+      ],
+      "related": [
+        "json-validator",
+        "yaml-json",
+        "csv-json"
+      ],
+      "sortOrder": 170
+    },
+    {
+      "id": "json-validator",
+      "slug": "json-validator",
+      "name": "JSON Validator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Validate JSON syntax and get clear, line-level errors.",
+      "status": "live",
+      "href": "/tools/json-validator/",
+      "keywords": [
+        "json",
+        "validate",
+        "syntax",
+        "parse",
+        "error"
+      ],
+      "related": [
+        "json-formatter",
+        "xml-formatter"
+      ],
+      "sortOrder": 180
+    },
+    {
+      "id": "base64-encode-decode",
+      "slug": "base64-encode-decode",
+      "name": "Base64 Encode / Decode",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Encode and decode Base64 for text and files.",
+      "status": "live",
+      "href": "/tools/base64-encode-decode/",
+      "keywords": [
+        "base64",
+        "encode",
+        "decode",
+        "binary"
+      ],
+      "related": [
+        "url-encoder",
+        "url-decoder"
+      ],
+      "sortOrder": 190
+    },
+    {
+      "id": "url-encoder",
+      "slug": "url-encoder",
+      "name": "URL Encoder",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Percent-encode a string for safe use in URLs and query strings.",
+      "status": "live",
+      "href": "/tools/url-encoder/",
+      "keywords": [
+        "url",
+        "encode",
+        "percent",
+        "query string"
+      ],
+      "related": [
+        "url-decoder",
+        "slug-generator"
+      ],
+      "sortOrder": 200
+    },
+    {
+      "id": "url-decoder",
+      "slug": "url-decoder",
+      "name": "URL Decoder",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Decode percent-encoded URLs and read decoded query strings.",
+      "status": "live",
+      "href": "/tools/url-decoder/",
+      "keywords": [
+        "url",
+        "decode",
+        "percent",
+        "query string"
+      ],
+      "related": [
+        "url-encoder"
+      ],
+      "sortOrder": 210
+    },
+    {
+      "id": "slug-generator",
+      "slug": "slug-generator",
+      "name": "Slug Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Convert titles and captions into clean, URL-safe slugs.",
+      "status": "live",
+      "href": "/tools/slug-generator/",
+      "keywords": [
+        "slug",
+        "seo",
+        "url",
+        "title",
+        "text"
+      ],
+      "related": [
+        "url-encoder",
+        "meta-tag-generator"
+      ],
+      "sortOrder": 220
+    },
+    {
+      "id": "regex-tester",
+      "slug": "regex-tester",
+      "name": "Regex Tester",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Test regular expressions live against sample text.",
+      "status": "live",
+      "href": "/tools/regex-tester/",
+      "keywords": [
+        "regex",
+        "regular expression",
+        "pattern",
+        "test"
+      ],
+      "related": [
+        "slug-generator",
+        "json-validator"
+      ],
+      "sortOrder": 230
+    },
+    {
+      "id": "uuid-generator",
+      "slug": "uuid-generator",
+      "name": "UUID Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Generate v4 UUIDs, one or many, ready to copy.",
+      "status": "live",
+      "href": "/tools/uuid-generator/",
+      "keywords": [
+        "uuid",
+        "guid",
+        "generate",
+        "value"
+      ],
+      "related": [
+        "manifest-generator",
+        "json-formatter"
+      ],
+      "sortOrder": 240
+    },
+    {
+      "id": "css-gradient-generator",
+      "slug": "css-gradient-generator",
+      "name": "CSS Gradient Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Design linear and radial gradients visually and copy CSS.",
+      "status": "live",
+      "href": "/tools/css-gradient-generator/",
+      "keywords": [
+        "css",
+        "gradient",
+        "color",
+        "linear",
+        "radial"
+      ],
+      "related": [
+        "css-shadow-generator",
+        "color-palette-generator"
+      ],
+      "sortOrder": 250
+    },
+    {
+      "id": "css-shadow-generator",
+      "slug": "css-shadow-generator",
+      "name": "CSS Shadow Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Fine-tune box-shadows visually and copy the CSS.",
+      "status": "live",
+      "href": "/tools/css-shadow-generator/",
+      "keywords": [
+        "css",
+        "box-shadow",
+        "shadow",
+        "design"
+      ],
+      "related": [
+        "css-gradient-generator",
+        "border-radius-generator"
+      ],
+      "sortOrder": 260
+    },
+    {
+      "id": "flexbox-generator",
+      "slug": "flexbox-generator",
+      "name": "Flexbox Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Configure flex containers and items and copy the CSS.",
+      "status": "live",
+      "href": "/tools/flexbox-generator/",
+      "keywords": [
+        "css",
+        "flexbox",
+        "flex",
+        "layout"
+      ],
+      "related": [
+        "grid-generator",
+        "css-gradient-generator"
+      ],
+      "sortOrder": 270
+    },
+    {
+      "id": "grid-generator",
+      "slug": "grid-generator",
+      "name": "Grid Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Configure CSS grid templates and copy the CSS.",
+      "status": "live",
+      "href": "/tools/grid-generator/",
+      "keywords": [
+        "css",
+        "grid",
+        "layout",
+        "template"
+      ],
+      "related": [
+        "flexbox-generator"
+      ],
+      "sortOrder": 280
+    },
+    {
+      "id": "mcq-generator",
+      "slug": "mcq-generator",
+      "name": "MCQ Generator",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Turn a list of questions into a rule-based multiple-choice practice sheet. No AI.",
+      "status": "planned",
+      "href": "/tools/mcq-generator/",
+      "keywords": [
+        "mcq",
+        "quiz",
+        "study",
+        "practice",
+        "questions",
+        "rule based"
+      ],
+      "related": [
+        "study-planner",
+        "revision-planner"
+      ],
+      "sortOrder": 290
+    },
+    {
+      "id": "study-planner",
+      "slug": "study-planner",
+      "name": "Study Planner",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Plan study sessions across subjects and days.",
+      "status": "planned",
+      "href": "/tools/study-planner/",
+      "keywords": [
+        "study",
+        "plan",
+        "schedule",
+        "subjects",
+        "exams"
+      ],
+      "related": [
+        "revision-planner",
+        "attendance-calculator"
+      ],
+      "sortOrder": 300
+    },
+    {
+      "id": "revision-planner",
+      "slug": "revision-planner",
+      "name": "Revision Planner",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Plan spaced revision sessions before an exam.",
+      "status": "planned",
+      "href": "/tools/revision-planner/",
+      "keywords": [
+        "revision",
+        "exam",
+        "plan",
+        "spaced rep"
+      ],
+      "related": [
+        "study-planner",
+        "reading-time-calculator"
+      ],
+      "sortOrder": 310
+    },
+    {
+      "id": "attendance-calculator",
+      "slug": "attendance-calculator",
+      "name": "Attendance Calculator",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Calculate attendance percentages and what is needed to stay above a threshold.",
+      "status": "live",
+      "href": "/tools/attendance-calculator/",
+      "keywords": [
+        "attendance",
+        "percentage",
+        "college",
+        "classes"
+      ],
+      "related": [
+        "percentage-calculator"
+      ],
+      "sortOrder": 320
+    },
+    {
+      "id": "percentage-calculator",
+      "slug": "percentage-calculator",
+      "name": "Percentage Calculator",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Find percentages, changes, and percentage differences instantly.",
+      "status": "live",
+      "href": "/tools/percentage-calculator/",
+      "keywords": [
+        "percentage",
+        "calculator",
+        "marks",
+        "grade"
+      ],
+      "related": [
+        "attendance-calculator",
+        "cgpa-calculator"
+      ],
+      "sortOrder": 330
+    },
+    {
+      "id": "cgpa-calculator",
+      "slug": "cgpa-calculator",
+      "name": "CGPA Calculator",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Compute CGPA from semester credits and grades.",
+      "status": "live",
+      "href": "/tools/cgpa-calculator/",
+      "keywords": [
+        "cgpa",
+        "gpa",
+        "grade",
+        "credits",
+        "semester"
+      ],
+      "related": [
+        "percentage-calculator"
+      ],
+      "sortOrder": 340
+    },
+    {
+      "id": "reading-time-calculator",
+      "slug": "reading-time-calculator",
+      "name": "Reading Time Calculator",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Estimate how long text takes to read at various speeds.",
+      "status": "live",
+      "href": "/tools/reading-time-calculator/",
+      "keywords": [
+        "reading time",
+        "words",
+        "estimate",
+        "wpm"
+      ],
+      "related": [
+        "word-counter"
+      ],
+      "sortOrder": 350
+    },
+    {
+      "id": "word-counter",
+      "slug": "word-counter",
+      "name": "Word Counter",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Count words, sentences, and paragraphs in any text.",
+      "status": "live",
+      "href": "/tools/word-counter/",
+      "keywords": [
+        "words",
+        "counter",
+        "count",
+        "essay"
+      ],
+      "related": [
+        "character-counter",
+        "reading-time-calculator"
+      ],
+      "sortOrder": 360
+    },
+    {
+      "id": "character-counter",
+      "slug": "character-counter",
+      "name": "Character Counter",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Count characters with focus on limits (titles, bios, SMS).",
+      "status": "live",
+      "href": "/tools/character-counter/",
+      "keywords": [
+        "characters",
+        "counter",
+        "limit",
+        "sms"
+      ],
+      "related": [
+        "word-counter",
+        "title-length-checker"
+      ],
+      "sortOrder": 370
+    },
+    {
+      "id": "color-palette-generator",
+      "slug": "color-palette-generator",
+      "name": "Color Palette Generator",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Generate harmonious color palettes and copy HEX/RGB/HSL.",
+      "status": "live",
+      "href": "/tools/color-palette-generator/",
+      "keywords": [
+        "color",
+        "palette",
+        "hex",
+        "rgb",
+        "hsl"
+      ],
+      "related": [
+        "css-gradient-generator",
+        "contrast-checker"
+      ],
+      "sortOrder": 450
+    },
+    {
+      "id": "glassmorphism-generator",
+      "slug": "glassmorphism-generator",
+      "name": "Glassmorphism Generator",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Design frosted-glass panels and copy the CSS.",
+      "status": "live",
+      "href": "/tools/glassmorphism-generator/",
+      "keywords": [
+        "glassmorphism",
+        "glass",
+        "blur",
+        "css",
+        "ui"
+      ],
+      "related": [
+        "css-shadow-generator",
+        "border-radius-generator"
+      ],
+      "sortOrder": 460
+    },
+    {
+      "id": "contrast-checker",
+      "slug": "contrast-checker",
+      "name": "Contrast Checker",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Check WCAG contrast ratios between two colors.",
+      "status": "live",
+      "href": "/tools/contrast-checker/",
+      "keywords": [
+        "contrast",
+        "wcag",
+        "accessibility",
+        "color",
+        "ratio"
+      ],
+      "related": [
+        "color-palette-generator"
+      ],
+      "sortOrder": 470
+    },
+    {
+      "id": "border-radius-generator",
+      "slug": "border-radius-generator",
+      "name": "Border Radius Generator",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Shape corner radii visually and copy the CSS.",
+      "status": "live",
+      "href": "/tools/border-radius-generator/",
+      "keywords": [
+        "border radius",
+        "rounded",
+        "css",
+        "corner"
+      ],
+      "related": [
+        "glassmorphism-generator",
+        "css-shadow-generator"
+      ],
+      "sortOrder": 480
+    },
+    {
+      "id": "svg-optimizer",
+      "slug": "svg-optimizer",
+      "name": "SVG Optimizer",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Clean up and minify inline SVG markup.",
+      "status": "live",
+      "href": "/tools/svg-optimizer/",
+      "keywords": [
+        "svg",
+        "optimize",
+        "minify",
+        "icon"
+      ],
+      "related": [
+        "favicon-generator"
+      ],
+      "sortOrder": 490
+    },
+    {
+      "id": "favicon-generator",
+      "slug": "favicon-generator",
+      "name": "Favicon Generator",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Create favicon sizes from an image or emoji and download them.",
+      "status": "live",
+      "href": "/tools/favicon-generator/",
+      "keywords": [
+        "favicon",
+        "icon",
+        "png",
+        "svg",
+        "browser"
+      ],
+      "related": [
+        "svg-optimizer",
+        "open-graph-generator"
+      ],
+      "sortOrder": 500
+    },
+    {
+      "id": "password-generator",
+      "slug": "password-generator",
+      "name": "Password Generator",
+      "category": "security",
+      "categoryLabel": "Security",
+      "tagline": "Generate strong, random passwords locally in your browser.",
+      "status": "live",
+      "href": "/tools/password-generator/",
+      "keywords": [
+        "password",
+        "generate",
+        "random",
+        "secure"
+      ],
+      "related": [
+        "password-strength-checker"
+      ],
+      "sortOrder": 510
+    },
+    {
+      "id": "password-strength-checker",
+      "slug": "password-strength-checker",
+      "name": "Password Strength Checker",
+      "category": "security",
+      "categoryLabel": "Security",
+      "tagline": "Score password strength and entropy without sending it anywhere.",
+      "status": "live",
+      "href": "/tools/password-strength-checker/",
+      "keywords": [
+        "password",
+        "strength",
+        "entropy",
+        "check",
+        "secure"
+      ],
+      "related": [
+        "password-generator"
+      ],
+      "sortOrder": 520
+    },
+    {
+      "id": "sha256-generator",
+      "slug": "sha256-generator",
+      "name": "SHA-256 Generator",
+      "category": "security",
+      "categoryLabel": "Security",
+      "tagline": "Hash text or files with SHA-256 using the browser's Web Crypto API.",
+      "status": "live",
+      "href": "/tools/sha256-generator/",
+      "keywords": [
+        "sha256",
+        "hash",
+        "crypto",
+        "checksum"
+      ],
+      "related": [
+        "password-generator",
+        "base64-encode-decode"
+      ],
+      "sortOrder": 530
+    },
+    {
+      "id": "qrcode-generator",
+      "slug": "qrcode-generator",
+      "name": "QR Code Generator",
+      "category": "security",
+      "categoryLabel": "Security",
+      "tagline": "Create QR codes from any text or URL and download them.",
+      "status": "live",
+      "href": "/tools/qrcode-generator/",
+      "keywords": [
+        "qr",
+        "qrcode",
+        "code",
+        "download"
+      ],
+      "related": [
+        "qr-code-scanner"
+      ],
+      "sortOrder": 540
+    },
+    {
+      "id": "qr-code-scanner",
+      "slug": "qr-code-scanner",
+      "name": "QR Scanner",
+      "category": "security",
+      "categoryLabel": "Security",
+      "tagline": "Scan and decode QR codes from an image or camera.",
+      "status": "live",
+      "href": "/tools/qr-code-scanner/",
+      "keywords": [
+        "qr",
+        "scan",
+        "decode",
+        "camera"
+      ],
+      "related": [
+        "qrcode-generator"
+      ],
+      "sortOrder": 550
+    },
+    {
+      "id": "csv-json",
+      "slug": "csv-json",
+      "name": "CSV ↔ JSON",
+      "category": "file",
+      "categoryLabel": "File Tools",
+      "tagline": "Convert CSV to JSON and JSON to CSV in both directions.",
+      "status": "planned",
+      "href": "/tools/csv-json/",
+      "keywords": [
+        "csv",
+        "json",
+        "convert",
+        "spreadsheet"
+      ],
+      "related": [
+        "json-formatter",
+        "yaml-json"
+      ],
+      "sortOrder": 560
+    },
+    {
+      "id": "yaml-json",
+      "slug": "yaml-json",
+      "name": "YAML → JSON",
+      "category": "file",
+      "categoryLabel": "File Tools",
+      "tagline": "Convert YAML to JSON while keeping structure intact.",
+      "status": "planned",
+      "href": "/tools/yaml-json/",
+      "keywords": [
+        "yaml",
+        "json",
+        "convert"
+      ],
+      "related": [
+        "json-formatter",
+        "csv-json"
+      ],
+      "sortOrder": 570
+    },
+    {
+      "id": "xml-formatter",
+      "slug": "xml-formatter",
+      "name": "XML Formatter",
+      "category": "file",
+      "categoryLabel": "File Tools",
+      "tagline": "Format and minify XML documents with readable indentation.",
+      "status": "planned",
+      "href": "/tools/xml-formatter/",
+      "keywords": [
+        "xml",
+        "format",
+        "indent",
+        "minify"
+      ],
+      "related": [
+        "json-formatter",
+        "json-validator"
+      ],
+      "sortOrder": 580
+    },
+    {
+      "id": "markdown-preview",
+      "slug": "markdown-preview",
+      "name": "Markdown Preview",
+      "category": "file",
+      "categoryLabel": "File Tools",
+      "tagline": "Preview rendered markdown while you type.",
+      "status": "planned",
+      "href": "/tools/markdown-preview/",
+      "keywords": [
+        "markdown",
+        "preview",
+        "md",
+        "render"
+      ],
+      "related": [
+        "diff-checker"
+      ],
+      "sortOrder": 590
+    },
+    {
+      "id": "diff-checker",
+      "slug": "diff-checker",
+      "name": "Diff Checker",
+      "category": "file",
+      "categoryLabel": "File Tools",
+      "tagline": "Compare two texts and highlight the differences.",
+      "status": "planned",
+      "href": "/tools/diff-checker/",
+      "keywords": [
+        "diff",
+        "compare",
+        "text",
+        "difference"
+      ],
+      "related": [
+        "markdown-preview",
+        "json-formatter"
+      ],
+      "sortOrder": 600
+    },
+    {
+      "id": "skin-converter",
+      "slug": "skin-converter",
+      "name": "Skin Converter",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Convert, resize, and crop skin sheets between classic and slim formats.",
+      "status": "backlog",
+      "href": "/tools/skin-converter/",
+      "keywords": [
+        "skin",
+        "convert",
+        "64x64"
+      ],
+      "related": [],
+      "sortOrder": 610
+    },
+    {
+      "id": "skin-preview",
+      "slug": "skin-preview",
+      "name": "Skin Preview",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Preview a skin on a 3D voxel character.",
+      "status": "backlog",
+      "href": "/tools/skin-preview/",
+      "keywords": [
+        "skin",
+        "preview",
+        "3d"
+      ],
+      "related": [],
+      "sortOrder": 620
+    },
+    {
+      "id": "pack-generator",
+      "slug": "pack-generator",
+      "name": "Pack Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Scaffold a complete add-on folder structure and download it as an .mcpack.",
+      "status": "backlog",
+      "href": "/tools/pack-generator/",
+      "keywords": [
+        "addon",
+        "mcpack",
+        "scaffold"
+      ],
+      "related": [],
+      "sortOrder": 630
+    },
+    {
+      "id": "geometry-tools",
+      "slug": "geometry-tools",
+      "name": "Geometry Tools",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Validate and inspect geometry.* JSON models.",
+      "status": "backlog",
+      "href": "/tools/geometry-tools/",
+      "keywords": [
+        "geometry",
+        "model"
+      ],
+      "related": [],
+      "sortOrder": 640
+    },
+    {
+      "id": "entity-generator",
+      "slug": "entity-generator",
+      "name": "Entity Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Generate behavior and entity definitions for custom mobs.",
+      "status": "backlog",
+      "href": "/tools/entity-generator/",
+      "keywords": [
+        "entity",
+        "mob",
+        "behavior"
+      ],
+      "related": [],
+      "sortOrder": 650
+    },
+    {
+      "id": "nbt-helpers",
+      "slug": "nbt-helpers",
+      "name": "NBT Helpers",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Format, validate, and simplify NBT structures.",
+      "status": "backlog",
+      "href": "/tools/nbt-helpers/",
+      "keywords": [
+        "nbt",
+        "tag"
+      ],
+      "related": [],
+      "sortOrder": 660
+    },
+    {
+      "id": "animation-tools",
+      "slug": "animation-tools",
+      "name": "Animation Tools",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Build and validate animation JSON for entities and blocks.",
+      "status": "backlog",
+      "href": "/tools/animation-tools/",
+      "keywords": [
+        "animation"
+      ],
+      "related": [],
+      "sortOrder": 670
+    },
+    {
+      "id": "loot-table-generator",
+      "slug": "loot-table-generator",
+      "name": "Loot Table Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Build loot_tables JSON with pools and weighting.",
+      "status": "backlog",
+      "href": "/tools/loot-table-generator/",
+      "keywords": [
+        "loot",
+        "table"
+      ],
+      "related": [],
+      "sortOrder": 680
+    },
+    {
+      "id": "recipe-generator",
+      "slug": "recipe-generator",
+      "name": "Recipe Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Generate crafting recipe JSON definitions.",
+      "status": "backlog",
+      "href": "/tools/recipe-generator/",
+      "keywords": [
+        "recipe",
+        "crafting"
+      ],
+      "related": [],
+      "sortOrder": 690
+    },
+    {
+      "id": "block-generator",
+      "slug": "block-generator",
+      "name": "Block Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Generate custom block behavior and definition JSON.",
+      "status": "backlog",
+      "href": "/tools/block-generator/",
+      "keywords": [
+        "block",
+        "definition"
+      ],
+      "related": [],
+      "sortOrder": 700
+    },
+    {
+      "id": "item-generator",
+      "slug": "item-generator",
+      "name": "Item Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Generate custom item definition JSON.",
+      "status": "backlog",
+      "href": "/tools/item-generator/",
+      "keywords": [
+        "item",
+        "definition"
+      ],
+      "related": [],
+      "sortOrder": 710
+    },
+    {
+      "id": "prompt-generator",
+      "slug": "prompt-generator",
+      "name": "Prompt Generator",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Turn a rough idea into a structured prompt.",
+      "status": "backlog",
+      "href": "/tools/prompt-generator/",
+      "keywords": [
+        "prompt"
+      ],
+      "related": [],
+      "sortOrder": 720
+    },
+    {
+      "id": "prompt-optimizer",
+      "slug": "prompt-optimizer",
+      "name": "Prompt Optimizer",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Improve existing prompts for clarity and consistency.",
+      "status": "backlog",
+      "href": "/tools/prompt-optimizer/",
+      "keywords": [
+        "prompt"
+      ],
+      "related": [],
+      "sortOrder": 730
+    },
+    {
+      "id": "prompt-library",
+      "slug": "prompt-library",
+      "name": "Prompt Library",
+      "category": "backlog",
+      "categoryLabel": "Backlog",
+      "tagline": "Browse copyable field-tested prompts.",
+      "status": "backlog",
+      "href": "/tools/prompt-library/",
+      "keywords": [
+        "prompt"
+      ],
+      "related": [],
+      "sortOrder": 740
+    },
+    {
+      "id": "case-converter",
+      "slug": "case-converter",
+      "name": "Case Converter",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Convert text to UPPER, lower, Title, Sentence and more instantly.",
+      "status": "planned",
+      "href": "/tools/case-converter/",
+      "keywords": [
+        "case",
+        "convert",
+        "uppercase",
+        "lowercase",
+        "title"
+      ],
+      "related": [
+        "word-counter",
+        "character-counter"
+      ],
+      "sortOrder": 610
+    },
+    {
+      "id": "lorem-ipsum-generator",
+      "slug": "lorem-ipsum-generator",
+      "name": "Lorem Ipsum Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Generate placeholder text in words, sentences or paragraphs.",
+      "status": "planned",
+      "href": "/tools/lorem-ipsum-generator/",
+      "keywords": [
+        "lorem",
+        "ipsum",
+        "placeholder",
+        "text",
+        "generator"
+      ],
+      "related": [
+        "case-converter",
+        "word-counter"
+      ],
+      "sortOrder": 620
+    },
+    {
+      "id": "html-minifier",
+      "slug": "html-minifier",
+      "name": "HTML Minifier",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Strip comments and whitespace from HTML markup.",
+      "status": "planned",
+      "href": "/tools/html-minifier/",
+      "keywords": [
+        "html",
+        "minify",
+        "minifier",
+        "compress"
+      ],
+      "related": [
+        "svg-optimizer",
+        "css-minifier"
+      ],
+      "sortOrder": 630
+    },
+    {
+      "id": "css-minifier",
+      "slug": "css-minifier",
+      "name": "CSS Minifier",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Remove comments and collapse whitespace in CSS.",
+      "status": "planned",
+      "href": "/tools/css-minifier/",
+      "keywords": [
+        "css",
+        "minify",
+        "minifier",
+        "compress"
+      ],
+      "related": [
+        "html-minifier",
+        "css-gradient-generator"
+      ],
+      "sortOrder": 640
+    },
+    {
+      "id": "random-number-generator",
+      "slug": "random-number-generator",
+      "name": "Random Number Generator",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Generate random numbers or lists of them, in any range.",
+      "status": "planned",
+      "href": "/tools/random-number-generator/",
+      "keywords": [
+        "random",
+        "number",
+        "generator",
+        "lotto"
+      ],
+      "related": [
+        "password-generator",
+        "case-converter"
+      ],
+      "sortOrder": 650
+    },
+    {
+      "id": "study-timer",
+      "slug": "study-timer",
+      "name": "Study Timer",
+      "category": "student",
+      "categoryLabel": "Student",
+      "tagline": "Focus timer with pomodoro presets and session tracking.",
+      "status": "planned",
+      "href": "/tools/study-timer/",
+      "keywords": [
+        "timer",
+        "pomodoro",
+        "study",
+        "focus"
+      ],
+      "related": [
+        "study-planner",
+        "revision-planner"
+      ],
+      "sortOrder": 660
+    },
+    {
+      "id": "list-sorter",
+      "slug": "list-sorter",
+      "name": "List Sorter",
+      "category": "file",
+      "categoryLabel": "File Tools",
+      "tagline": "Sort lines alphabetically or numerically and remove duplicates.",
+      "status": "planned",
+      "href": "/tools/list-sorter/",
+      "keywords": [
+        "sort",
+        "list",
+        "dedupe",
+        "alphabetical"
+      ],
+      "related": [
+        "diff-checker",
+        "case-converter"
+      ],
+      "sortOrder": 670
+    },
+    {
+      "id": "barcode-generator",
+      "slug": "barcode-generator",
+      "name": "Barcode Generator",
+      "category": "business",
+      "categoryLabel": "Business",
+      "tagline": "Create Code 128, Code 39, EAN-13, or UPC-A barcodes and download them as PNG.",
+      "status": "live",
+      "href": "/tools/barcode-generator/",
+      "keywords": [
+        "barcode",
+        "code 128",
+        "code 39",
+        "ean-13",
+        "upc-a",
+        "label",
+        "product",
+        "scan"
+      ],
+      "related": [
+        "qrcode-generator",
+        "qr-code-scanner"
+      ],
+      "sortOrder": 560
+    },
+    {
+      "id": "unit-converter",
+      "slug": "unit-converter",
+      "name": "Unit Converter",
+      "category": "business",
+      "categoryLabel": "Business",
+      "tagline": "Convert length, mass, temperature, volume, area, time, data, and speed instantly.",
+      "status": "live",
+      "href": "/tools/unit-converter/",
+      "keywords": [
+        "unit",
+        "convert",
+        "length",
+        "mass",
+        "temperature",
+        "volume",
+        "area",
+        "time",
+        "data",
+        "speed",
+        "metric",
+        "imperial"
+      ],
+      "related": [
+        "percentage-calculator",
+        "barcode-generator"
+      ],
+      "sortOrder": 570
+    },
+    {
+      "id": "pinterest-downloader",
+      "slug": "pinterest-downloader",
+      "name": "Pinterest Pin Saver",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Preview any Pinterest pin — photos and video pins — and save the image with your browser's save menu.",
+      "status": "live",
+      "href": "/tools/pinterest-downloader/",
+      "keywords": [
+        "pinterest",
+        "pin",
+        "save",
+        "download",
+        "image",
+        "video",
+        "preview"
+      ],
+      "related": [
+        "thumbnail-downloader",
+        "thumbnail-fetcher"
+      ],
+      "sortOrder": 580
+    }
+  ]
+}

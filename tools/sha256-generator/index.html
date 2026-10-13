@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>SHA-256 Generator — Hash Text & Files in Your Browser | AntigleKit</title>
+<meta name="description" content="Compute SHA-256 hashes from text or files entirely in your browser using the Web Crypto API. Free, instant, private — nothing is uploaded.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/sha256-generator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="SHA-256 Generator — Hash Text & Files in Your Browser">
+<meta property="og:description" content="Compute SHA-256 hashes from text or files entirely in your browser using the Web Crypto API.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/sha256-generator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SHA-256 Generator — Hash Text & Files in Your Browser">
+<meta name="twitter:description" content="Compute SHA-256 hashes from text or files entirely in your browser using the Web Crypto API.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "SHA-256 Generator", "item": "https://mukund-buddy.github.io/AntigleKit/tools/sha256-generator/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "SHA-256 Generator",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/sha256-generator/",
+      "description": "Compute SHA-256 hashes from text or files entirely in your browser.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is SHA-256?",
+          "acceptedAnswer": { "@type": "Answer", "text": "SHA-256 is a cryptographic hash function that produces a fixed 64-character hexadecimal digest from any input. It is one-way — you cannot reverse the hash back to the original data — and even a tiny change in the input produces a completely different digest." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I hash files (not just text)?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Switch to File mode and drop or select any file. The tool reads the raw bytes and computes the SHA-256 digest directly in your browser using the Web Crypto API — the file is never uploaded." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data uploaded anywhere?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. All hashing happens locally on your device. Neither the text you type nor the files you select are sent over the network — nothing leaves your browser." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">SHA-256 Generator</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Security</div>
+      <h1>SHA-256 Generator</h1>
+      <p class="lead">Compute a SHA-256 hash from any text or file — directly in your browser. Drop a file or paste text and get the hex digest instantly, with nothing ever leaving your device.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="sh-title">
+    <div class="container">
+      <h2 class="section-title mb" id="sh-title">Hash something</h2>
+
+      <div class="tool-layout">
+
+        <div class="tool-panel">
+          <div class="sh-mode-group">
+            <button class="sh-mode active" type="button" id="shModeText">Text</button>
+            <button class="sh-mode" type="button" id="shModeFile">File</button>
+          </div>
+
+          <div id="shTextMode">
+            <div class="field">
+              <label for="shInput">Text to hash</label>
+              <textarea id="shInput" rows="5" placeholder="Type or paste text to hash…" aria-label="Text to hash"></textarea>
+            </div>
+            <label class="check-row"><input type="checkbox" id="shUppercase"> Uppercase hex output</label>
+          </div>
+
+          <div id="shFileMode" hidden>
+            <div class="field">
+              <label class="file-drop" for="shFile">
+                <span>Choose a file or drag it here</span>
+                <input type="file" id="shFile" hidden aria-label="File to hash">
+              </label>
+              <p id="shFileInfo" class="sh-file-info"></p>
+            </div>
+          </div>
+
+          <div class="tool-actions">
+            <button class="btn btn-gold" type="button" id="shCompute">Generate hash</button>
+          </div>
+        </div>
+
+        <div class="tool-panel">
+          <h2>SHA-256 digest</h2>
+          <div class="pw-output">
+            <code id="shOutput" aria-live="polite">…</code>
+          </div>
+          <div class="pw-meta">
+            <span id="shLen"></span>
+            <span id="shTime"></span>
+          </div>
+          <div class="tool-actions">
+            <tg-copy-button data-source="#shOutput" data-label="Copy hash">Copy hash</tg-copy-button>
+            <button class="btn btn-ghost" type="button" id="shClear">Clear</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="72" aria-label="Advertisement"></div>
+
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">SHA-256, locally</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Pick your input</h3>
+            <p>Switch between <strong>Text</strong> mode to hash a string, or <strong>File</strong> mode to hash any file's raw bytes. The tool never cares what the content is — it just computes the digest.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Web Crypto API</h3>
+            <p>Hashing uses your browser's built-in <code>crypto.subtle.digest</code> — the same battle-tested implementation browsers use for TLS, certificates, and secure storage.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Nothing leaves the browser</h3>
+            <p>The entire operation runs on your device. No text, no file bytes, no digest is ever uploaded — your data stays private by design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">SHA-256 generator FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>What is SHA-256?</summary>
+          <div><p>SHA-256 is a cryptographic hash function that produces a fixed 64-character hexadecimal digest from any input. It is one-way — you cannot reverse the hash back to the original data — and even a tiny change in the input produces a completely different digest.</p></div>
+        </details>
+        <details>
+          <summary>Can I hash files (not just text)?</summary>
+          <div><p>Yes. Switch to File mode and drop or select any file. The tool reads the raw bytes and computes the SHA-256 digest directly in your browser using the Web Crypto API — the file is never uploaded.</p></div>
+        </details>
+        <details>
+          <summary>Is my data uploaded anywhere?</summary>
+          <div><p>No. All hashing happens locally on your device. Neither the text you type nor the files you select are sent over the network — nothing leaves your browser.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep your accounts safe</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 0-7.78 7.78 5.5 5.5 0 0 0 7.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/password-generator/">Password Generator</a></h3>
+          <p class="card-desc">Generate strong, random passwords locally in your browser.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/password-generator/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/qrcode-generator/">QR Code Generator</a></h3>
+          <p class="card-desc">Create QR codes from text, URLs, or any data.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/qrcode-generator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="73" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/sha256-generator.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

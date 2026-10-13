@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Pack Structure Checker — Free Minecraft Bedrock .mcpack Folder Checker | AntigleKit</title>
+<meta name="description" content="Drop your Minecraft Bedrock .mcpack or .zip add-on to verify the folder layout Bedrock expects — manifest at root, script entry files, junk files, and more. Free, private, in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/pack-structure-checker/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Pack Structure Checker — Free Minecraft Bedrock .mcpack Folder Checker">
+<meta property="og:description" content="Verify your Bedrock add-on's folder layout against what Minecraft expects inside an .mcpack — manifest, script entries, junk files. Free and private.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/pack-structure-checker/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pack Structure Checker — Free Minecraft Bedrock .mcpack Folder Checker">
+<meta name="twitter:description" content="Verify your Bedrock add-on's folder layout against what Minecraft expects inside an .mcpack. Free and private.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Pack Structure Checker", "item": "https://mukund-buddy.github.io/AntigleKit/tools/pack-structure-checker/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pack Structure Checker",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/pack-structure-checker/",
+      "description": "Drop a Minecraft Bedrock .mcpack or .zip add-on to verify the folder layout Bedrock expects, including the embedded manifest.json.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the pack structure checker look at?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It reads the ZIP entries directly: whether manifest.json exists at the pack root and is valid JSON, whether script module entry files exist, whether expected resource or behavior subfolders are present, and whether junk files like __MACOSX or .DS_Store slipped in." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my pack uploaded anywhere?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The archive is parsed entirely in your browser — the file never leaves your device and no server is involved." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which file types can I check?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Any ZIP-based Bedrock pack: .zip, .mcpack, .mcworld, and .mcaddon. An .mcaddon is a container holding other pack archives, so the checker notes that and asks you to check each pack inside separately." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does it say manifest.json is missing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bedrock expects a file named exactly manifest.json in the pack root. If it is nested in a subfolder, has a different name, or differs in case, the game will not load the pack — the checker flags any of those." }
+        },
+        {
+          "@type": "Question",
+          "name": "What are stored and deflated entries?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They are ZIP compression methods: stored (method 0) is uncompressed and deflate (method 8) is compressed. Both are normal. Reading deflate entries uses the DecompressionStream API, available in Chrome 103+, Firefox 113+, and Safari 16.4+." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a junk entry?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Files like __MACOSX folders, .DS_Store, and Thumbs.db are created by macOS and Windows when zipping folders. They are harmless but bloat the pack and look unprofessional — the checker warns so you can remove them." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Pack Structure Checker</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Minecraft Bedrock · Free tool</div>
+      <h1>Minecraft Bedrock Pack Structure Checker</h1>
+      <p class="lead">Drop your <code>.mcpack</code> or <code>.zip</code> add-on and see whether the folder layout matches what Bedrock expects — before the game silently refuses it.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="checker-title">
+    <div class="container">
+      <h2 class="section-title mb" id="checker-title">Check your pack</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ DROP ZONE ══ -->
+        <div class="tool-panel">
+          <div class="field">
+            <label class="dropzone" id="dropZone" for="fFile">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span class="dz-title">Drop your pack here</span>
+              <span class="dz-sub">.zip · .mcpack · .mcworld · .mcaddon</span>
+              <span class="dz-sub">…or click to browse (up to 50 MB)</span>
+            </label>
+            <input class="visually-hidden" type="file" id="fFile" accept=".zip,.mcpack,.mcworld,.mcaddon">
+            <span class="hint">The archive is read entirely on your device — nothing is uploaded.</span>
+          </div>
+        </div>
+
+        <!-- ══ RESULTS ══ -->
+        <div class="tool-panel">
+          <h2>Results
+            <span class="status-badge status-badge--planned" id="chkStatus" hidden>Pending</span>
+          </h2>
+
+          <p class="chk-summary chk-summary--idle" id="chkSummary" role="status">Drop a pack to see structure results.</p>
+          <p class="pack-info" id="zipMeta"></p>
+          <p class="pack-info" id="packInfo"></p>
+
+          <ul class="chk-list" id="issueList"></ul>
+
+          <h3 class="pack-root-title" id="rootTitle" hidden>Pack root</h3>
+          <ul class="pack-root-list" id="rootList"></ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">How to use the pack structure checker</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Drop in the pack</h3>
+            <p>Drag your <code>.zip</code>, <code>.mcpack</code>, or <code>.mcworld</code> onto the box, or click to browse. The ZIP is parsed locally — compressed and uncompressed entries are both supported.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Read the checks</h3>
+            <p><strong>Errors</strong> mean Bedrock will likely refuse the pack: no <code>manifest.json</code> in the root, a script entry file that does not exist, or entries escaping the root. <strong>Warnings</strong> are things to clean up, like <code>__MACOSX</code> folders and <code>.DS_Store</code> files. <strong>Notes</strong> are observations, such as a missing textures folder.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Fix the layout</h3>
+            <p>Move <code>manifest.json</code> to the pack root with the exact lowercase name, place script entry files where the manifest points, and remove junk entries before sharing.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Re-zip and import</h3>
+            <p>Zip the pack folder's contents (not the folder itself) and rename to <code>.mcpack</code> for resource packs or <code>.mcaddon</code> for combined packs. Import into Minecraft and it should load cleanly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Pack structure checker FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>What does the pack structure checker look at?</summary>
+          <div><p>It reads the ZIP entries directly: whether manifest.json exists at the pack root and is valid JSON, whether script module entry files exist, whether expected resource or behavior subfolders are present, and whether junk files like __MACOSX or .DS_Store slipped in.</p></div>
+        </details>
+        <details>
+          <summary>Is my pack uploaded anywhere?</summary>
+          <div><p>No. The archive is parsed entirely in your browser — the file never leaves your device and no server is involved.</p></div>
+        </details>
+        <details>
+          <summary>Which file types can I check?</summary>
+          <div><p>Any ZIP-based Bedrock pack: .zip, .mcpack, .mcworld, and .mcaddon. An .mcaddon is a container holding other pack archives, so the checker notes that and asks you to check each pack inside separately.</p></div>
+        </details>
+        <details>
+          <summary>Why does it say manifest.json is missing?</summary>
+          <div><p>Bedrock expects a file named exactly manifest.json in the pack root. If it is nested in a subfolder, has a different name, or differs in case, the game will not load the pack — the checker flags any of those.</p></div>
+        </details>
+        <details>
+          <summary>What are stored and deflated entries?</summary>
+          <div><p>They are ZIP compression methods: stored (method 0) is uncompressed and deflate (method 8) is compressed. Both are normal. Reading deflate entries uses the DecompressionStream API, available in Chrome 103+, Firefox 113+, and Safari 16.4+.</p></div>
+        </details>
+        <details>
+          <summary>What is a junk entry?</summary>
+          <div><p>Files like __MACOSX folders, .DS_Store, and Thumbs.db are created by macOS and Windows when zipping folders. They are harmless but bloat the pack and look unprofessional — the checker warns so you can remove them.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep building</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 8v13H3V8"/><path d="m8 13 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/manifest-generator/">Manifest Generator</a></h3>
+          <p class="card-desc">Build a valid manifest.json from scratch — UUIDs, versions, and script modules handled for you.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/manifest-generator/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2z"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/pack-version-generator/">Pack Version Generator</a></h3>
+          <p class="card-desc">Bump your pack version correctly and check every version in your manifest stays consistent.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/pack-version-generator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/tools/pack-structure-checker.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

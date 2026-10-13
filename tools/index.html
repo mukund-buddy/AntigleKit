@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../assets/js/theme-init.js"></script>
+<title>All Free Tools — AntigleKit</title>
+<meta name="description" content="Explore every free tool on AntigleKit: Minecraft Bedrock utilities like the manifest generator, web development tools, YouTube, student, business, design, security, and file tools — all free in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="All Free Tools — AntigleKit">
+<meta property="og:description" content="Browse every free browser tool on AntigleKit — Minecraft Bedrock utilities, web development, YouTube, student, business, design, security, and file tools.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All Free Tools — AntigleKit">
+<meta name="twitter:description" content="Browse every free browser tool on AntigleKit — Minecraft Bedrock utilities, web development, YouTube, student, business, design, security, and file tools.">
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "All Free Tools — AntigleKit",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/",
+      "isPartOf": { "@type": "WebSite", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../">Home</a>
+      <a href="../tools/" aria-current="page">Tools</a>
+      <a href="../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../">Home</a>
+  <a href="../tools/">Tools</a>
+  <a href="../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">All Tools</span>
+      </nav>
+      <div class="section-tag section-tag--plain">The tool family</div>
+      <h1>Free tools, built in your browser</h1>
+      <p class="lead">Every tool on AntigleKit runs locally in your browser — no downloads, no accounts, no data leaving your device. New tools ship as soon as they're ready.</p>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+
+      <h2 class="section-title mb">Live now</h2>
+        <h3 class="live-group-title">Minecraft</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/manifest-generator/">Manifest Generator</a></h3>
+          <p class="card-desc">Generate a valid manifest.json for Bedrock resource, behavior, world-template, and script packs — in seconds.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/manifest-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 8v13H3V8"/><path d="m8 13 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/manifest-validator/">Manifest Validator</a></h3>
+          <p class="card-desc">Paste or upload an existing manifest.json and get a field-by-field check — UUIDs, versions, modules, dependencies.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/manifest-validator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/identifier-validator/">Identifier Validator</a></h3>
+          <p class="card-desc">Check namespaces and resource identifiers against Bedrock's allowed character rules — whole lists at once.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/identifier-validator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v10"/><path d="M21 7v10"/><path d="M7 21h10"/><path d="M7 3h10"/><path d="M12 3v18"/><path d="M3 12h18"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/pack-structure-checker/">Pack Structure Checker</a></h3>
+          <p class="card-desc">Drop your .mcpack or .zip add-on and verify the folder layout Bedrock expects, manifest included.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/pack-structure-checker/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2z"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/pack-version-generator/">Pack Version Generator</a></h3>
+          <p class="card-desc">Bump your pack version correctly and check every version in your manifest stays consistent.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/pack-version-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/mc-title-studio/">MC Title Studio</a></h3>
+          <p class="card-desc">Turn a photo into a .mcpack that fills the whole Bedrock title screen — auto-fit to your screen, cropped, and built in your browser.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/mc-title-studio/">Open tool</a></span>
+          </div>
+        </article>
+
+        </div>
+
+        <h3 class="live-group-title">YouTube</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/thumbnail-fetcher/">Thumbnail Fetcher</a></h3>
+          <p class="card-desc">Grab any YouTube video's thumbnail in all five sizes — 120px to full HD — straight from the URL.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/thumbnail-fetcher/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/thumbnail-downloader/">Thumbnail Downloader</a></h3>
+          <p class="card-desc">Preview every available size of a video's thumbnail with real dimensions, then save the one you want.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/thumbnail-downloader/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/video-downloader/">Video &amp; Audio Downloader</a></h3>
+          <p class="card-desc">Paste a link and jump straight to cobalt.tools — grab the video or just the audio from 20+ sites.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/video-downloader/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/timestamp-generator/">Timestamp Generator</a></h3>
+          <p class="card-desc">Type section durations and get clean YouTube chapter timestamps — with the 3-chapter minimum already checked.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/timestamp-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/chapter-formatter/">Chapter Formatter</a></h3>
+          <p class="card-desc">Paste messy chapter notes and get clean 00:00 lines that pass YouTube's chapter rules first time.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/chapter-formatter/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 6 14 3 3 8v10l11 5 10-5V6z"/><path d="M14 3v15"/><path d="M3 8l11 5 10-5"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/description-generator/">Description Generator</a></h3>
+          <p class="card-desc">Build a full video description — intro, chapters, and links — with a live 5,000-character count.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/description-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/title-length-checker/">Title Length Checker</a></h3>
+          <p class="card-desc">Keep titles inside YouTube's 100-character limit and preview how they truncate on desktop and mobile.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/title-length-checker/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/hashtag-formatter/">Hashtag Formatter</a></h3>
+          <p class="card-desc">Clean, dedupe, and capitalize hashtags for the three-above-title rule — with a 60-tag safety check.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/hashtag-formatter/">Open tool</a></span>
+          </div>
+        </article>
+
+        </div>
+
+        <h3 class="live-group-title">Web Development</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 6.5 17.5A2.5 2.5 0 0 0 9 20h6a2.5 2.5 0 0 0 2.5-2.5L16 6"/><path d="M10 3h4"/><path d="M6 6h12"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/uuid-generator/">UUID Generator</a></h3>
+          <p class="card-desc">Secure random v4 UUIDs — one or a batch, in lowercase, uppercase, compact, or braced formats.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/uuid-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V7a4 4 0 0 1 8 0v2"/><rect x="4" y="9" width="8" height="7" rx="2"/><path d="M8 13h2"/><path d="M14 5h3a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3h-1"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/meta-tag-generator/">Meta Tag Generator</a></h3>
+          <p class="card-desc">Title, description, canonical, Open Graph, and Twitter tags — filled from one form and copied in one click.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/meta-tag-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V12"/><path d="m12 12-3.5 3.5"/><path d="M12 12l3.5 3.5"/><circle cx="8.5" cy="15.5" r="2.5"/><circle cx="15.5" cy="15.5" r="2.5"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/robots-generator/">robots.txt Generator</a></h3>
+          <p class="card-desc">Build a robots.txt with allowed and disallowed paths, crawl rules, and a sitemap line — ready to publish.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/robots-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 8v3a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8"/><path d="M12 13v3"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/sitemap-generator/">sitemap.xml Generator</a></h3>
+          <p class="card-desc">Turn a plain list of URLs into valid sitemap.xml entries with lastmod and priority — plus an XML validation rename.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/sitemap-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 3"/><path d="m15.4 7.5-6.8 3"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/open-graph-generator/">Open Graph Generator</a></h3>
+          <p class="card-desc">Build and preview the card your links show when shared — six required tags checked and escaped for you.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/open-graph-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L17 3L21 6L17 9L8 6Z"/><path d="M8 6v6c0 1.5 4 2.5 4 2.5"/><path d="M17 9v4"/><path d="M12 14.5V21"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/json-formatter/">JSON Formatter</a></h3>
+          <p class="card-desc">Pretty-print or minify JSON with line-accurate error reporting that says exactly where the problem is.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/json-formatter/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="m10 16 2 2 2-2"/><path d="M9 8l3 3 3-3"/><path d="M12 11l8-8M4 3l8 8-8 16"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/json-validator/">JSON Validator</a></h3>
+          <p class="card-desc">Fails fast with a clear line-and-column error and a snippet of the offending JSON — not a wall of red.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/json-validator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="8" height="8" rx="1"/><rect x="13" y="8" width="8" height="8" rx="1"/><path d="M11 12h2M7 4v3M17 4v3M7 17v3M17 17v3"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/base64-encode-decode/">Base64 Encode / Decode</a></h3>
+          <p class="card-desc">Encode text for file names and strings — or decode Base64 back, with Unicode-safe round trips. Local, private.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/base64-encode-decode/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 11l3-3a4 4 0 0 0-5.66-5.66l-3 3A4 4 0 0 0 14 11l5-5"/><path d="M10 13l-3 3a4 4 0 0 0 5.66 5.66l3-3A4 4 0 0 0 10 13l-5 5"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/url-encoder/">URL Encoder</a></h3>
+          <p class="card-desc">Percent-encode text for query strings and paths, with double-encoding detection so links stay readable.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/url-encoder/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9l3 14a4 4 0 0 0 5.66-5.66l-3-3A4 4 0 0 0 11 11l-5 5"/><path d="M10 13l-3 3a4 4 0 0 0 5.66 5.66l3-3A4 4 0 0 0 11 11"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/url-decoder/">URL Decoder</a></h3>
+          <p class="card-desc">Decode percent-encoded URLs and read decoded query strings, flagging bad escape sequences as they happen.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/url-decoder/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19a14 14 0 0 1 0-14"/><path d="M13 5a14 14 0 0 0 0 14"/><path d="M9 8a14 14 0 0 1 0 8"/><path d="M17 10a14 14 0 0 1 0 4"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/slug-generator/">Slug Generator</a></h3>
+          <p class="card-desc">Turn titles like "Café Déjà Vu: Launching 2026" into clean, URL-safe slugs — underscores or dashes.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/slug-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="m5.6 5.6 2.1 2.1"/><path d="m16.3 16.3 2.1 2.1"/><path d="m18.4 5.6-2.1 2.1"/><path d="m7.7 16.3-2.1 2.1"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/regex-tester/">Regex Tester</a></h3>
+          <p class="card-desc">Test regular expressions live — highlights matches, counts them, reports flags and compile errors instantly.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/regex-tester/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="5" rx="1"/><rect x="3" y="15" width="18" height="5" rx="1"/><path d="M3 8.5h18M3 17.5h18"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/css-gradient-generator/">CSS Gradient Generator</a></h3>
+          <p class="card-desc">Design linear and radial gradients visually with a live stage, angle and shape controls, up to three color stops.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/css-gradient-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M14 8h4"/><circle cx="11" cy="11" r="2"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/css-shadow-generator/">CSS Shadow Generator</a></h3>
+          <p class="card-desc">Fine-tune box-shadows visually — offset, blur, spread, color, inset — with presets and copy-ready CSS.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/css-shadow-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/flexbox-generator/">Flexbox Generator</a></h3>
+          <p class="card-desc">Set direction, justify, align, wrap and gap on a live container — and copy the exact CSS that produced it.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/flexbox-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/grid-generator/">Grid Generator</a></h3>
+          <p class="card-desc">Pick column count and gap, watch cells reflow, and copy the repeat() grid-template that matches.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/grid-generator/">Open tool</a></span>
+          </div>
+        </article>
+
+        </div>
+
+        <h3 class="live-group-title">Student</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 6h16M4 18h16"/><circle cx="8" cy="6" r="1"/><circle cx="8" cy="12" r="1"/><circle cx="8" cy="18" r="1"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/percentage-calculator/">Percentage Calculator</a></h3>
+          <p class="card-desc">Percent of a number, what-percent-of, and percent change — four modes in one.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/percentage-calculator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v3m6-3v3M3 12h18"/><path d="M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/attendance-calculator/">Attendance Calculator</a></h3>
+          <p class="card-desc">Attendance percentage plus skip/attend planning against a 75% threshold.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/attendance-calculator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 8h-4v7H6v-7H2z"/><path d="m9 14 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/cgpa-calculator/">CGPA Calculator</a></h3>
+          <p class="card-desc">Credit-weighted grade average from "grade credits" lines, instantly.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/cgpa-calculator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/reading-time-calculator/">Reading Time Calculator</a></h3>
+          <p class="card-desc">Minutes to read any text at slow, average, and fast speeds.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/reading-time-calculator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15h4v-6H7z"/><path d="M13 15h4V9h-4z"/><path d="M7 6h4"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/word-counter/">Word Counter</a></h3>
+          <p class="card-desc">Words, sentences, paragraphs, and reading time — as you type.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/word-counter/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+            <span class="status-badge status-badge--new">New</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/character-counter/">Character Counter</a></h3>
+          <p class="card-desc">Characters with/without spaces, and limit checks for bio, SMS, tweet.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/character-counter/">Open tool</a></span>
+          </div>
+        </article>
+
+</div>
+
+        <h3 class="live-group-title">Design</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><circle cx="12.5" cy="12.5" r="2.5"/><path d="M6 19V4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/color-palette-generator/">Color Palette Generator</a></h3>
+          <p class="card-desc">Generate harmonious palettes — monochromatic to tetradic — from one seed color, and copy HEX and HSL.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/color-palette-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="5" rx="1"/><rect x="3" y="15" width="18" height="5" rx="1"/><path d="M3 8.5h18M3 17.5h18"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/glassmorphism-generator/">Glassmorphism Generator</a></h3>
+          <p class="card-desc">Design frosted-glass panels — tint, blur, saturation, radius — and copy the backdrop-filter CSS.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/glassmorphism-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v7a5 5 0 0 1-10 0V3"/><path d="M4 13h16"/><path d="M12 13v8"/><path d="M9 21h6"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/contrast-checker/">Contrast Checker</a></h3>
+          <p class="card-desc">Check WCAG 2.1 contrast ratios between two colors and get instant AA/AAA verdicts.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/contrast-checker/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/border-radius-generator/">Border Radius Generator</a></h3>
+          <p class="card-desc">Shape corner radii visually with per-corner controls, in px or %, and copy the CSS.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/border-radius-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 12 12 22 22 12z"/><path d="M4 20 7 4"/><path d="M20 20l-3-16"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/svg-optimizer/">SVG Optimizer</a></h3>
+          <p class="card-desc">Strip comments and whitespace from inline SVG markup and see exact byte savings.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/svg-optimizer/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 18h4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/favicon-generator/">Favicon Generator</a></h3>
+          <p class="card-desc">Create every favicon size — 16px to 512px PNG — from a letter, symbol, or emoji.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/favicon-generator/">Open tool</a></span>
+          </div>
+        </article>
+
+        </div>
+
+        <h3 class="live-group-title">Security</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/password-generator/">Password Generator</a></h3>
+          <p class="card-desc">Generate strong, random passwords locally in your browser.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/password-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V7z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/password-strength-checker/">Password Strength Checker</a></h3>
+          <p class="card-desc">Score password strength and entropy without sending it anywhere.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/password-strength-checker/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14M5 15h14M10 3l-2 18M16 3l-2 18"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/sha256-generator/">SHA-256 Generator</a></h3>
+          <p class="card-desc">Hash text or files with SHA-256 using the browser's Web Crypto API.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/sha256-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zm7 7h-3v-3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/qrcode-generator/">QR Code Generator</a></h3>
+          <p class="card-desc">Create QR codes from any text or URL and download them.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/qrcode-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/qr-code-scanner/">QR Code Scanner</a></h3>
+          <p class="card-desc">Scan and decode QR codes from an image or camera.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/qr-code-scanner/">Open tool</a></span>
+          </div>
+        </article>
+        </div>
+
+        <h3 class="live-group-title">Business</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5v14M7 5v14M12 5v14M15 5v14M21 5v14"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/barcode-generator/">Barcode Generator</a></h3>
+          <p class="card-desc">Create Code 128, Code 39, EAN-13, or UPC-A barcodes and download them as PNG.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/barcode-generator/">Open tool</a></span>
+          </div>
+        </article>
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="1"/><path d="M7 9v3M11 9v3M15 9v3M19 9v3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/unit-converter/">Unit Converter</a></h3>
+          <p class="card-desc">Convert length, mass, temperature, volume, area, time, data, and speed instantly.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/unit-converter/">Open tool</a></span>
+          </div>
+        </article>
+        </div>
+
+        <h3 class="live-group-title">Web &amp; Social</h3>
+
+        <div class="card-grid">
+          <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21 13 8"/><path d="M7 21V10"/><path d="M18 4l-9 4h9v7"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../tools/pinterest-downloader/">Pinterest Pin Saver</a></h3>
+          <p class="card-desc">Preview any Pinterest pin — photos and video pins — and save the image with your browser's save menu.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="../tools/pinterest-downloader/">Open tool</a></span>
+          </div>
+        </article>
+        </div>
+
+      <div class="container ad-slot ad-slot--inline" data-ad-slot="4" aria-label="Advertisement"></div>
+
+      <h2 class="section-title">Coming next</h2>
+      <p class="lead mb">The tools below are approved and ship next — in the categories our visitors search for. Every tool runs fully in your browser: no accounts, no uploads, no data leaving your device.</p>
+
+      <div class="tool-plan" id="toolPlan" aria-busy="true">
+        <p class="demo-note">Loading the plan…</p>
+      </div>
+
+      <noscript>
+        <p class="demo-note">Enable JavaScript to view the full build plan. The 49 live tools work without it — <a href="../tools/manifest-generator/">Manifest Generator</a>, <a href="../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>, and <a href="../tools/uuid-generator/">UUID Generator</a> are always available.</p>
+      </noscript>
+
+      <p class="demo-note">Not scheduled: Minecraft skin, geometry, and animation tools, entity and loot table generators, and optional AI utilities stay architecture-ready in the backlog until they pass the <a href="../about/">tool acceptance rule</a>.</p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../">Home</a>
+      <a href="../tools/">All Tools</a>
+      <a href="../about/">About</a>
+      <a href="../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../assets/js/tools-index.js"></script>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/ads.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Manifest Validator — Free Minecraft Bedrock manifest.json Checker | AntigleKit</title>
+<meta name="description" content="Paste or upload your Minecraft Bedrock manifest.json to check required fields, UUID format, integer versions, module types, and more. Free, private — runs entirely in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/manifest-validator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Manifest Validator — Free Minecraft Bedrock manifest.json Checker">
+<meta property="og:description" content="Check your Bedrock manifest.json against the official rules — required fields, UUID format, integer versions, modules. Free and private.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/manifest-validator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Manifest Validator — Free Minecraft Bedrock manifest.json Checker">
+<meta name="twitter:description" content="Check your Bedrock manifest.json against the official rules — required fields, UUID format, integer versions, modules. Free and private.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Manifest Validator", "item": "https://mukund-buddy.github.io/AntigleKit/tools/manifest-validator/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Manifest Validator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/manifest-validator/",
+      "description": "Paste or upload a Minecraft Bedrock manifest.json to check required fields, UUID format, integer versions, module types, dependencies, and more.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the manifest validator check?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It checks the required fields (format_version, header, modules), UUID format, integer version arrays, min_engine_version for resource and behavior packs, script module requirements, dependencies, capabilities, metadata, and flags unrecognized fields that are usually typos." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my manifest uploaded anywhere?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The validator runs entirely in your browser — your manifest.json never leaves your device, and there is no server involved." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an error and a warning?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Errors are rules Minecraft relies on to load the pack, such as a malformed UUID or missing min_engine_version. Warnings flag suspicious or unstable content, like unrecognized fields (possible typos) or preview-only format_version 3." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does it say min_engine_version is missing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "min_engine_version is required for resource and behavior packs so Minecraft knows the oldest game version the pack supports. World templates and skin packs do not need it." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I validate format_version 1 or 3 manifests?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Format 1 (skin packs) is accepted, and format 3 is flagged with a warning because it is still preview-only and expects semver strings instead of version arrays." }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I do after fixing the issues?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Save the corrected manifest.json into your pack's root folder, re-zip, and import the pack. The validator updates live as you type, so you can fix issues immediately." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Manifest Validator</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Minecraft Bedrock · Free tool</div>
+      <h1>Minecraft Bedrock manifest.json Validator</h1>
+      <p class="lead">Paste or upload an existing <code>manifest.json</code> and get a field-by-field check against Bedrock's rules — required fields, UUID format, integer versions, modules, and dependencies.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="validator-title">
+    <div class="container">
+      <h2 class="section-title mb" id="validator-title">Validate your manifest</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ INPUT ══ -->
+        <form class="tool-panel" id="manifestCheckForm" novalidate aria-label="Manifest input">
+          <div class="field">
+            <label for="manifestInput">Your manifest.json</label>
+            <textarea class="input textarea" id="manifestInput" rows="18" spellcheck="false" autocomplete="off" placeholder='{&#10;  "format_version": 2,&#10;  "header": {&#10;    "name": "My Pack",&#10;    "description": "…",&#10;    "uuid": "…",&#10;    "version": [1, 0, 0]&#10;  },&#10;  "modules": []&#10;}' aria-describedby="inputHint"></textarea>
+            <span class="hint" id="inputHint">Results update live as you type. Nothing leaves your browser.</span>
+          </div>
+
+          <div class="tool-actions">
+            <label class="btn btn-ghost" for="fFile">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload manifest.json
+            </label>
+            <input class="visually-hidden" type="file" id="fFile" accept=".json,application/json">
+            <button class="btn btn-gold" type="button" id="fSample">Load sample</button>
+          </div>
+        </form>
+
+        <!-- ══ RESULTS ══ -->
+        <div class="tool-panel">
+          <h2>Results
+            <span class="status-badge status-badge--planned" id="chkStatus" hidden>Pending</span>
+          </h2>
+
+          <p class="chk-summary chk-summary--idle" id="chkSummary" role="status">Paste a manifest.json (or upload one) to see validation results.</p>
+          <p class="chk-detected" id="detected"></p>
+
+          <ul class="chk-list" id="issueList"></ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">How to use the manifest validator</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Paste or upload your manifest</h3>
+            <p>Copy your <code>manifest.json</code> into the box, or upload the file directly from your pack folder. Validation starts as soon as there is JSON to read.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Read the results</h3>
+            <p><strong>Errors</strong> are rules Minecraft relies on to load the pack — fix these first. <strong>Warnings</strong> flag unrecognized fields (usually typos) or preview-only formats. Each finding shows the exact field path, like <code>header.uuid</code>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Fix and re-check</h3>
+            <p>Edit the JSON in place — results refresh live. When the summary turns green, your manifest satisfies the checked rules.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Import the pack</h3>
+            <p>Save the corrected <code>manifest.json</code> in the pack's root folder, zip it, and import into Minecraft. Use the Manifest Generator to build a fresh one if the file is beyond repair.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Manifest validator FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>What does the manifest validator check?</summary>
+          <div><p>It checks the required fields (format_version, header, modules), UUID format, integer version arrays, min_engine_version for resource and behavior packs, script module requirements, dependencies, capabilities, metadata, and flags unrecognized fields that are usually typos.</p></div>
+        </details>
+        <details>
+          <summary>Is my manifest uploaded anywhere?</summary>
+          <div><p>No. The validator runs entirely in your browser — your manifest.json never leaves your device, and there is no server involved.</p></div>
+        </details>
+        <details>
+          <summary>What is the difference between an error and a warning?</summary>
+          <div><p>Errors are rules Minecraft relies on to load the pack, such as a malformed UUID or missing min_engine_version. Warnings flag suspicious or unstable content, like unrecognized fields (possible typos) or preview-only format_version 3.</p></div>
+        </details>
+        <details>
+          <summary>Why does it say min_engine_version is missing?</summary>
+          <div><p>min_engine_version is required for resource and behavior packs so Minecraft knows the oldest game version the pack supports. World templates and skin packs do not need it.</p></div>
+        </details>
+        <details>
+          <summary>Can I validate format_version 1 or 3 manifests?</summary>
+          <div><p>Yes. Format 1 (skin packs) is accepted, and format 3 is flagged with a warning because it is still preview-only and expects semver strings instead of version arrays.</p></div>
+        </details>
+        <details>
+          <summary>What do I do after fixing the issues?</summary>
+          <div><p>Save the corrected manifest.json into your pack's root folder, re-zip, and import the pack. The validator updates live as you type, so you can fix issues immediately.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep building</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 8v13H3V8"/><path d="m8 13 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/manifest-generator/">Manifest Generator</a></h3>
+          <p class="card-desc">Build a valid manifest.json from scratch — UUIDs, versions, and script modules handled for you.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/manifest-generator/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/identifier-validator/">Identifier Validator</a></h3>
+          <p class="card-desc">Check namespaces and resource identifiers against Bedrock's allowed character rules — whole lists at once.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/identifier-validator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/tools/manifest-validator.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

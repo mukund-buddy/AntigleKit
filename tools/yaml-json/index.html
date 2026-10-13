@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>YAML → JSON Converter — free &amp; private | AntigleKit</title>
+<meta name="description" content="Convert YAML to JSON instantly in the browser. Supports nested maps, lists, flow collections, quoted strings, comments and block scalars — with clear line-numbered errors and zero uploads.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/yaml-json/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="YAML → JSON Converter — Instant, Private">
+<meta property="og:description" content="Nested maps, lists and block scalars → clean JSON, all on-device.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/yaml-json/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YAML → JSON Converter — Instant, Private">
+<meta name="twitter:description" content="Convert YAML to JSON instantly in your browser — free and private.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "YAML → JSON Converter", "item": "https://mukund-buddy.github.io/AntigleKit/tools/yaml-json/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "YAML → JSON Converter",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/yaml-json/",
+      "description": "Convert YAML to JSON entirely in the browser.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which YAML features are supported?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nested maps and sequences with space indentation, flow collections like {a: 1} and [1,2], single and double quoted strings, comments, and | or > block strings. Tabs are rejected with a clear message because YAML forbids them for indentation." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens on a parsing error?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The tool reports the exact line number with a readable message — bad indentation, unterminated quotes and unexpected content are all caught instead of producing silently wrong JSON." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my YAML uploaded anywhere?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The whole conversion runs locally in your browser tab, making it safe to paste configs that contain secrets or internal details." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">YAML → JSON Converter</span>
+      </nav>
+      <div class="section-tag section-tag--plain">File Tools · Free &amp; private</div>
+      <h1>YAML → JSON Converter</h1>
+      <p class="lead">Paste YAML configs and get clean, valid JSON back — nested maps, lists, flow collections, block strings and all, with precise line-numbered errors when something is off.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="yj-title">
+    <div class="container">
+      <h2 class="section-title mb" id="yj-title">Convert YAML to JSON</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ FORM ══ -->
+        <div class="tool-panel">
+          <div class="field">
+            <label for="yjInput">YAML input</label>
+            <textarea class="input textarea" id="yjInput" rows="12" placeholder="server:&#10;  port: 8080&#10;  https: true" autocomplete="off" spellcheck="false"></textarea>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-ghost" type="button" id="fSample">Try a sample</button>
+            <button class="btn btn-ghost" type="button" id="fClear">Clear</button>
+          </div>
+        </div>
+
+        <!-- ══ OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>JSON output</h2>
+          <p class="chk-detected" id="yjStatus" role="status"></p>
+          <pre class="text-out" id="yjOut" aria-live="polite"></pre>
+          <div class="tool-actions">
+            <tg-copy-button data-source="#yjOut" data-label="Copy JSON"></tg-copy-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="80" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">Structure in, JSON out</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Indentation is the map</h3>
+            <p>Nesting is read purely from leading spaces, exactly like YAML expects. Tabs are rejected up front, so you never get a silently wrong structure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Rich scalar support</h3>
+            <p>Numbers, booleans, null, quoted strings, flow lists and maps, plus | and > block strings — each lands in JSON as the right type automatically.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Errors with a line number</h3>
+            <p>Bad indentation, dangling quotes or stray content produce a human-readable message pointing at the exact line instead of a broken JSON blob.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">YAML → JSON FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Which YAML features are supported?</summary>
+          <div><p>A practical subset: nested maps and sequences, flow collections, single/double-quoted scalars, comments, and | or &gt; block strings. Anchors, aliases and tags are not yet supported.</p></div>
+        </details>
+        <details>
+          <summary>How are errors reported?</summary>
+          <div><p>With the exact 1-based line number and a human-readable message such as "Tabs cannot be used for indentation" — no more guessing where the config broke.</p></div>
+        </details>
+        <details>
+          <summary>Is my YAML uploaded?</summary>
+          <div><p>No. Everything runs in your browser tab with no network calls, so password hashes, tokens and internal config can be converted privately.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep converting</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/json-formatter/">JSON Formatter</a></h3>
+          <p class="card-desc">Format, validate and minify JSON safely.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/json-formatter/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/csv-json/">CSV ↔ JSON</a></h3>
+          <p class="card-desc">Convert CSV to JSON and JSON to CSV in both directions.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/csv-json/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="81" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/yaml-json.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

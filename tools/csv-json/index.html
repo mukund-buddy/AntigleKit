@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>CSV ↔ JSON Converter — free &amp; private | AntigleKit</title>
+<meta name="description" content="Convert CSV to JSON and JSON back to CSV instantly in the browser. Handles quoted fields, commas in values, custom delimiters and header rows — nothing leaves your device.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/csv-json/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="CSV ↔ JSON Converter — Two-Way, Live">
+<meta property="og:description" content="CSV to JSON and back — quoted fields, custom delimiters, private by design.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/csv-json/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSV ↔ JSON Converter — Two-Way, Live">
+<meta name="twitter:description" content="Convert CSV to JSON and back, instantly, free, in your browser.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "CSV ↔ JSON Converter", "item": "https://mukund-buddy.github.io/AntigleKit/tools/csv-json/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "CSV ↔ JSON Converter",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/csv-json/",
+      "description": "Convert CSV to JSON and JSON to CSV entirely in the browser.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the CSV parser handle quoted fields?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Fields wrapped in double quotes may contain commas, newlines and escaped quotes (\"\"), which is standard CSV behaviour. This matters for real-world exports from spreadsheets and databases." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the site see my data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The entire conversion runs as JavaScript in your browser tab. Nothing is uploaded, stored or tracked, so confidential rows are safe to paste." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when converting from JSON to CSV?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An array of objects becomes a header row plus one line per object. Objects without properties, primitive arrays and single objects are also supported with sensible fallbacks, and the delimiter can be switched to semicolon or tab." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">CSV ↔ JSON Converter</span>
+      </nav>
+      <div class="section-tag section-tag--plain">File Tools · Free &amp; private</div>
+      <h1>CSV ↔ JSON Converter</h1>
+      <p class="lead">Convert CSV to JSON and back again in both directions, with quoted-field support, custom delimiters and an optional header row — all inside your browser.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="cj-title">
+    <div class="container">
+      <h2 class="section-title mb" id="cj-title">Convert your data</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ FORM ══ -->
+        <div class="tool-panel">
+          <div class="field">
+            <label for="cjDir">Direction</label>
+            <select class="input" id="cjDir">
+              <option value="csv2json" selected>CSV → JSON</option>
+              <option value="json2csv">JSON → CSV</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cjDelimiter">Delimiter</label>
+            <select class="input" id="cjDelimiter">
+              <option value="comma" selected>Comma ( , )</option>
+              <option value="semicolon">Semicolon ( ; )</option>
+              <option value="tab">Tab</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cjHeaders">Treat first row as headers</label>
+            <div class="check-row">
+              <input class="check" type="checkbox" id="cjHeaders" checked>
+              <span class="hint">When on, CSV rows become JSON objects.</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cjInput">Input</label>
+            <textarea class="input textarea" id="cjInput" rows="10" placeholder="Paste CSV or JSON here…" autocomplete="off" spellcheck="false"></textarea>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-ghost" type="button" id="fSample">Try a sample</button>
+            <button class="btn btn-ghost" type="button" id="fClear">Clear</button>
+          </div>
+        </div>
+
+        <!-- ══ OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Converted</h2>
+          <p class="chk-detected" id="cjStatus" role="status"></p>
+          <pre class="text-out" id="cjOut" aria-live="polite"></pre>
+          <div class="tool-actions">
+            <tg-copy-button data-source="#cjOut" data-label="Copy output"></tg-copy-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="78" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">Round-trips, done right</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Quoted fields, handled</h3>
+            <p>The parser follows RFC-style CSV rules: fields wrapped in quotes may carry commas, line breaks and escaped quote pairs, so real spreadsheet exports convert cleanly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Your headers, your call</h3>
+            <p>Keep the first row as property keys for clean JSON objects, or turn it off to emit plain arrays of arrays. Header names are de-duplicated automatically.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Private by design</h3>
+            <p>Every parse runs locally with zero network calls. Spreadsheet exports with customer names or pricing can be pasted without a second thought.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">CSV ↔ JSON FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does the CSV parser handle quoted fields?</summary>
+          <div><p>Yes — a field wrapped in double quotes can contain commas and even newlines. Two consecutive quotes inside become a single literal quote. That is exactly how real spreadsheet exports behave.</p></div>
+        </details>
+        <details>
+          <summary>Can the site see what I convert?</summary>
+          <div><p>No. The conversion is pure local JavaScript. Nothing is uploaded, so sensitive rows and lists never leave the tab.</p></div>
+        </details>
+        <details>
+          <summary>What output does JSON → CSV produce?</summary>
+          <div><p>An array of objects becomes one header row followed by one line per object. Primitive values and single objects also work; choose semicolon or tab as the delimiter for locale-friendly files.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep converting</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/json-formatter/">JSON Formatter</a></h3>
+          <p class="card-desc">Format, validate and minify JSON safely.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/json-formatter/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/></svg></span>
+            <span class="status-badge status-badge--planned">New</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/yaml-json/">YAML → JSON</a></h3>
+          <p class="card-desc">Convert YAML to JSON while keeping structure intact.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/yaml-json/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="79" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/csv-json.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

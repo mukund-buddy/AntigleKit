@@ -1,0 +1,17 @@
+# ads.txt — AntigleKit
+# Add your ad network publisher entries here BEFORE enabling ads.
+#
+# --- Google AdSense (most profitable for tools/dev-student-web niche) ---
+# After approval, replace with your real pub ID:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+#
+# --- Media.net (contextual fallback / secondary) ---
+# media.net, 0000XXXXXXXXXXXX, DIRECT
+#
+# --- Adsterra (fixed banner only — NEVER pop/under/interstitial here) ---
+# adsterra.com, PUBLISHER_ID_HASH, DIRECT
+#
+# Notes:
+#  - ads.txt takes effect within minutes anywhere on the open web.
+#  - Only publish entries for networks you actually run.
+#  - No adult networks are ever configured here (site-wide policy).

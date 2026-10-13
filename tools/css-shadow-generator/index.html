@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>CSS Shadow Generator — Box Shadow Designer | AntigleKit</title>
+<meta name="description" content="Design CSS box-shadows visually: offset, blur, spread, color, and inset with live preview and copy-ready code. Free, offline, in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/css-shadow-generator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="CSS Shadow Generator — Box Shadow Designer">
+<meta property="og:description" content="Design box-shadows visually and copy the CSS — free and private.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/css-shadow-generator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS Shadow Generator — Box Shadow Designer">
+<meta name="twitter:description" content="Design box-shadows visually and copy the CSS — free and private.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "CSS Shadow Generator", "item": "https://mukund-buddy.github.io/AntigleKit/tools/css-shadow-generator/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "CSS Shadow Generator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/css-shadow-generator/",
+      "description": "Design box-shadow offsets, blur, spread, color, and insets with a live preview.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do offset-x and offset-y do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They move the shadow horizontally and vertically. Positive x shifts it right, positive y shifts it down; negative values move the opposite way. Zero keeps it perfectly behind the box." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the spread for?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Spread expands (positive) or shrinks (negative) the shadow before blurring. It's how you make a shadow look like a solid offset copy, or a tight halo instead of a soft cloud." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does inset do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Inset draws the shadow inside the element, casting the edge toward the center. It's the classic look for pressed buttons, wells, and recessed panels." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">CSS Shadow Generator</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Web · Free tool</div>
+      <h1>CSS Shadow Generator</h1>
+      <p class="lead">Tune offset, blur, spread, and color and watch the shadow on a real box — then copy one ready-to-paste <code>box-shadow</code> line.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="sh-title">
+    <div class="container">
+      <h2 class="section-title mb" id="sh-title">Design a box-shadow</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ FORM ══ -->
+        <div class="tool-panel">
+          <div class="slider-row">
+            <label for="shX">Offset X</label>
+            <input type="range" id="shX" min="-60" max="60" step="1" value="4">
+            <output id="shXOut">4px</output>
+          </div>
+          <div class="slider-row">
+            <label for="shY">Offset Y</label>
+            <input type="range" id="shY" min="-60" max="60" step="1" value="6">
+            <output id="shYOut">6px</output>
+          </div>
+          <div class="slider-row">
+            <label for="shBlur">Blur</label>
+            <input type="range" id="shBlur" min="0" max="80" step="1" value="20">
+            <output id="shBlurOut">20px</output>
+          </div>
+          <div class="slider-row">
+            <label for="shSpread">Spread</label>
+            <input type="range" id="shSpread" min="-30" max="40" step="1" value="0">
+            <output id="shSpreadOut">0px</output>
+          </div>
+          <div class="slider-row">
+            <label for="shOpacity">Opacity</label>
+            <input type="range" id="shOpacity" min="0" max="100" step="1" value="45">
+            <output id="shOpacityOut">45%</output>
+          </div>
+          <div class="seg-row">
+            <input type="color" id="shColor" value="#000000" aria-label="Shadow color">
+            <label class="flag-label push-right" for="shInset"><input type="checkbox" id="shInset"> inset</label>
+          </div>
+          <button class="btn btn-ghost" type="button" id="fSample">Try a ready-made shadow</button>
+        </div>
+
+        <!-- ══ OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Live preview</h2>
+          <div class="preview-box">
+            <div class="shadow-box" id="shPreview" aria-label="Box shadow preview"></div>
+          </div>
+          <p class="chk-detected" id="shDetected" role="status"></p>
+          <pre class="text-out text-out--mini" id="shOut" aria-live="polite"></pre>
+          <div class="tool-actions">
+            <tg-copy-button data-source="#shOut" data-label="Copy CSS"></tg-copy-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="31" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">How box-shadow works</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Offsets place it</h3>
+            <p>Offset-x and offset-y position the shadow relative to the box. Together they decide whether the shadow reads as a light from above-left or from below-right.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Blur and spread shape it</h3>
+            <p>Blur softens the edge (0 is a hard cut). Spread inflates or shrinks the shadow before blur is applied, letting you dial in anything from a crisp ring to a wide, soft glow.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Inset changes direction</h3>
+            <p>With inset, the shadow is cast inside the element — the staple of recessed panels and pressed buttons. Flipping it on/off is instant in the live preview.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Box shadow FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How do offset-x and offset-y work?</summary>
+          <div><p>They shift the shadow horizontally and vertically. Positive x is right, positive y is down; negatives go left and up. Offset plus blur is the 90% case (offset 0 blur 0 is the rare hard-edge shadow).</p></div>
+        </details>
+        <details>
+          <summary>What does the spread value do?</summary>
+          <div><p>Positive spread makes the shadow larger, negative makes it smaller, before blurring. Negative spread with a soft blur is the trick behind a subtle recessed look.</p></div>
+        </details>
+        <details>
+          <summary>What does inset do?</summary>
+          <div><p>It draws the shadow inside the box instead of behind it — the classic pressed / well / recessed-panel effect you see in form inputs.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep building</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 4-4 4 4 5-5 5 5"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/css-gradient-generator/">CSS Gradient Generator</a></h3>
+          <p class="card-desc">Pair your shadow with a background gradient.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/css-gradient-generator/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/grid-generator/">Grid Generator</a></h3>
+          <p class="card-desc">If this shadow is for a grid tile, generate the layout too.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/grid-generator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="32" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/css-shadow-generator.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

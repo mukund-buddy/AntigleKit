@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Pack Version Generator — Free Minecraft Bedrock Version Bumper &amp; Checker | AntigleKit</title>
+<meta name="description" content="Pick the correct next version for your Minecraft Bedrock pack with patch, minor, and major bumps — then check every version in your manifest stays consistent. Free, private, in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/pack-version-generator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Pack Version Generator — Free Minecraft Bedrock Version Bumper &amp; Checker">
+<meta property="og:description" content="Bump your Bedrock pack version correctly and verify header, module, and engine versions stay consistent. Free and private.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/pack-version-generator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pack Version Generator — Free Minecraft Bedrock Version Bumper &amp; Checker">
+<meta name="twitter:description" content="Bump your Bedrock pack version correctly and verify header, module, and engine versions stay consistent. Free and private.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Pack Version Generator", "item": "https://mukund-buddy.github.io/AntigleKit/tools/pack-version-generator/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pack Version Generator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/pack-version-generator/",
+      "description": "Pick the correct next version for your Minecraft Bedrock pack with patch, minor, and major bumping, then check all versions in the manifest for consistency.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do pack versions work in Bedrock?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every pack carries an integer version triple like [1, 2, 0] in header.version and in each module. When you import a pack with a higher version, Minecraft replaces the older import; the same version is treated as an identical pack." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which bump should I choose?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Patch for bug fixes and small tweaks, minor for new features or content, and major for breaking changes or large rewrites. Bump the version in header.version and every module at the same time." }
+        },
+        {
+          "@type": "Question",
+          "name": "Must module versions match the header version?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, by convention — the header and each module should carry the same version so the pack imports and updates as one unit. The consistency check on this page flags any drift." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at the 255 limit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Each version part must stay between 0 and 255. If a bump would push a part past 255, the tool tells you to bump the next level up instead, for example going from [1, 0, 255] to [1, 1, 0]." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is min_engine_version different from the pack version?",
+          "acceptedAnswer": { "@type": "Answer", "text": "min_engine_version is the oldest game version your pack supports, while the pack version tracks your own releases. The checker excludes engine-version lines from the equality rule so they do not cause false warnings." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are versions arrays instead of 1.2.3 strings?",
+          "acceptedAnswer": { "@type": "Answer", "text": "format_version 2 manifests use integer arrays like [1, 2, 0]. Semver strings belong to the preview-only format_version 3, which this tool deliberately does not target." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Pack Version Generator</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Minecraft Bedrock · Free tool</div>
+      <h1>Minecraft Bedrock Pack Version Generator</h1>
+      <p class="lead">Pick the correct next version for your pack — with sane bumping rules and a consistency check for every version in your manifest.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="bump-title">
+    <div class="container">
+      <h2 class="section-title mb" id="bump-title">Bump your pack version</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ BUMP INPUT ══ -->
+        <form class="tool-panel" id="bumpForm" novalidate aria-label="Bump options">
+          <div class="field">
+            <label>Current version</label>
+            <div class="input-row" id="bumpVersion">
+              <input class="input" type="number" min="0" max="255" data-part="major" inputmode="numeric" placeholder="1" aria-label="Version major">
+              <input class="input" type="number" min="0" max="255" data-part="minor" inputmode="numeric" placeholder="0" aria-label="Version minor">
+              <input class="input" type="number" min="0" max="255" data-part="patch" inputmode="numeric" placeholder="0" aria-label="Version patch">
+            </div>
+            <span class="hint">The version currently in header.version of your manifest.</span>
+          </div>
+
+          <div class="field">
+            <label for="bumpKind">Bump type</label>
+            <select class="input" id="bumpKind">
+              <option value="patch">Patch — bug fixes and tweaks</option>
+              <option value="minor">Minor — new features and content</option>
+              <option value="major">Major — breaking changes</option>
+            </select>
+            <span class="hint">Raises one part of [major, minor, patch] by one.</span>
+          </div>
+
+          <p class="ver-note" id="bumpNote" hidden></p>
+        </form>
+
+        <!-- ══ BUMP OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Next version</h2>
+          <div class="ver-out"><code id="bumpOut">[1, 0, 1]</code><tg-copy-button data-source="#bumpOut" data-label="Copy">Copy</tg-copy-button></div>
+          <p class="hint" id="bumpHint">Patch — bug fixes and tweaks. Existing imports update cleanly.</p>
+          <p class="chk-summary chk-summary--idle" id="bumpSanity">Paste this version into header.version and every module — same triple everywhere.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+  <section class="section-pad--sm" aria-labelledby="check-title">
+    <div class="container">
+      <h2 class="section-title mb" id="check-title">Check versions across the manifest</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ CHECK INPUT ══ -->
+        <form class="tool-panel" id="checkForm" novalidate aria-label="Version list">
+          <div class="field">
+            <label for="checkInput">Labeled versions</label>
+            <textarea class="input textarea" id="checkInput" rows="12" spellcheck="false" autocomplete="off" placeholder="header = 1.0.0&#10;modules[0] (resources) = 1.0.0&#10;modules[1] (script) = 1.0.0&#10;min_engine: [1, 21, 0]" aria-describedby="checkHint"></textarea>
+            <span class="hint" id="checkHint">One per line: <code>label = 1.2.3</code>, <code>label: [1, 2, 0]</code>, or a bare version. Lines whose label contains "engine" are checked but excluded from the equality rule.</span>
+          </div>
+
+          <div class="tool-actions">
+            <button class="btn btn-gold" type="button" id="fSample">Load sample</button>
+          </div>
+        </form>
+
+        <!-- ══ CHECK OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Results
+            <span class="status-badge status-badge--planned" id="checkStatus" hidden>Pending</span>
+          </h2>
+
+          <p class="chk-summary chk-summary--idle" id="checkSummary" role="status">Paste labeled versions, one per line (e.g. header = 1.0.0), to check consistency.</p>
+
+          <ul class="chk-list" id="checkList"></ul>
+          <ul class="chk-list" id="checkWarnings"></ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">How to use the pack version generator</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Enter the current version</h3>
+            <p>The triple from <code>header.version</code> in your manifest. Bedrock compares these numerically, so 1.10.0 is a bigger version than 1.9.9 — bumping any part moves the pack forward.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Pick the bump type</h3>
+            <p>Patch for fixes, minor for features, major for breaking changes. The tool warns if a part would pass 255 and handles the rollover for you.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Put the same version everywhere</h3>
+            <p>Copy the result into <code>header.version</code> and every <code>modules[].version</code>. The consistency check below catches any field you missed.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Check the whole manifest</h3>
+            <p>Paste your labeled versions, one per line. The checker reports drift between header and modules, duplicate labels with conflicting values, and lines that do not parse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Pack version generator FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How do pack versions work in Bedrock?</summary>
+          <div><p>Every pack manifest is an integer version triple like [1, 2, 0] in header.version and in the same. When comparing packs with the same UUID, Minecraft treats the higher version as a newer import and replaces the older copy.</p></div>
+        </details>
+        <details>
+          <summary>Which bump should I choose?</summary>
+          <div><p>Patch for bug fixes and small tweaks, minor for new features or content, and major for major changes or large rewrites. Bump header.version and every module version at the same time.</p></div>
+        </details>
+        <details>
+          <summary>Must module versions match the header version?</summary>
+          <div><p>Yes, by convention — the header and each module should carry the same version so the pack updates as one unit. The consistency check on this page flags any drift.</p></div>
+        </details>
+        <details>
+          <summary>What happens at the 255 limit?</summary>
+          <div><p>Each version part must stay between 0 and 255. If a bump would push a part past 255, the tool tells you to bump the next level up, for example [255, 0, 255] → [255, 1, 0].</p></div>
+        </details>
+        <details>
+          <summary>How is min_engine_version different from the pack version?</summary>
+          <div><p>min_engine_version is the oldest game version your pack supports; the pack version tracks your releases. Engine-version lines are exempted from the equality rule so they never cause false warnings.</p></div>
+        </details>
+        <details>
+          <summary>Why are versions arrays instead of 1.2.3 strings?</summary>
+          <div><p>format_version 2 manifests use integer arrays like [1, 2, 0]. String versions belong to the preview-only format_version 3, which this tool does not target.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep building</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 8v13H3V8"/><path d="m8 13 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/manifest-generator/">Manifest Generator</a></h3>
+          <p class="card-desc">Build a valid manifest.json from scratch — UUIDs, versions, and script modules handled for you.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/manifest-generator/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2z"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <span class="status-badge status-badge--planned">Coming soon</span>
+          </div>
+          <h3 class="card-title">JSON Formatter</h3>
+          <p class="card-desc">Format and minify JSON with syntax highlighting — coming soon.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/">Browse tools</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/pack-version-generator.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

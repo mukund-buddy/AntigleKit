@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Barcode Generator — Create &amp; Download Barcodes | AntigleKit</title>
+<meta name="description" content="Create barcodes in Code 128, Code 39, EAN-13, or UPC-A and download them as PNG. Free, instant, and private — everything runs in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/barcode-generator/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Barcode Generator — Create &amp; Download Barcodes">
+<meta property="og:description" content="Create barcodes in Code 128, Code 39, EAN-13, or UPC-A — entirely in your browser.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/barcode-generator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Barcode Generator — Create &amp; Download Barcodes">
+<meta name="twitter:description" content="Create barcodes in Code 128, Code 39, EAN-13, or UPC-A — entirely in your browser.">
+<meta name="twitter:url" content="https://mukund-buddy.github.io/AntigleKit/tools/barcode-generator/">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Barcode Generator", "item": "https://mukund-buddy.github.io/AntigleKit/tools/barcode-generator/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Barcode Generator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/barcode-generator/",
+      "description": "Create barcodes in Code 128, Code 39, EAN-13, or UPC-A and download them as PNG, entirely in your browser.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which barcode format should I pick?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use Code 128 for general-purpose text and inventory labels — it is compact and supports the full printable ASCII set. Use Code 39 for simple alphanumeric IDs that older scanners read. Use EAN-13 or UPC-A for retail product packaging; those formats are numbers only and include a check digit automatically." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data uploaded?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The bar pattern is calculated in JavaScript on your device and drawn straight to a canvas. Nothing you type is sent to a server, stored, or logged." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my barcode need a check digit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Check digits catch scans that misread one bar. EAN-13 and UPC-A always include one (added automatically), and the Code 39 option can add a mod-43 check character to verify longer IDs." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Barcode Generator</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Business</div>
+      <h1>Barcode Generator</h1>
+      <p class="lead">Turn text or numbers into a scannable barcode in seconds. Pick Code 128, Code 39, EAN-13, or UPC-A, tweak the size, and download a crisp PNG — all inside your browser.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="bc-title">
+    <div class="container">
+      <h2 class="section-title mb" id="bc-title">Create a barcode</h2>
+
+      <div class="tool-layout">
+
+        <div class="tool-panel">
+          <div class="field">
+            <label for="bcInput">Text or number</label>
+            <textarea class="input textarea" id="bcInput" rows="3" placeholder="Enter text or a number… e.g. ANTIGLEKIT-2026" aria-label="Text to encode"></textarea>
+          </div>
+          <div class="field">
+            <label for="bcFormat">Format</label>
+            <select class="input" id="bcFormat">
+              <option value="code128" selected>Code 128 — general text &amp; inventory</option>
+              <option value="code39">Code 39 — simple alphanumeric IDs</option>
+              <option value="ean13">EAN-13 — retail product (13 digits)</option>
+              <option value="upca">UPC-A — retail product (12 digits)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bcHeight">Bar height — <strong id="bcHeightVal">80</strong>px</label>
+            <input type="range" id="bcHeight" min="24" max="300" step="4" value="80" aria-describedby="bcHeightVal">
+          </div>
+          <div class="check-row"><input type="checkbox" id="bcShowText" checked> Show text under the bars</div>
+          <div class="check-row"><input type="checkbox" id="bcCheck39" checked> Code 39 check digit (mod 43)</div>
+          <div class="tool-actions">
+            <button class="btn btn-gold" type="button" id="bcGenerate">Generate</button>
+          </div>
+        </div>
+
+        <div class="tool-panel">
+          <h2>Your barcode</h2>
+          <div class="bar-frame">
+            <canvas id="bcCanvas" aria-label="Generated barcode"></canvas>
+            <p id="bcPlaceholder">Barcode preview appears here</p>
+          </div>
+          <p id="bcMeta" class="bar-meta" role="status"></p>
+          <div class="tool-actions">
+            <button class="btn btn-outline" type="button" id="bcDownload" disabled>Download PNG</button>
+            <tg-copy-button data-source="#bcInput" data-label="Copy text">Copy text</tg-copy-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="53" aria-label="Advertisement"></div>
+
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">Drawn on your device</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Your text becomes symbols</h3>
+            <p>Characters are mapped to the format's symbol table — Code 128 builds 11-module glyphs, Code 39 draws nine elements per character, and EAN-13/UPC-A encode six digits at a time.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Check digits protect the scan</h3>
+            <p>Code 128 appends a mod-103 checksum, EAN-13 and UPC-A compute a mod-10 digit, and Code 39 can add a mod-43 character — so a smudged bar never reads as the wrong value.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Painted to a canvas</h3>
+            <p>Bars are drawn as crisp rectangles with the quiet zone either side, so the PNG you download stays scannable at label and packaging sizes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Barcode generator FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Which barcode format should I pick?</summary>
+          <div><p>Use <strong>Code 128</strong> for general-purpose text and inventory labels — it is compact and supports the full printable ASCII set. Use <strong>Code 39</strong> for simple alphanumeric IDs that older scanners read. Use <strong>EAN-13</strong> or <strong>UPC-A</strong> for retail product packaging; those formats are numbers only and include a check digit automatically.</p></div>
+        </details>
+        <details>
+          <summary>Is my data uploaded?</summary>
+          <div><p>No. The bar pattern is calculated in JavaScript on your device and drawn straight to a canvas. Nothing you type is sent to a server, stored, or logged.</p></div>
+        </details>
+        <details>
+          <summary>Why does my barcode need a check digit?</summary>
+          <div><p>Check digits catch scans that misread one bar. <strong>EAN-13</strong> and <strong>UPC-A</strong> always include one (added automatically), and the <strong>Code 39</strong> option can add a mod-43 check character to verify longer IDs.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">More codes</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zm7 7h-3v-3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/qrcode-generator/">QR Code Generator</a></h3>
+          <p class="card-desc">Turn any text or URL into a scannable QR code.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/qrcode-generator/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/qr-code-scanner/">QR Code Scanner</a></h3>
+          <p class="card-desc">Read a QR code from an image right in your browser.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/qr-code-scanner/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="54" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/barcode-generator.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

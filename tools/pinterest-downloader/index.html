@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Pinterest Pin Saver — Preview &amp; Save Pins | AntigleKit</title>
+<meta name="description" content="Paste any Pinterest pin link to preview the pin — photos and video pins — then save the image straight from your browser. Free, no login, nothing uploaded.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/pinterest-downloader/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Pinterest Pin Saver — Preview &amp; Save Pins">
+<meta property="og:description" content="Paste a pin link, preview it, and save the image straight from your browser.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/pinterest-downloader/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pinterest Pin Saver — Preview &amp; Save Pins">
+<meta name="twitter:description" content="Paste a pin link, preview it, and save the image straight from your browser.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Pinterest Pin Saver", "item": "https://mukund-buddy.github.io/AntigleKit/tools/pinterest-downloader/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pinterest Pin Saver",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/pinterest-downloader/",
+      "description": "Paste any Pinterest pin link to preview the pin — photos and video pins — then save the image straight from your browser with the built-in save menu. Runs entirely client-side.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I save a Pinterest image?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Paste the pin link, tap Preview pin, then save with your browser's own menu — right-click → Save image as… on a computer, press and hold → Save image on Android and iPhone. The file comes straight from Pinterest at full quality." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work with video pins?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — video pins play inside the preview through Pinterest's official player. Saving the video file itself uses the save option inside the Pinterest app; this tool is about previewing and saving pins." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is there no direct Download button?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pinterest serves its images and videos without the headers browsers need for a direct file download, and this site runs 100% in your browser with no server. Your browser's built-in save menu gives you the same original file." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on phones?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. On Android and iPhone, press and hold the pin and choose Save Image. Nothing is uploaded anywhere — the pin loads from Pinterest into your browser only." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Pinterest pin saver free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool on AntigleKit is free and runs entirely in your browser. Nothing is uploaded, stored, or processed on a server." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Pinterest Pin Saver</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Pinterest · Free tool</div>
+      <h1>Pinterest Pin Saver</h1>
+      <p class="lead">Paste any pin link, preview it on screen — photos and video pins — then save the image with your browser's own menu. No login, no upload, nothing leaves your device.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="save-title">
+    <div class="container">
+      <h2 class="section-title mb" id="save-title">Preview a pin</h2>
+
+      <div class="pin-wrap">
+
+        <div class="tool-panel">
+          <div class="field">
+            <label for="pinUrl">Pinterest pin link</label>
+            <input class="input" type="url" id="pinUrl" placeholder="https://www.pinterest.com/pin/617415430169271912/" autocomplete="off" spellcheck="false" data-error>
+            <span class="hint">Works with pin links from any Pinterest region. A plain pin number works too.</span>
+            <span class="field-error" id="urlError" hidden></span>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-gold" type="button" id="fFetch">Preview pin</button>
+            <button class="btn btn-outline" type="button" id="fSample">Try a sample</button>
+          </div>
+        </div>
+
+<div class="pin-stage" id="pinStage" hidden>
+          <div class="pin-loader" id="pinLoader" aria-hidden="true">
+            <span class="pin-loader-bar"></span>
+          </div>
+          <p class="pin-id" id="pinBadge" hidden></p>
+          <iframe
+            class="pin-frame"
+            id="pinFrame"
+            title="Pinterest pin preview"
+            referrerpolicy="no-referrer-when-downgrade"
+            allow="autoplay; fullscreen"
+            loading="eager"></iframe>
+        </div>
+
+        <div class="pin-save" id="pinSave" hidden>
+          <p class="pin-hint" id="saveHint" role="status"></p>
+          <div class="pin-save-actions">
+            <a class="btn btn-gold" id="openPin" href="#" target="_blank" rel="noopener">Open on Pinterest</a>
+            <button class="btn btn-outline" type="button" id="copyPin">Copy link</button>
+          </div>
+          <p class="pin-note">Photos save at full quality through your browser's save menu. Video pins play here — saving the video file itself uses the Pinterest app.</p>
+        </div>
+
+        <div class="callout callout--danger callout-mt">
+          <p><strong>Please use responsibly.</strong> Pins belong to their creators. Save only content you own or have permission to use — do not repost or reuse other people's images and videos without their consent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+<!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">How the pin saver works</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Paste</h3>
+            <p>Copy any pin link from Pinterest. Links from every regional site work, and a bare pin number is enough.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Preview</h3>
+            <p>The pin loads straight from Pinterest into the frame, through their official embed. Image or video, it renders exactly as posted.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Save</h3>
+            <p>Right-click and choose <strong>Save image as…</strong> on a computer, or press and hold on Android and iPhone. The original file comes from Pinterest, untouched.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Pinterest pin saver FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How do I save a Pinterest image?</summary>
+          <div><p>Paste the pin link, tap <strong>Preview pin</strong>, then save with your browser's own menu — right-click → <strong>Save image as…</strong> on a computer, press and hold → <strong>Save image</strong> on Android and iPhone. The file comes straight from Pinterest, untouched.</p></div>
+        </details>
+        <details>
+          <summary>Does it work with video pins?</summary>
+          <div><p>Yes — video pins play inside the preview through Pinterest's official player, with the original caption and Save button visible. Saving the video file itself is done with the save option inside the Pinterest app.</p></div>
+        </details>
+        <details>
+          <summary>Why is there no direct Download button?</summary>
+          <div><p>Pinterest serves its images and videos without the headers browsers need for a direct file download, and AntigleKit runs 100% in your browser with no server in between. Your browser's built-in save menu gives you the same original file.</p></div>
+        </details>
+        <details>
+          <summary>Does it work on phones?</summary>
+          <div><p>Yes. On Android and iPhone, press and hold the pin and choose <strong>Save Image</strong>. Nothing is uploaded anywhere — the pin loads from Pinterest into your browser only.</p></div>
+        </details>
+        <details>
+          <summary>Is the Pinterest pin saver free?</summary>
+          <div><p>Yes. Every tool on AntigleKit is free and runs entirely in your browser. Nothing is uploaded, stored, or processed on a server.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep building</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/thumbnail-downloader/">Thumbnail Downloader</a></h3>
+          <p class="card-desc">Preview a YouTube thumbnail at every size and save the original file.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/thumbnail-downloader/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a></h3>
+          <p class="card-desc">Copy any YouTube thumbnail's direct URL for embedding or sharing.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/thumbnail-fetcher/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/pinterest-downloader.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>YouTube Thumbnail Downloader — Save Thumbnails in HD | AntigleKit</title>
+<meta name="description" content="Preview and save YouTube video thumbnails at every size — maxresdefault, sddefault, hqdefault, mqdefault, and default — with one-tap download on any device. Free, browser-based, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/thumbnail-downloader/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="YouTube Thumbnail Downloader — Save Thumbnails in HD">
+<meta property="og:description" content="Preview and save YouTube video thumbnails at every size — free, in your browser.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/thumbnail-downloader/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YouTube Thumbnail Downloader — Save Thumbnails in HD">
+<meta name="twitter:description" content="Preview and save YouTube video thumbnails at every size — free, in your browser.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Thumbnail Downloader", "item": "https://mukund-buddy.github.io/AntigleKit/tools/thumbnail-downloader/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Thumbnail Downloader",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/thumbnail-downloader/",
+      "description": "Preview and save YouTube video thumbnails at every size — maxresdefault, sddefault, hqdefault, mqdefault, and default — in their true resolution.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I download a YouTube thumbnail in HD?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Paste the video link, pick a size tab (maxresdefault is the highest at 1280×720 when it exists), then tap Download — the original file is saved as-is. On phones you can also press and hold the preview image and choose Save Image, or tap Open in new tab. The tool always shows the real resolution the file is served at." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my download come out grey or tiny?",
+          "acceptedAnswer": { "@type": "Answer", "text": "maxresdefault and sddefault are not generated for every video. When a size is missing YouTube serves a 120×90 grey placeholder instead of an error, so the downloader checks each file's real dimensions, flags missing sizes, and disables Download for them." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a direct download button?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube's thumbnail servers allow browser downloads, so the tool fetches the original file and saves it under a clean name. If a browser blocks it, press-and-hold or Open in new tab followed by Save image as works too — the saved file is identical." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on phones?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. On Android, tap Download and the file saves to your device. On iPhone or iPad, tap Download to open the save sheet, or press and hold the preview image and choose Save Image. Everything runs in your browser." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the thumbnail downloader free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool on AntigleKit is free and runs entirely in your browser. Nothing is uploaded, stored, or processed on a server." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Thumbnail Downloader</span>
+      </nav>
+      <div class="section-tag section-tag--plain">YouTube · Free tool</div>
+      <h1>YouTube Thumbnail Downloader</h1>
+      <p class="lead">Preview a video's thumbnail at every available size, confirm its true resolution, and save the original file with one tap — on your phone or desktop. No compression, no watermark, no account.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="dl-title">
+    <div class="container">
+      <h2 class="section-title mb" id="dl-title">Download a thumbnail</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ FORM ══ -->
+        <div class="tool-panel">
+          <div class="field">
+            <label for="videoUrl">YouTube video link</label>
+            <input class="input" type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=kpdVvvglzSo" autocomplete="off" spellcheck="false" data-error>
+            <span class="hint">Works with watch links, Shorts, live streams, embeds, and youtu.be links.</span>
+            <span class="field-error" id="urlError" hidden></span>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-gold" type="button" id="fFetch">Show thumbnails</button>
+            <button class="btn btn-outline" type="button" id="fSample">Try a sample</button>
+          </div>
+<div class="callout">
+            <p><strong>Download</strong> saves the original file directly — no re-encoding. On phones, press and hold the image to save it, or tap Download (Android) / use the save sheet (iPhone).</p>
+          </div>
+          <div class="callout callout--danger callout-mt">
+            <p><strong>Please use responsibly.</strong> Thumbnails and other artwork belong to their creators. Use this tool only on content you own or have permission to use — do not reuse other people's videos or images without their consent.</p>
+          </div>
+        </div>
+
+        <!-- ══ OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Sizes</h2>
+          <p class="chk-detected" id="detected" role="status"></p>
+          <div class="tab-strip" id="tabs" hidden role="tablist" aria-label="Thumbnail sizes"></div>
+          <div class="thumb-preview" id="preview" hidden>
+            <img id="previewImg" width="480" height="360" alt="Selected thumbnail size preview">
+          </div>
+          <p class="thumb-note" id="previewNote" hidden></p>
+          <div class="tool-actions" id="actions" hidden>
+            <button class="btn btn-gold" type="button" id="downloadBtn">Download</button>
+            <a class="btn btn-outline" id="openTab" href="#" target="_blank" rel="noopener">Open in new tab</a>
+          </div>
+          <p class="thumb-note" id="dlHint" hidden></p>
+          <p class="thumb-note" id="gridNote" hidden></p>
+          <div class="thumb-grid" id="thumbGrid" hidden></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">How the thumbnail downloader works</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Pick a size</h3>
+            <p>Five sizes are checked: <code>maxresdefault</code> (1280×720, when it exists), <code>sddefault</code> (640×480), <code>hqdefault</code> (480×360), <code>mqdefault</code> (320×180), and <code>default</code> (120×90).</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>See the real resolution</h3>
+            <p>Each file is loaded and its actual pixel dimensions are read. If a size is missing — common for <code>maxres</code> and <code>sd</code> — it's flagged instead of shown as a grey box.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Save it</h3>
+            <p>Tap <strong>Download</strong> to save the original file straight to your device — or press and hold the image and choose <strong>Save image</strong>. Open in new tab is a reliable fallback that never re-encodes the file.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Thumbnail downloader FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How do I download a YouTube thumbnail in HD?</summary>
+          <div><p>Paste the video link, pick a size tab (maxresdefault is the highest at 1280×720 when it exists), then tap <strong>Download</strong> — the original file is saved as-is. On phones you can also press and hold the preview image and choose Save Image, or tap Open in new tab. The tool always shows the real resolution the file is served at.</p></div>
+        </details>
+        <details>
+          <summary>Why does my download come out grey or tiny?</summary>
+          <div><p>maxresdefault and sddefault are not generated for every video. When a size is missing YouTube serves a 120×90 grey placeholder instead of an error, so the downloader checks each file's real dimensions, flags missing sizes, and disables Download for them. Use a size shown in full colour instead.</p></div>
+        </details>
+        <details>
+          <summary>Is there a direct download button?</summary>
+          <div><p>Yes. YouTube's thumbnail servers allow browser downloads, so the tool fetches the original file and saves it under a clean name like <code>notgamingplayz-thumbnail-downloader-maxresdefault.jpg</code>. If a browser blocks it (some iOS versions), the fallback is press-and-hold the image or Open in new tab → Save image as — the saved file is identical either way.</p></div>
+        </details>
+        <details>
+          <summary>Does it work on phones?</summary>
+          <div><p>Yes. On Android, tap Download and the file saves to your device. On iPhone or iPad, tap Download to open the save sheet, or press and hold the preview image and choose Save Image. Everything runs in your browser — nothing is uploaded anywhere.</p></div>
+        </details>
+        <details>
+          <summary>Is the thumbnail downloader free?</summary>
+          <div><p>Yes. Every tool on AntigleKit is free and runs entirely in your browser. Nothing is uploaded, stored, or processed on a server.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Keep building</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a></h3>
+          <p class="card-desc">Copy any thumbnail's direct URL — great for embedding or linking.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/thumbnail-fetcher/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/description-generator/">Description Formatter</a></h3>
+          <p class="card-desc">Assemble a clean description with credits, links, and chapters.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/description-generator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/thumbnail-downloader.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

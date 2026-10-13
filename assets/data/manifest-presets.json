@@ -1,0 +1,28 @@
+{
+  "packTypes": [
+    { "value": "resources", "label": "Resource pack", "description": "Texture, sound, UI, animation overrides. Adds a 'resources' module." },
+    { "value": "data", "label": "Behavior pack", "description": "Entity behavior, loot tables, functions. Adds a 'data' module." },
+    { "value": "world_template", "label": "World template", "description": "A pre-built world players can create new worlds from. Adds a 'world_template' module." }
+  ],
+  "minEngineVersions": [
+    { "value": [1, 21, 50], "label": "1.21.50 and up (recommended)" },
+    { "value": [1, 21, 0], "label": "1.21.0" },
+    { "value": [1, 20, 0], "label": "1.20.0" },
+    { "value": [1, 19, 0], "label": "1.19.0" }
+  ],
+  "scriptModules": {
+    "support": true,
+    "language": "javascript",
+    "entryDefault": "scripts/main.js",
+    "serverModuleVersions": [
+      { "value": "1.9.0", "label": "1.9.0 (latest stable)" },
+      { "value": "1.8.0", "label": "1.8.0" }
+    ]
+  },
+  "capabilities": {
+    "available": true,
+    "items": [
+      { "value": "script_eval", "label": "script_eval — required for scripting modules" }
+    ]
+  }
+}

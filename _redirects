@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects — /_redirects
+# Redirects win over headers. Order matters: top-most rule wins.
+
+# Legacy flat file → folder URL
+/about.html /about/ 301
+
+# Custom 404 for everything else (real 404 status)
+/* /404.html 404

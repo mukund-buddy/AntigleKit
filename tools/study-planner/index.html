@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Study Planner — Weekly Study Schedule | AntigleKit</title>
+<meta name="description" content="Turn a subject list into a balanced weekly study timetable — weighted sessions, one subject per slot, and per-subject totals. Free, private, and builds instantly in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/study-planner/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Study Planner — Balanced Weekly Timetable">
+<meta property="og:description" content="Turn your subject list into a balanced weekly study schedule with weights and totals.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/study-planner/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Study Planner — Balanced Weekly Timetable">
+<meta name="twitter:description" content="Turn a subject list into a balanced weekly study schedule with weights and totals.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Study Planner", "item": "https://mukund-buddy.github.io/AntigleKit/tools/study-planner/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Study Planner",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/study-planner/",
+      "description": "Build a balanced weekly study timetable from a list of subjects with weights and session lengths.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I give some subjects more time?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Add a weight to the line, like 'Mathematics: 3'. A weight of 3 schedules that subject about three times as often as a plain 'one' line. Weights between 1 and 6 are accepted; without a weight the subject is treated as weight 1." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the same subject not repeat on one day?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Repeating a subject dillutes concentration. The planner gives a session one subject per block, and each subject appears at most once per day — so five blocks on a day cover five different subjects and your brain gets variety." }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I keep to plan realistically?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Set sessions that genuinely fit your free time — 25-45 minutes works better than 90 minutes for most people. Pick how many study days per week you really have (5 school days or a full 7) and what you want to skip." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Study Planner</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Student · Free tool</div>
+      <h1>Study Planner</h1>
+      <p class="lead">Type your subjects (one per line, with an optional weight) and get a balanced weekly timetable — one subject per session, no repeats in a day, and per-subject totals you can copy to your notes.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="sp-title">
+    <div class="container">
+      <h2 class="section-title mb" id="sp-title">Plan your week</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ FORM ══ -->
+        <div class="tool-panel">
+          <div class="field">
+            <label for="spInput">Subjects (one per line)</label>
+            <textarea class="input textarea" id="spInput" rows="7" placeholder="Mathematics: 3&#10;Physics&#10;Chemistry: 2&#10;Biology" autocomplete="off" spellcheck="false" data-error></textarea>
+            <span class="hint">Add a weight to study a subject more often: <code>Mathematics: 3</code> gets three slots while <code>Physics</code> gets one.</span>
+            <span class="field-error" id="spError" hidden></span>
+          </div>
+          <div class="field">
+            <div class="input-row">
+              <select class="input" id="spDays">
+                <option value="5">Weekdays (5 d)</option>
+                <option value="6">6 days</option>
+                <option value="7" selected>Full week (7 d)</option>
+              </select>
+              <select class="input" id="spSlots">
+                <option value="2">2 sessions/d</option>
+                <option value="3">3 sessions/d</option>
+                <option value="4" selected>4 sessions/d</option>
+                <option value="5">5 sessions/d</option>
+              </select>
+              <select class="input" id="spMinutes">
+                <option value="25">25 min each</option>
+                <option value="30">30 min each</option>
+                <option value="45" selected>45 min each</option>
+                <option value="60">60 min each</option>
+                <option value="90">90 min each</option>
+              </select>
+            </div>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-ghost" type="button" id="fSample">Try a sample</button>
+            <button class="btn btn-ghost" type="button" id="fClear">Clear</button>
+          </div>
+        </div>
+
+        <!-- ══ OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Your week</h2>
+          <p class="chk-detected" id="spDetected" role="status"></p>
+          <div class="table-wrap" id="spTableWrap"></div>
+          <pre class="text-out" id="spOut" aria-live="polite"></pre>
+          <div class="tool-actions">
+            <tg-copy-button data-source="#spOut" data-label="Copy plan"></tg-copy-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="62" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">Fairness by weight, freshness by rotation</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Weights set the number of slots</h3>
+            <p>A subject with weight 3 is placed three times as often as one with weight 1. The planner turns your list into a weighted pool and rotates it day to day, so the pattern never sticks — Chemistry is not doomed to Monday morning forever.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>One subject per session</h3>
+            <p>Every day reads one subject per session, and a subject never runs twice in the same day. If your list is too small to fill every slot uniquely, the leftover sessions still land by rotation instead of piling onto one subject.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Totals keep you honest</h3>
+            <p>The output sums minutes per subject, so the week check is easy: did the subject you feared actually get the hours you promised? Copy the plan text into your notes and follow it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Study planner FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>How do I give some subjects more time?</summary>
+          <div><p>Type the subject followed by a colon and a number, like <code>Mathematics: 3</code> or <code>Chemistry = 2</code>. The number is how many slots that subject gets while a plain line counts as one. Weights over 6 are capped to keep the week sensible.</p></div>
+        </details>
+        <details>
+          <summary>Why is every subject allowed only once per day?</summary>
+          <div><p>Focus runs dry when the same topic gets repeated within a couple of hours. The planner spreads variety instead: each session is a different subject, which is kinder to memory — and to morale — than three sessions of the same book back to back.</p></div>
+        </details>
+        <details>
+          <summary>Does the planner know my real timetable?</summary>
+          <div><p>It knows no classes or hobbies you omitted — it only rebalances the list you give it. Add your harder subjects with higher weights and a schedule that matches an honest week, and the rotation stays reasonable.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">More ways to study</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.5"/><path d="M12 12 8 8"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/revision-planner/">Revision Planner</a></h3>
+          <p class="card-desc">Space your re-study before the real exam date.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/revision-planner/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15h4v-6H7z"/><path d="M13 15h4V9h-4z"/><path d="M7 6h4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/attendance-calculator/">Attendance Calculator</a></h3>
+          <p class="card-desc">Keep attendance above the college threshold.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/attendance-calculator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="63" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/study-planner.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

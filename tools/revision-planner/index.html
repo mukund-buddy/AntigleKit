@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Revision Planner — Spaced Revision Schedule | AntigleKit</title>
+<meta name="description" content="Plan spaced revision sessions backwards from your exam date — pick the date, add your subjects, and get a session-by-session schedule that reinforces recall. Free and private.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/revision-planner/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Revision Planner — Spaced Study Before the Exam">
+<meta property="og:description" content="Give the exam date and get a spaced-revision calendar that brings it back right before the test.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/revision-planner/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Revision Planner — Spaced Revision Schedule">
+<meta name="twitter:description" content="Give the exam date and get a spaced-revision calendar for every subject.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Revision Planner", "item": "https://mukund-buddy.github.io/AntigleKit/tools/revision-planner/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Revision Planner",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/revision-planner/",
+      "description": "Generate a spaced-revision calendar that works backwards from an exam date.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do the interval numbers mean?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Each number is the number of sessions before the exam. With intervals 1,3,7,14 and 28, every topic is revised one day, three days, a week, two weeks, and a month before the exam date. The schedule lists all of them from the earliest to the exam." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why revise the same topic multiple times?",
+          "acceptedAnswer": { "@type": "Answer", "text": "This is spaced repetition. Re-visiting material changes it from something you memorize to something you recall easily on demand — each later session takes less time and cements more. Five quick passes beat one marathon read." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the exam is soon?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The planner flags a first session that is only 0-2 days from today and tries to make the most of the days left. Pick a shorter interval list (like '1,3,7') when time is short, and treat cramming night as this last sceduled burst." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/" aria-current="page">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Revision Planner</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Student · Free tool</div>
+      <h1>Revision Planner</h1>
+      <p class="lead">Pick an exam date, list the topics, and the planner works backwards to give you a spaced-revision calendar — each session lands closer to the day, right when your memory needs a restart.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="rp-title">
+    <div class="container">
+      <h2 class="section-title mb" id="rp-title">Build the revision calendar</h2>
+
+      <div class="tool-layout">
+
+        <!-- ══ FORM ══ -->
+        <div class="tool-panel">
+          <div class="field">
+            <label for="rpDate">Exam date</label>
+            <input class="input" type="date" id="rpDate" autocomplete="off" data-error>
+            <span class="hint">The plan runs backwards from this date.</span>
+          </div>
+          <div class="field">
+            <label for="rpTopics">Topics (one per line)</label>
+            <textarea class="input textarea" id="rpTopics" rows="6" placeholder="Algebra&#10;Trigonometry&#10;Calculus" autocomplete="off" spellcheck="false" data-error></textarea>
+            <span class="hint">Leave empty and the planner will create <code>Topic 1..N</code> from the count below.</span>
+            <span class="field-error" id="rpError" hidden></span>
+          </div>
+          <div class="field">
+            <div class="field-row">
+              <div>
+                <label for="rpCount">Topics if blank</label>
+                <select class="input" id="rpCount">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div>
+                <label for="rpInterval">Interval pattern</label>
+                <select class="input" id="rpInterval">
+                  <option value="1,3,7,14,28" selected>5 · 1-3-7-14-28 d</option>
+                  <option value="1,3,7,14">4 · 1-3-7-14 d</option>
+                  <option value="1,2,4,7,14">5 · 1-2-4-7-14 d</option>
+                  <option value="7,14,21,28">4 · weekly-ish</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="tool-actions">
+            <button class="btn btn-ghost" type="button" id="fSample">Try a sample</button>
+            <button class="btn btn-ghost" type="button" id="fClear">Clear</button>
+          </div>
+        </div>
+
+        <!-- ══ OUTPUT ══ -->
+        <div class="tool-panel">
+          <h2>Revision sessions</h2>
+          <p class="chk-detected" id="rpDetected" role="status"></p>
+          <div class="table-wrap" id="rpTableWrap"></div>
+          <pre class="text-out" id="rpOut" aria-live="polite"></pre>
+          <div class="tool-actions">
+            <tg-copy-button data-source="#rpOut" data-label="Copy schedule"></tg-copy-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="64" aria-label="Advertisement"></div>
+
+  <!-- GUIDE -->
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">Work backwards, remember forwards</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Anchor the exam date</h3>
+            <p>Every revision is counted backwards from the exam. The first entry in the calendar is the earliest session (the largest number of days before), and the list ends on the exam day itself as a final sweep.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Growth of intervals</h3>
+            <p>The interval list — 1, 3, 7, 14, 28 by default — is widened to make the memorable pattern. You see a topic one day later, three days later, a week, two weeks, and a month out.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Topics travel together</h3>
+            <p>Each row covers every topic you listed on that day. With many topics and little time, switch to a shorter pattern (like 1-3-7-14) so each subject still gets several passes before the test.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Revision planner FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>What do the interval numbers mean?</summary>
+          <div><p>Each number is how many days before the exam session happens. With <code>1,3,7,14,28</code>, every topic gets a session one day, three days, a week, two weeks and a month before the exam. You can swap the preset for a tighter one with the select box.</p></div>
+        </details>
+        <details>
+          <summary>Why rehearse the same topic so many times?</summary>
+          <div><p>That is spaced repetition and it turns short-term memorising into lasting recall. Revisiting stretches the memory and each session lands at the point where it would otherwise fade. Five passes beat a single all-night cram for a real retention.</p></div>
+        </details>
+        <details>
+          <summary>What if the exam date is very close?</summary>
+          <div><p>The planner warns when it begins one to two days before the exam and keeps the pattern that best fits the days left. Choose a tighter interval (e.g. <code>1,3</code> or <code>1,2</code>) to at least keep every subject warm up to the final session.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Plan smarter</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="m9 21 3-6 3 6"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/study-planner/">Study Planner</a></h3>
+          <p class="card-desc">The day-to-day timetable that fills the revision gaps.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/study-planner/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/reading-time-calculator/">Reading Time Calculator</a></h3>
+          <p class="card-desc">Plan how long each notes pass takes at your pace.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/reading-time-calculator/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="65" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/revision-planner.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

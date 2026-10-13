@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>Video &amp; Audio Downloader — Get Media from YouTube, TikTok &amp; More | AntigleKit</title>
+<meta name="description" content="Paste a link and jump straight to cobalt.tools — the free, open-source downloader for YouTube, TikTok, Instagram, X, Reddit, Facebook and 20+ sites. Your link opens pre-filled and the download starts instantly.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/video-downloader/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="Video &amp; Audio Downloader — YouTube, TikTok &amp; More">
+<meta property="og:description" content="Paste a link and jump straight to cobalt.tools — grab the video or the audio from YouTube, TikTok, Instagram, X, Reddit, Facebook and 20+ more sites. Opens pre-filled, downloads in one tap.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/video-downloader/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Video &amp; Audio Downloader — YouTube, TikTok &amp; More">
+<meta name="twitter:description" content="Paste a link and jump straight to cobalt.tools to grab the video or audio from 20+ sites.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mukund-buddy.github.io/AntigleKit/" },
+        { "@type": "ListItem", "position": 2, "name": "All Tools", "item": "https://mukund-buddy.github.io/AntigleKit/tools/" },
+        { "@type": "ListItem", "position": 3, "name": "Video & Audio Downloader", "item": "https://mukund-buddy.github.io/AntigleKit/tools/video-downloader/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Video & Audio Downloader",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/video-downloader/",
+      "description": "Hands your video or post link to cobalt.tools, the free open-source downloader, for YouTube, TikTok, Instagram, X, Reddit, Facebook and 20+ sites. AntigleKit never sees or stores your media.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@type": "Organization", "name": "The Antigle", "url": "https://mukund-buddy.github.io/AntigleKit/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which sites can I download from?",
+          "acceptedAnswer": { "@type": "Answer", "text": "cobalt.tools supports YouTube, TikTok, Instagram, X / Twitter, Reddit, Facebook, Vimeo, SoundCloud, Pinterest, Twitch clips, Bilibili, Dailymotion and about 20 other services. Paste the link on the downloader page and the service is detected automatically." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does this work without a backend?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AntigleKit is a static launcher — it does not download anything itself. It opens your link on cobalt.tools, the free open-source downloader, which does the work. AntigleKit never sees, stores, or proxies your link or your media." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account or an app?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. cobalt.tools runs in your browser with no account, no sign-up, and no extension. Paste the link and download." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I choose the quality or get audio only?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — on cobalt.tools you pick the quality you want, or switch to audio-only to save just the sound as MP3, OGG, Opus, or WAV." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is downloading videos allowed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Download only content you have permission to save — for example your own videos, freely licensed media, or where the platform and your local laws allow it. Respect the rights of the people who made the content you save." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="../../assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Home</a>
+      <a href="../../tools/" aria-current="page">Tools</a>
+      <a href="../../about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="../../tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="../../">Home</a>
+  <a href="../../tools/">Tools</a>
+  <a href="../../about/">About</a>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+</div>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">Video &amp; Audio Downloader</span>
+      </nav>
+      <div class="section-tag section-tag--plain">YouTube &amp; Media</div>
+      <h1>Video &amp; Audio Downloader</h1>
+      <p class="lead">Paste a link and jump straight to <strong>cobalt.tools</strong> — the free, open-source downloader — for YouTube, TikTok, Instagram, X, Reddit, Facebook and 20+ more sites. Your link opens there already filled in, so the download starts in one tap.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+  <section class="section-pad--sm" aria-labelledby="vdl-title">
+    <div class="container">
+      <h2 class="section-title mb" id="vdl-title">Download something</h2>
+
+      <div class="tool-layout">
+
+        <div class="tool-panel">
+          <div class="field">
+            <label for="vdlUrl">Video or post link</label>
+            <input class="input" type="url" id="vdlUrl" placeholder="https://www.youtube.com/watch?v=…" autocomplete="off" spellcheck="false" aria-label="Video or post link">
+            <p class="vdl-hint" id="vdlDetected" aria-live="polite"></p>
+          </div>
+
+          <div class="tool-actions">
+            <button class="btn btn-gold" type="button" id="vdlOpen">Open in cobalt.tools ↗</button>
+            <button class="btn btn-outline" type="button" id="vdlCopy">Copy link</button>
+          </div>
+          <p class="vdl-status" id="vdlStatus" role="status" aria-live="polite"></p>
+
+          <p class="vdl-footnote">Your link opens on <a href="https://cobalt.tools/" target="_blank" rel="noopener noreferrer">cobalt.tools</a>, the free open-source downloader — already filled in, so the download starts right away. AntigleKit never sees, stores, or proxies your media.</p>
+        </div>
+
+        <div class="tool-panel">
+          <h2>Powered by cobalt.tools</h2>
+          <p class="vdl-note">cobalt is a no-nonsense downloader with no ads, trackers, or accounts. It picks the best stream for whatever quality and format you choose on its side — video, audio-only, or muted clips.</p>
+          <div class="vdl-result-meta" id="vdlServices" aria-label="Supported services"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="72" aria-label="Advertisement"></div>
+
+  <section class="section-pad--sm" id="guide" aria-labelledby="guide-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">How it works</div>
+        <h2 class="section-title" id="guide-title">AntigleKit to cobalt, straight back</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Paste any link</h3>
+            <p>Drop a URL from <strong>YouTube, TikTok, Instagram, X, Reddit, Facebook, Vimeo, SoundCloud</strong> and about 20 other services. The service is detected automatically — no fiddly provider pickers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>cobalt.tools takes over</h3>
+            <p>Your link opens on <a href="https://cobalt.tools/" target="_blank" rel="noopener noreferrer">cobalt.tools</a>, the free open-source downloader, already filled in. It fetches the media and lets you pick the quality or an audio-only version — no account, no app, no extension.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Save the file</h3>
+            <p>cobalt.tools processes the media and your browser saves it to your device. AntigleKit never stores, uploads, or even touches the video — your link never goes near our servers (we don't have any).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Downloader FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Which sites can I download from?</summary>
+          <div><p>YouTube, TikTok, Instagram, X / Twitter, Reddit, Facebook, Vimeo, SoundCloud, Pinterest, Twitch clips, Bilibili, Dailymotion, Snapchat, Bluesky, Tumblr and more. Paste the link on the downloader page and the service is detected automatically.</p></div>
+        </details>
+        <details>
+          <summary>How does this work without a backend?</summary>
+          <div><p>AntigleKit is a static launcher — it doesn't download anything itself. It opens your link on <a href="https://cobalt.tools/" target="_blank" rel="noopener noreferrer">cobalt.tools</a>, the free open-source downloader, which does the work. AntigleKit never sees, stores, or proxies your link or your media.</p></div>
+        </details>
+        <details>
+          <summary>Do I need an account or an app?</summary>
+          <div><p>No. cobalt.tools runs in your browser with no account, no sign-up, and no extension. Paste the link and download.</p></div>
+        </details>
+        <details>
+          <summary>Can I choose the quality or get audio only?</summary>
+          <div><p>Yes — on cobalt.tools you pick the quality you want (up to 4K where available), or switch to audio-only to save just the sound as MP3, OGG, Opus, or WAV.</p></div>
+        </details>
+        <details>
+          <summary>Is downloading videos allowed?</summary>
+          <div><p>Download only content you have permission to save — your own uploads, freely licensed media, or wherever the platform and your local laws allow it. Always respect the creator's rights and the platform's terms.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" id="related" aria-labelledby="related-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">More creators tools</div>
+        <h2 class="section-title" id="related-title">Related tools</h2>
+      </div>
+      <div class="card-grid card-grid--2">
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a></h3>
+          <p class="card-desc">Grab any YouTube video's thumbnail in all five sizes from the URL.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/thumbnail-fetcher/">Open tool</a></span></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21 13 8"/><path d="M7 21V10"/><path d="M18 4l-9 4h9v7"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="../../tools/pinterest-downloader/">Pinterest Pin Saver</a></h3>
+          <p class="card-desc">Preview any Pinterest pin and save the image with your browser's menu.</p>
+          <div class="card-footer-links"><span class="card-tag"><a href="../../tools/pinterest-downloader/">Open tool</a></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="73" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="../../" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="../../assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="../../">Home</a>
+      <a href="../../tools/">All Tools</a>
+      <a href="../../about/">About</a>
+      <a href="../../privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="../../tools/manifest-generator/">Manifest Generator</a>
+      <a href="../../tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="../../tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="../../tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="../../LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../../assets/js/components/tg-toast.js"></script>
+<script type="module" src="../../assets/js/components/tg-copy-button.js"></script>
+<script type="module" src="../../assets/js/tools/video-downloader.js"></script>
+
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Source images (never deploy — use optimized copies in /assets/img/)
+me.png
+website_logo.png
+assets/source/
+
+# Local tooling
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

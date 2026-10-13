@@ -1,0 +1,7 @@
+# AntigleKit — robots.txt
+# Allow everything; never block /assets (CSS/JS) — Googlebot needs them to render.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mukund-buddy.github.io/AntigleKit/sitemap.xml

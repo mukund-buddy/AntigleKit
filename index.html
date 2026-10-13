@@ -1,71 +1,417 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="AntigleKit — free privacy-first tools you can use online or run locally. Your tools, your files, your device." />
-  <meta name="theme-color" content="#2E073F" />
-  <title>AntigleKit — Free Tools, Online or Offline</title>
-  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
-  <link rel="preconnect" href="https://esm.sh" crossorigin />
-  <script type="importmap">
-  {
-    "imports": {
-      "marked": "https://esm.sh/marked@14.1.2",
-      "dompurify": "https://esm.sh/dompurify@3.1.6",
-      "mermaid": "https://esm.sh/mermaid@11.4.0",
-      "mathjs": "https://esm.sh/mathjs@13.2.0",
-      "pdf-lib": "https://esm.sh/pdf-lib@1.17.1",
-      "pdfjs-dist": "https://esm.sh/pdfjs-dist@4.7.76",
-      "docx": "https://esm.sh/docx@8.5.0",
-      "mammoth": "https://esm.sh/mammoth@1.9.0",
-      "papaparse": "https://esm.sh/papaparse@5.4.1",
-      "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.mjs",
-      "js-yaml": "https://esm.sh/js-yaml@4.1.0",
-      "fast-xml-parser": "https://esm.sh/fast-xml-parser@4.5.0",
-      "qrcode": "https://esm.sh/qrcode@1.5.4",
-      "js-beautify": "https://esm.sh/js-beautify@1.15.1",
-      "spark-md5": "https://esm.sh/spark-md5@3.0.2"
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="assets/js/theme-init.js"></script>
+<title>AntigleKit — Free Browser Tools for Minecraft &amp; the Web</title>
+<meta name="description" content="AntigleKit offers fast, free, privacy-first browser tools — starting with a Minecraft Bedrock manifest.json generator — plus web, student, business, and creator utilities. No accounts, no data leaving your device.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="AntigleKit — Free Browser Tools for Minecraft &amp; the Web">
+<meta property="og:description" content="Fast, free, privacy-first browser tools — Minecraft Bedrock utilities plus web, student, business, and creator tools.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AntigleKit — Free Browser Tools for Minecraft &amp; the Web">
+<meta name="twitter:description" content="Fast, free, privacy-first browser tools — Minecraft Bedrock utilities plus web, student, business, and creator tools.">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mukund-buddy.github.io/AntigleKit/#org",
+      "name": "The Antigle",
+      "url": "https://mukund-buddy.github.io/AntigleKit/",
+      "logo": "https://mukund-buddy.github.io/AntigleKit/favicon.svg",
+      "description": "Free browser tools for Minecraft, creators, students, and the web."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mukund-buddy.github.io/AntigleKit/#website",
+      "url": "https://mukund-buddy.github.io/AntigleKit/",
+      "name": "AntigleKit",
+      "publisher": { "@id": "https://mukund-buddy.github.io/AntigleKit/#org" }
     }
-  }
-  </script>
+  ]
+}
+</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="#/" aria-label="AntigleKit home">
-        <img src="assets/img/logo.png" alt="AntigleKit" class="brand-logo" width="32" height="32" style="border-radius:6px" onerror="this.src='assets/img/logo.svg'" />
-        <span class="brand-name">AntigleKit</span>
-      </a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-      <nav class="primary-nav" aria-label="Primary">
-        <a href="#/" data-nav="home">Home</a>
-        <a href="#/t/wordcount" data-nav="tools">Tools</a>
-        <a href="#/about" data-nav="about">About</a>
-        <a href="#/faq" data-nav="faq">FAQ</a>
-        <a href="#/open-source">Open Source</a>
-      </nav>
+<header class="site-header" id="siteHeader">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a href="./" class="nav-logo" aria-label="AntigleKit — Home">
+      <img src="assets/img/logo.png" class="nav-logo-img" width="512" height="512" alt="">
+      ANTIGLE<span>KIT</span>
+    </a>
+    <div class="nav-links">
+      <a href="./" aria-current="page">Home</a>
+      <a href="tools/">Tools</a>
+      <a href="about/">About</a>
+    </div>
+    <button class="search-toggle" id="searchToggle" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="searchOverlay" aria-label="Search the tool library">
+      <svg class="search-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="search-toggle-label">Search</span>
+      <kbd class="search-kbd">Ctrl&nbsp;K</kbd>
+    </button>
+    <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Switch to light theme" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    </button>
+    <a href="tools/" class="nav-cta">Explore Tools</a>
+    <button class="nav-hamburger" id="hamburgerBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
 
-      <div class="header-actions">
-        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle color theme" aria-pressed="false">🌗</button>
+<div class="mobile-nav" id="mobileNav" aria-label="Mobile menu">
+  <a href="./">Home</a>
+  <a href="tools/">Tools</a>
+  <a href="about/">About</a>
+  <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Switch theme">
+    <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>
+    <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+    <span class="theme-toggle-label">Switch theme</span>
+  </button>
+  <button class="mobile-search" id="mobileSearchBtn" type="button" aria-haspopup="dialog" aria-controls="searchOverlay">Search tools…</button>
+</div>
+
+<!-- Site-wide search overlay -->
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-backdrop" data-search-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="search-head">
+      <h2 class="search-title" id="searchTitle">Search the tool library</h2>
+      <button class="search-close" id="searchClose" type="button" data-search-close aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <input class="search-input" id="searchInput" type="search" placeholder="Search tools…" autocomplete="off" spellcheck="false" aria-label="Search the tool library" aria-controls="searchResults">
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Matching tools"></div>
+    <p class="search-hint">
+      <kbd>↑</kbd><kbd>↓</kbd><span>navigate</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Enter</kbd><span>open</span>
+      <span class="search-hint-dot" aria-hidden="true">·</span>
+      <kbd>Esc</kbd><span>close</span>
+    </p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div aria-hidden="true" class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-blob hero-blob--a"></div>
+      <div class="hero-blob hero-blob--b"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="hero-badge"><span class="hero-pulse"></span> AntigleKit · 49 free browser tools</span>
+        <h1 class="hero-title" id="hero-title">Serious tools for<br><span class="text-gradient">Minecraft, the web &amp; everyday work</span></h1>
+        <p class="hero-subtitle lead">Fast, free, private-by-default utilities that run 100% in your browser. Generate, convert, format, and check anything — no accounts, no uploads, no waiting.</p>
+        <div class="hero-ctas">
+          <a href="tools/" class="btn btn-gold">Browse all tools</a>
+          <a href="tools/thumbnail-fetcher/" class="btn btn-outline">Try the YouTube toolset</a>
+        </div>
+        <ul class="hero-trust" aria-label="Platform promises">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No sign-up</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Private by default</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Runs in your browser</li>
+        </ul>
+        <dl class="hero-stats" aria-label="Platform numbers">
+          <div class="hero-stat">
+            <dt>50</dt>
+            <dd>live tools</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>100%</dt>
+            <dd>free, forever</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>0</dt>
+            <dd>servers or trackers</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero-demo" id="heroDemo">
+        <div class="hero-demo-head">
+          <span class="hero-demo-yt" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.5 15.6V8.4L15.8 12l-6.3 3.6z"/></svg></span>
+          <div class="hero-demo-meta">
+            <p class="hero-demo-title">Thumbnail Fetcher</p>
+            <p class="hero-demo-sub">Part of the YouTube creator set</p>
+          </div>
+          <span class="hero-demo-new">Try it live</span>
+        </div>
+        <div class="field">
+          <label for="heroDemoInput">Paste any YouTube link</label>
+          <input class="input" id="heroDemoInput" type="url" placeholder="youtube.com/watch?v=kpdVvvglzSo" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="hero-demo-preview" id="heroDemoPreview" aria-hidden="true">
+          <span class="hero-demo-empty">Thumbnail preview appears here</span>
+        </div>
+        <div class="hero-demo-sizes" aria-hidden="true">
+          <span>maxres</span><span>sd</span><span>hq</span><span>mq</span><span>default</span>
+        </div>
+        <div class="hero-demo-foot">
+          <svg class="hero-demo-spark" id="heroDemoSpark" width="88" height="22" viewBox="0 0 88 22" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <span>50 live tools · zero trackers</span>
+        </div>
+        <span class="hero-demo-float hero-demo-float--a" aria-hidden="true">Barcode Generator</span>
+        <span class="hero-demo-float hero-demo-float--b" aria-hidden="true">Unit Converter</span>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main id="main" class="wrap main" tabindex="-1"></main>
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <p class="footer-lock">🔒 All tools run 100% in your browser. Your files are never uploaded to any server.</p>
-      <p class="muted">Built around open-source technologies with proper attribution. <a href="#/open-source">Open Source &amp; Credits</a> · <a href="#/faq">FAQ</a></p>
+  <!-- LIVE TOOL -->
+  <section class="section-pad" id="featured">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Now live</div>
+        <h2 class="section-title">The Minecraft Bedrock tool family</h2>
+        <p class="section-subtitle">Six free tools for Bedrock creators — generate, validate, and structure add-ons, and theme your title screen. Everything runs in your browser. No accounts, no uploads.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="tools/manifest-generator/">Manifest Generator</a></h3>
+          <p class="card-desc">Generate a valid manifest.json for Bedrock resource packs, behavior packs, world templates, and script modules. Ready for copy or download.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="tools/manifest-generator/">Open the tool</a></span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 8v13H3V8"/><path d="m8 13 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="tools/">Validate and structure your packs</a></h3>
+          <p class="card-desc">Manifest Validator, Identifier Validator, Pack Structure Checker, Pack Version Generator, and UUID Generator — the full Bedrock toolkit, all live.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="tools/">Browse all tools</a></span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3 class="card-title"><a href="tools/mc-title-studio/">MC Title Studio</a></h3>
+          <p class="card-desc">Turn any photo into a Bedrock resource pack that fills the whole title screen — auto-fit to your device, cropped on a canvas, and built into a ready-to-import .mcpack.</p>
+          <div class="card-footer-links">
+            <span class="card-tag"><a href="tools/mc-title-studio/">Open the tool</a></span>
+          </div>
+        </article>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <script type="module" src="assets/js/app.js"></script>
+  <!-- JUST SHIPPED: YOUTUBE SET -->
+  <section class="section-pad--sm" id="youtube-set" aria-labelledby="yt-title">
+    <div class="container">
+      <div class="block-header reveal">
+        <div>
+          <div class="section-tag section-tag--left">Just shipped</div>
+          <h2 class="section-title" id="yt-title">The YouTube creator set</h2>
+        </div>
+        <a href="tools/" class="btn btn-outline">All tools</a>
+      </div>
+      <p class="lead mb">Eight tools for video creators — downloads, thumbnails, timestamps, chapters, descriptions, titles, and hashtags. Paste a link or text, get clean output you can copy straight into YouTube Studio.</p>
+
+      <div class="yt-grid">
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/thumbnail-fetcher/">Thumbnail Fetcher</a></h3>
+          <p>Get all thumbnail sizes from any video link.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,16 12,13 25,15 38,9 51,12 63,6 76,9 88,4 100,6" fill="none" stroke="#FF3F10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,16 12,13 25,15 38,9 51,12 63,6 76,9 88,4 100,6 100,22 0,22" fill="rgba(255,63,16,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/thumbnail-downloader/">Thumbnail Downloader</a></h3>
+          <p>Save thumbnails in default, hq, and maxres sizes.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,15 14,14 27,10 41,12 55,7 68,9 82,3 100,5" fill="none" stroke="#A291FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,15 14,14 27,10 41,12 55,7 68,9 82,3 100,5 100,22 0,22" fill="rgba(162,145,255,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/video-downloader/">Video &amp; Audio Downloader</a></h3>
+          <p>Save video or audio from 20+ sites, opened right in cobalt.tools.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,17 13,12 27,15 41,8 55,11 69,5 83,7 100,3" fill="none" stroke="#FF8A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,17 13,12 27,15 41,8 55,11 69,5 83,7 100,3 100,22 0,22" fill="rgba(255,138,61,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/timestamp-generator/">Timestamp Generator</a></h3>
+          <p>Turn raw minute/second markers into clean timestamps.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,13 13,16 26,9 39,13 52,7 65,11 78,4 100,6" fill="none" stroke="#FF8A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,13 13,16 26,9 39,13 52,7 65,11 78,4 100,6 100,22 0,22" fill="rgba(255,138,61,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/chapter-formatter/">Chapter Formatter</a></h3>
+          <p>Format raw notes into YouTube-accepted chapter lines.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,17 11,11 23,14 36,8 48,12 60,5 74,8 100,3" fill="none" stroke="#FF3F10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,17 11,11 23,14 36,8 48,12 60,5 74,8 100,3 100,22 0,22" fill="rgba(255,63,16,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="3"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/description-generator/">Description Formatter</a></h3>
+          <p>Build consistent descriptions with links and credits.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,14 15,12 28,15 42,9 55,11 70,6 84,8 100,4" fill="none" stroke="#A291FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,14 15,12 28,15 42,9 55,11 70,6 84,8 100,4 100,22 0,22" fill="rgba(162,145,255,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15v2h10v-2M7 7v2h10V7M12 5v14"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/title-length-checker/">Title Length Checker</a></h3>
+          <p>Check titles against limits and truncation previews.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,16 13,14 26,16 40,11 54,13 66,8 80,10 100,5" fill="none" stroke="#FF8A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,16 13,14 26,16 40,11 54,13 66,8 80,10 100,5 100,22 0,22" fill="rgba(255,138,61,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l4 13 4-13M16 7l4 13 2-13M2 7h4M18 7h4M6 4h10"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/hashtag-formatter/">Hashtag Formatter</a></h3>
+          <p>Clean, dedupe, and count hashtags against limits.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,15 12,13 25,10 38,14 51,8 64,11 77,5 90,7 100,4" fill="none" stroke="#FF3F10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,15 12,13 25,10 38,14 51,8 64,11 77,5 90,7 100,4 100,22 0,22" fill="rgba(255,63,16,0.12)"/></svg>
+        </article>
+
+        <article class="yt-card reveal">
+          <div class="yt-card-head">
+            <span class="card-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <span class="status-badge status-badge--live">Live</span>
+          </div>
+          <h3><a href="tools/">Bedrock pack family</a></h3>
+          <p>Six add-on tools: manifest, validation, structure, versions.</p>
+          <svg class="yt-card-spark" width="100%" height="22" viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,12 14,15 27,9 41,13 55,7 69,10 83,4 100,7" fill="none" stroke="#A291FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polygon points="0,12 14,15 27,9 41,13 55,7 69,10 83,4 100,7 100,22 0,22" fill="rgba(162,145,255,0.12)"/></svg>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--inline" data-ad-slot="2" aria-label="Advertisement"></div>
+
+  <!-- AWAY: WHY -->
+  <section class="section-pad" id="why">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Why AntigleKit</div>
+        <h2 class="section-title">Built clean, fast, and private</h2>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-top"><span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span></div>
+          <h3 class="card-title">Free at the core</h3>
+          <p class="card-desc">Every tool is free to use in the browser. No account, no install, no sign-up walls.</p>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13v-2.5a1.5 1.5 0 0 1 3 0V12m-3-1.5a1.5 1.5 0 0 1 3 0m-3 0V18m6-5.5v.5m-3.5-1.5V18m0-6.5V18"/><rect x="5" y="2" width="14" height="20" rx="4"/></svg></span></div>
+          <h3 class="card-title">Your data stays yours</h3>
+          <p class="card-desc">Everything runs in your browser. Nothing is uploaded, stored, or logged on our servers — because there are no servers.</p>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="card-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span></div>
+          <h3 class="card-title">Premium, elsewhere</h3>
+          <p class="card-desc">Premium prompt packs and templates are sold on trusted external stores. We link out honestly — no fake download buttons, ever.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--footer" data-ad-slot="3" aria-label="Advertisement">Ad reserved</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="./" class="nav-logo" aria-label="AntigleKit — Home">
+        <img src="assets/img/logo.png" class="nav-logo-img nav-logo-img--footer" width="512" height="512" alt="">
+        ANTIGLE<span>KIT</span>
+      </a>
+      <p>Free browser tools for Minecraft creators, students, and the web — crafted with quality and creativity.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="./">Home</a>
+      <a href="tools/">All Tools</a>
+      <a href="about/">About</a>
+      <a href="privacy/">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Popular</h4>
+      <a href="tools/manifest-generator/">Manifest Generator</a>
+      <a href="tools/thumbnail-fetcher/">Thumbnail Fetcher</a>
+      <a href="tools/timestamp-generator/">Timestamp Generator</a>
+      <a href="tools/uuid-generator/">UUID Generator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/mukund-buddy/AntigleKit" target="_blank" rel="noopener noreferrer">AntigleKit Repo</a>
+      <a href="https://www.instagram.com/antigle_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#" data-mailto>Business Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 AntigleKit · by The Antigle. All rights reserved. Not affiliated with Mojang Studios or Microsoft. <a href="LICENSE" rel="license">MIT License</a></p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/ads.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
