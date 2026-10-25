@@ -1,0 +1,348 @@
+/* ============================================================
+   AskMint — "Airmail" theme
+   deep indigo envelope · airmail red stripe · cream ink
+   Structure tokens: kit DESIGN-SYSTEM.md
+   ============================================================ */
+:root {
+  /* spacing */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 16px;  --s-4: 24px;  --s-5: 32px;
+  --s-6: 48px; --s-7: 64px; --s-8: 96px;
+
+  /* color — airmail */
+  --bg: #101426;
+  --card: #171c33;
+  --card-2: #1d2340;
+  --line: rgba(246, 241, 230, 0.12);
+  --text: #f2eee4;
+  --dim: #a8a6bd;
+  --red: #e63946;
+  --red-hi: #ff5561;
+  --blue: #4c6ef5;
+  --cream: #f6f1e6;
+  --ok: #3ddc97;
+  --bad: #ff6b7a;
+
+  /* type */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+
+  /* shape — envelope */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 140ms;
+  --mid: 240ms;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background:
+    radial-gradient(760px circle at 88% -10%, rgba(76, 110, 245, 0.14), transparent 62%),
+    radial-gradient(600px circle at 0% 100%, rgba(230, 57, 70, 0.1), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--red); color: var(--cream); }
+
+:focus-visible {
+  outline: 2px solid var(--red-hi);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 50;
+  background: var(--red); color: var(--cream);
+  padding: var(--s-2) var(--s-3); font-weight: 700;
+}
+.skip:focus { left: var(--s-2); top: var(--s-2); }
+
+.demo {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) clamp(16px, 5vw, 24px);
+}
+
+/* ---------- demo head ---------- */
+.demo-head { margin-bottom: var(--s-5); }
+
+.demo-head .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red-hi);
+  margin-bottom: var(--s-2);
+}
+
+.demo-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.4rem + 3vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: var(--s-2);
+  text-wrap: balance;
+}
+
+.demo-head p { color: var(--dim); max-width: 58ch; text-wrap: pretty; }
+
+/* ---------- Widget (this is what gets embedded) ---------- */
+.askmint-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 5vw, 32px);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(4, 6, 16, 0.45);
+}
+
+/* classic airmail envelope edge */
+.askmint-stripe {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--red) 0 12px,
+    var(--cream) 12px 24px,
+    var(--blue) 24px 36px,
+    var(--cream) 36px 48px
+  );
+}
+
+.askmint-head { margin: var(--s-3) 0 var(--s-4); }
+
+.askmint-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s-1);
+  text-wrap: balance;
+}
+
+.askmint-sub { color: var(--dim); font-size: 0.9rem; }
+
+/* categories */
+.askmint-cats {
+  border: 0;
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-3);
+  min-width: 0;
+}
+
+.askmint-legend {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: var(--s-2);
+  padding: 0;
+}
+
+.askmint-cat {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--dim);
+  min-height: 40px;
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--mid) var(--ease),
+              background-color var(--mid) var(--ease),
+              color var(--mid) var(--ease),
+              transform var(--fast) var(--ease);
+}
+
+.askmint-cat:hover { border-color: var(--red); color: var(--text); }
+.askmint-cat:active { transform: translateY(1px); }
+
+.askmint-cat.active,
+.askmint-cat[aria-pressed="true"] {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--cream);
+}
+
+/* label + textarea */
+.askmint-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: var(--s-2);
+}
+
+#askmintText {
+  width: 100%;
+  min-height: 132px;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  color: var(--text);
+  padding: var(--s-3);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color var(--fast) var(--ease);
+}
+
+#askmintText::placeholder { color: #7d7c94; }
+#askmintText:focus { border-color: var(--red); }
+#askmintText.invalid,
+#askmintText[aria-invalid="true"] { border-color: var(--bad); }
+
+/* footer row */
+.askmint-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+}
+
+#askmintCount {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+#askmintCount.over { color: var(--bad); font-weight: 600; }
+
+.askmint-send {
+  background: var(--red);
+  border: none;
+  color: var(--cream);
+  min-height: 44px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 11px 22px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: transform var(--mid) var(--ease), background-color var(--fast) ease;
+}
+.askmint-send:hover { transform: translateY(-2px); background: var(--red-hi); }
+.askmint-send:active { transform: translateY(1px); }
+
+/* status line (success / info feedback) */
+.askmint-status {
+  min-height: 1.2em;
+  margin-top: var(--s-3);
+  font-size: 0.8125rem;
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.askmint-privacy {
+  margin-top: var(--s-2);
+  font-size: 0.75rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
+
+/* ---------- Demo page extras ---------- */
+.how {
+  margin-top: var(--s-6);
+  background: rgba(246, 241, 230, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 5vw, 28px);
+}
+
+.how h2 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red-hi);
+  margin-bottom: var(--s-3);
+}
+
+.how ol {
+  padding-left: 20px;
+  display: grid;
+  gap: var(--s-2);
+  counter-reset: step;
+}
+
+.how li { color: var(--dim); font-size: 0.9rem; line-height: 1.6; }
+.how li::marker { color: var(--red); font-weight: 700; }
+
+.how code {
+  font-family: var(--font-mono);
+  background: var(--card-2);
+  padding: 2px 7px;
+  border-radius: var(--r-sm);
+  color: var(--ok);
+  font-size: 0.82em;
+  word-break: break-all;
+}
+
+.how-note {
+  margin-top: var(--s-3);
+  font-size: 0.82rem;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+.noscript-note {
+  background: rgba(230, 57, 70, 0.14);
+  border: 1px solid var(--red);
+  color: var(--text);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  margin-bottom: var(--s-4);
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--dim);
+  text-align: center;
+}
+.footer a { color: var(--red-hi); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 640px) {
+  .askmint-cats { gap: var(--s-2); }
+  .askmint-cat { min-height: 44px; }
+}
+
+@media (max-width: 480px) {
+  .askmint-card { padding: var(--s-4) var(--s-3); }
+  .askmint-foot { flex-direction: column-reverse; align-items: stretch; }
+  .askmint-send { width: 100%; }
+  #askmintCount { text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

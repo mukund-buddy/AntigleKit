@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bedrock Command Builder — /give, /tp, /effect, /tag, /clear</title>
+  <meta name="description" content="Build Minecraft Bedrock commands without syntax errors. Pick a command, fill plain fields, copy a ready-to-paste /command. Client-side.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#1a1a1f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bedrock Command Builder — commands without syntax errors">
+  <meta property="og:description" content="/give /tp /effect /tag /clear — pick, fill, copy. Works in your browser.">
+  <meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/cmd-builder/">
+  <meta property="og:image" content="https://mukund-buddy.github.io/AntigleKit/tools/cmd-builder/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bedrock Command Builder — commands without syntax errors">
+  <meta name="twitter:description" content="/give /tp /effect /tag /clear — pick, fill, copy.">
+  <link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/cmd-builder/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='4' fill='%231a1a1f'/><rect x='14' y='14' width='72' height='72' fill='%23c8b487'/><text x='50' y='68' font-size='44' text-anchor='middle' fill='%231a1a1f' font-family='monospace' font-weight='bold'>/</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#layout">Skip to the builder</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <div class="brand">cmd<span class="hot">·</span>builder</div>
+      <div class="actions">
+        <button id="btnCopy" class="btn primary" type="button">Copy command</button>
+        <button id="btnPreset" class="btn" type="button">Random preset</button>
+        <button id="btnClear" class="btn ghost" type="button">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap layout" id="layout">
+    <noscript>
+      <p class="noscript-note"><strong>cmd·builder needs JavaScript.</strong> The command is assembled in your browser — enable JavaScript to use it.</p>
+    </noscript>
+
+    <!-- ============ LEFT: pick + fill ============ -->
+    <section class="panel picker" aria-label="Command and fields">
+      <h2 class="panel-h">1 · Pick a command</h2>
+
+      <div class="cmds" role="radiogroup" aria-label="Bedrock command">
+        <button type="button" class="cmd active" role="radio" aria-checked="true" data-cmd="give">
+          <span class="cmd-name">/give</span>
+          <span class="cmd-desc">Hand someone an item</span>
+        </button>
+        <button type="button" class="cmd" role="radio" aria-checked="false" data-cmd="tp">
+          <span class="cmd-name">/tp</span>
+          <span class="cmd-desc">Teleport to a player or spot</span>
+        </button>
+        <button type="button" class="cmd" role="radio" aria-checked="false" data-cmd="effect">
+          <span class="cmd-name">/effect</span>
+          <span class="cmd-desc">Apply a status effect</span>
+        </button>
+        <button type="button" class="cmd" role="radio" aria-checked="false" data-cmd="tag">
+          <span class="cmd-name">/tag</span>
+          <span class="cmd-desc">Add, remove or list name tags</span>
+        </button>
+        <button type="button" class="cmd" role="radio" aria-checked="false" data-cmd="clear">
+          <span class="cmd-name">/clear</span>
+          <span class="cmd-desc">Remove items from inventory</span>
+        </button>
+      </div>
+
+      <h2 class="panel-h" id="fieldsHead">2 · Fill it in</h2>
+      <div id="fields" class="fields" aria-labelledby="fieldsHead"></div>
+    </section>
+
+    <!-- ============ RIGHT: output ============ -->
+    <section class="panel output" aria-label="Generated command">
+      <div class="out-head">
+        <span class="badge" id="validity" role="status" aria-live="polite">building…</span>
+        <span class="cmd-label" id="cmdLabel">/give</span>
+      </div>
+
+      <div class="console" aria-hidden="true">
+        <span class="caret">›</span>
+        <code id="output">/give @s minecraft:diamond 1</code>
+      </div>
+
+      <div class="out-actions">
+        <button id="btnCopy2" class="btn primary" type="button">Copy</button>
+        <span class="hint" id="hint" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="alert" id="alert" role="alert" hidden></div>
+
+      <details class="help">
+        <summary>Where do I type this?</summary>
+        <ul>
+          <li><strong>Chat</strong> — open chat and type it with the leading <code>/</code>.</li>
+          <li><strong>Command block</strong> — place a command block, tap it, paste without typing <code>/</code> (the block adds it).</li>
+          <li><strong>Cheats must be on</strong> — most commands need cheats enabled in your world settings.</li>
+          <li><strong>Chain tip</strong> — use <code>needsRedstone</code> off for always-on repeating blocks.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Command syntax follows Minecraft <strong>Bedrock Edition</strong> · verify in-game after pasting ·
+        <a href="https://github.com/mukund-buddy/cmd-builder">Source</a> ·
+        Part of <a href="https://github.com/mukund-buddy">The Antigle</a></p>
+    </div>
+  </footer>
+
+  <!-- datalists -->
+  <datalist id="dlItems">
+    <option value="minecraft:diamond"></option>
+    <option value="minecraft:diamond_sword"></option>
+    <option value="minecraft:iron_ingot"></option>
+    <option value="minecraft:gold_ingot"></option>
+    <option value="minecraft:grass_block"></option>
+    <option value="minecraft:command_block"></option>
+    <option value="minecraft:chest"></option>
+    <option value="minecraft:ender_pearl"></option>
+    <option value="minecraft:cooked_beef"></option>
+    <option value="minecraft:oak_planks"></option>
+    <option value="minecraft:torch"></option>
+    <option value="minecraft:bow"></option>
+    <option value="minecraft:arrow"></option>
+    <option value="minecraft:totem_of_undying"></option>
+    <option value="minecraft:netherite_ingot"></option>
+  </datalist>
+  <datalist id="dlEffects">
+    <option value="minecraft:speed"></option>
+    <option value="minecraft:slowness"></option>
+    <option value="minecraft:strength"></option>
+    <option value="minecraft:instant_health"></option>
+    <option value="minecraft:instant_damage"></option>
+    <option value="minecraft:jump_boost"></option>
+    <option value="minecraft:regeneration"></option>
+    <option value="minecraft:resistance"></option>
+    <option value="minecraft:fire_resistance"></option>
+    <option value="minecraft:water_breathing"></option>
+    <option value="minecraft:invisibility"></option>
+    <option value="minecraft:night_vision"></option>
+    <option value="minecraft:haste"></option>
+    <option value="minecraft:levitation"></option>
+    <option value="minecraft:slow_falling"></option>
+  </datalist>
+
+  <script src="app.js"></script>
+</body>
+</html>

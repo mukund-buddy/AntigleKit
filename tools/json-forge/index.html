@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Forge — format, validate, inspect. Client-side.</title>
+  <meta name="description" content="A privacy-first JSON toolkit. Format, validate, minify and inspect JSON with real line/column errors — it never leaves your browser.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0c10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON Forge — format, validate, inspect. Client-side.">
+  <meta property="og:description" content="A privacy-first JSON toolkit with real line/column errors. Nothing ever leaves your browser.">
+  <meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/json-forge/">
+  <meta property="og:image" content="https://mukund-buddy.github.io/AntigleKit/tools/json-forge/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JSON Forge — format, validate, inspect. Client-side.">
+  <meta name="twitter:description" content="A privacy-first JSON toolkit with real line/column errors.">
+  <link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/json-forge/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0c10'/><text x='50' y='70' font-size='46' font-family='monospace' font-weight='700' fill='%233ddc97' text-anchor='middle'>{}</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#layout">Skip to editor</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <div class="brand">JSON<span class="hot">Forge</span></div>
+      <div class="actions">
+        <button id="btnFormat" class="btn primary" type="button" title="Ctrl/Cmd + Enter">Format</button>
+        <button id="btnMinify" class="btn" type="button">Minify</button>
+        <button id="btnTree" class="btn" type="button">Tree View</button>
+        <span class="divider" aria-hidden="true"></span>
+        <button id="btnSample" class="btn ghost" type="button">Sample</button>
+        <button id="btnClear" class="btn ghost" type="button">Clear</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="layout">
+    <noscript>
+      <p class="noscript-note"><strong>JSON Forge needs JavaScript.</strong> It formats and validates JSON entirely inside your browser — nothing is ever uploaded. Enable JavaScript to use it.</p>
+    </noscript>
+
+    <div class="panes">
+      <!-- Input pane -->
+      <section class="pane" id="inputPane">
+        <div class="pane-head">
+          <span id="inputLabel" class="pane-title">Input JSON</span>
+          <span class="pane-tools">
+            <input class="file-input" type="file" id="fileInput" accept=".json,application/json,text/plain">
+            <label class="file-btn" for="fileInput">Open file</label>
+            <span id="inputInfo" class="pane-info">0 chars</span>
+          </span>
+        </div>
+        <textarea id="input" aria-labelledby="inputLabel" spellcheck="false" placeholder='Paste your JSON here…  or drop a .json file  e.g. {"name":"Mukund","vibes":["building","testing"]}'></textarea>
+      </section>
+
+      <!-- Output pane -->
+      <section class="pane">
+        <div class="pane-head">
+          <span id="outputLabel" class="pane-title">Output</span>
+          <span class="pane-tools">
+            <button id="btnCopy" class="btn tiny" type="button">Copy</button>
+            <button id="btnDownload" class="btn tiny" type="button">Download</button>
+          </span>
+        </div>
+        <pre id="output" class="output"><code>Output appears here…</code></pre>
+        <div id="error" class="error hidden" role="alert"></div>
+      </section>
+
+      <!-- Tree pane -->
+      <section class="pane" id="treePane">
+        <div class="pane-head">
+          <span class="pane-title">Structure</span>
+          <span class="pane-tools">
+            <button id="btnExpand" class="btn tiny" type="button">Expand all</button>
+            <button id="btnCollapse" class="btn tiny" type="button">Collapse all</button>
+          </span>
+        </div>
+        <div id="tree" class="tree"><p class="dim">Run "Tree View" to see the structure.</p></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Runs 100% in your browser — nothing is uploaded, ever. Your last buffer is saved locally. ·
+        <a href="https://github.com/mukund-buddy/json-forge" target="_blank" rel="noopener">Source</a> ·
+        Part of <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener">The Antigle</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

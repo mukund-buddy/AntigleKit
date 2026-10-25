@@ -139,6 +139,31 @@
       "sortOrder": 55
     },
     {
+      "id": "cmd-builder",
+      "slug": "cmd-builder",
+      "name": "Command Builder",
+      "category": "minecraft",
+      "categoryLabel": "Minecraft",
+      "tagline": "Build and validate Minecraft Bedrock commands — /give, /tp, /effect, /tag and more — with copy-ready output.",
+      "status": "live",
+      "href": "/tools/cmd-builder/",
+      "keywords": [
+        "minecraft",
+        "bedrock",
+        "commands",
+        "give",
+        "tp",
+        "effect",
+        "tag",
+        "command block"
+      ],
+      "related": [
+        "manifest-generator",
+        "identifier-validator"
+      ],
+      "sortOrder": 60
+    },
+    {
       "id": "thumbnail-fetcher",
       "slug": "thumbnail-fetcher",
       "name": "Thumbnail Fetcher",
@@ -982,6 +1007,31 @@
       "sortOrder": 500
     },
     {
+      "id": "contrast-lab",
+      "slug": "contrast-lab",
+      "name": "Contrast Lab",
+      "category": "design",
+      "categoryLabel": "Design",
+      "tagline": "Paste a whole CSS file and get every colour pair ranked by real WCAG contrast — pass/fail at AA and AAA.",
+      "status": "live",
+      "href": "/tools/contrast-lab/",
+      "keywords": [
+        "contrast",
+        "wcag",
+        "accessibility",
+        "a11y",
+        "css",
+        "colors",
+        "ratio",
+        "design audit"
+      ],
+      "related": [
+        "contrast-checker",
+        "color-palette-generator"
+      ],
+      "sortOrder": 510
+    },
+    {
       "id": "password-generator",
       "slug": "password-generator",
       "name": "Password Generator",
@@ -1636,6 +1686,109 @@
         "thumbnail-fetcher"
       ],
       "sortOrder": 580
+    },
+    {
+      "id": "json-to-types",
+      "slug": "json-to-types",
+      "name": "JSON to Types",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Paste JSON once and get TypeScript interfaces, Python TypedDicts, Zod schemas and Go struct types, ready to copy.",
+      "status": "live",
+      "href": "/tools/json-to-types/",
+      "keywords": [
+        "json",
+        "typescript",
+        "types",
+        "zod",
+        "typeddict",
+        "go struct",
+        "code generation",
+        "converter",
+        "typescript generator"
+      ],
+      "related": [
+        "json-formatter",
+        "json-validator",
+        "csv-json"
+      ],
+      "sortOrder": 660
+    },
+    {
+      "id": "json-forge",
+      "slug": "json-forge",
+      "name": "JSON Forge",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Three-pane JSON workspace — format, validate, minify and explore one payload side by side.",
+      "status": "live",
+      "href": "/tools/json-forge/",
+      "keywords": [
+        "json",
+        "format",
+        "validate",
+        "minify",
+        "workspace",
+        "explorer",
+        "beautify",
+        "three pane"
+      ],
+      "related": [
+        "json-formatter",
+        "json-validator",
+        "json-to-types"
+      ],
+      "sortOrder": 670
+    },
+    {
+      "id": "github-launchpad",
+      "slug": "github-launchpad",
+      "name": "GitHub Launchpad",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Package a GitHub repo in one form — description with the 350-character limit, topic validation, README opener and a launch checklist.",
+      "status": "live",
+      "href": "/tools/github-launchpad/",
+      "keywords": [
+        "github",
+        "repository",
+        "description",
+        "topics",
+        "readme",
+        "launch",
+        "metadata",
+        "release"
+      ],
+      "related": [
+        "meta-tag-generator",
+        "title-length-checker"
+      ],
+      "sortOrder": 680
+    },
+    {
+      "id": "askmint",
+      "slug": "askmint",
+      "name": "AskMint",
+      "category": "web",
+      "categoryLabel": "Web Development",
+      "tagline": "Embeddable ask-me-anything box for static sites — local drafts with email or custom-link delivery, no backend.",
+      "status": "live",
+      "href": "/tools/askmint/",
+      "keywords": [
+        "embed",
+        "widget",
+        "ask me anything",
+        "question box",
+        "static site",
+        "mailto",
+        "no backend",
+        "audience"
+      ],
+      "related": [
+        "meta-tag-generator",
+        "open-graph-generator"
+      ],
+      "sortOrder": 690
     }
   ]
 }

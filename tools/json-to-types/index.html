@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON → Types — TypeScript, Python, Zod &amp; Go from one JSON</title>
+  <meta name="description" content="Paste JSON, get a TypeScript interface, Python TypedDict, Zod schema and Go struct. Infers nested objects, arrays, unions and nullables. Runs in your browser.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b1a33">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON → Types — types from JSON, instantly">
+  <meta property="og:description" content="TypeScript, Python TypedDict, Zod and Go struct from one JSON paste. Client-side, nothing leaves your browser.">
+  <meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/json-to-types/">
+  <meta property="og:image" content="https://mukund-buddy.github.io/AntigleKit/tools/json-to-types/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JSON → Types — types from JSON, instantly">
+  <meta name="twitter:description" content="TypeScript, Python TypedDict, Zod and Go struct from one JSON paste.">
+  <link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/json-to-types/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='6' fill='%230b1a33'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%234dd0e1' font-family='monospace'>{}</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#layout">Skip to the converter</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <div class="brand">json<span class="hot">→</span>types</div>
+      <div class="actions">
+        <button id="btnCopy" class="btn primary" type="button">Copy output</button>
+        <button id="btnSample" class="btn" type="button">Load sample</button>
+        <button id="btnClear" class="btn ghost" type="button">Clear</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap layout" id="layout">
+    <noscript>
+      <p class="noscript-note"><strong>JSON → Types needs JavaScript.</strong> The inference engine runs entirely in your browser — enable JavaScript to use it.</p>
+    </noscript>
+
+    <!-- ============ INPUT ============ -->
+    <section class="panel input-pane" aria-label="JSON input">
+      <h2 class="panel-h">Input JSON</h2>
+
+      <div class="field">
+        <label for="fName">Root type name</label>
+        <input id="fName" type="text" value="Root" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="field grow">
+        <label for="fJson">JSON</label>
+        <textarea id="fJson" rows="16" spellcheck="false" placeholder='{"id": 1, "name": "Mukund", "tags": ["a","b"], "owner": {"email": "you@example.com"}}'></textarea>
+        <span class="count" id="cJson"></span>
+      </div>
+
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+      <div class="alert" id="alert" role="alert" hidden></div>
+    </section>
+
+    <!-- ============ OUTPUT ============ -->
+    <section class="panel output-pane" aria-label="Generated types">
+      <div class="tabs" role="tablist" aria-label="Output language">
+        <button role="tab" id="tab-ts" aria-controls="p-ts" aria-selected="true" class="tab active" type="button">TypeScript</button>
+        <button role="tab" id="tab-py" aria-controls="p-py" aria-selected="false" class="tab" type="button" tabindex="-1">Python</button>
+        <button role="tab" id="tab-zod" aria-controls="p-zod" aria-selected="false" class="tab" type="button" tabindex="-1">Zod</button>
+        <button role="tab" id="tab-go" aria-controls="p-go" aria-selected="false" class="tab" type="button" tabindex="-1">Go</button>
+      </div>
+
+      <div class="empty" id="empty">
+        <p class="empty-mark">{ }</p>
+        <p>No JSON yet — paste some on the left, or <button class="linklike" id="btnSample2" type="button">load the sample</button>.</p>
+      </div>
+
+      <pre class="code hidden" id="p-ts" role="tabpanel" aria-labelledby="tab-ts" tabindex="0"><code></code></pre>
+      <pre class="code hidden" id="p-py" role="tabpanel" aria-labelledby="tab-py" tabindex="0" hidden><code></code></pre>
+      <pre class="code hidden" id="p-zod" role="tabpanel" aria-labelledby="tab-zod" tabindex="0" hidden><code></code></pre>
+      <pre class="code hidden" id="p-go" role="tabpanel" aria-labelledby="tab-go" tabindex="0" hidden><code></code></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Parsed in your browser — no network, no storage of your data ·
+        <a href="https://github.com/mukund-buddy/json-to-types">Source</a> ·
+        Part of <a href="https://github.com/mukund-buddy">The Antigle</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AskMint — ask box widget for static sites</title>
+  <meta name="description" content="An embeddable ask-me-anything box for static websites. No backend, no popup — configurable in one small JS file. Nothing you type leaves the visitor's browser.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101426">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AskMint — ask box widget for static sites">
+  <meta property="og:description" content="An embeddable ask-me-anything box for static websites. No backend, no popup — configurable in one small JS file.">
+  <meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/askmint/">
+  <meta property="og:image" content="https://mukund-buddy.github.io/AntigleKit/tools/askmint/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AskMint — ask box widget for static sites">
+  <meta name="twitter:description" content="An embeddable ask-me-anything box for static websites. No backend, no popup.">
+  <link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/askmint/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23101426'/><text x='50' y='72' font-size='58' font-family='monospace' font-weight='700' fill='%23e63946' text-anchor='middle'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <main class="demo" id="main">
+    <header class="demo-head">
+      <p class="eyebrow">The Antigle · widget</p>
+      <h1>AskMint</h1>
+      <p>An embeddable ask box for static sites — no backend, no popup, no redirect service. Visitors type a question, your mail app opens with it pre-filled.</p>
+    </header>
+
+    <noscript>
+      <p class="noscript-note"><strong>AskMint needs JavaScript.</strong> It runs entirely in the visitor's browser — nothing is ever uploaded to a server. Enable JavaScript to see the live demo.</p>
+    </noscript>
+
+    <!-- The widget mounts here. This is the actual embed line. -->
+    <div id="askmint"></div>
+
+    <section class="how">
+      <h2>Put it on your site</h2>
+      <ol>
+        <li>Copy <code>widget.js</code> into your site's files.</li>
+        <li>Edit <code>config.js</code> — recipient email, greeting, categories, mode.</li>
+        <li>Add <code>&lt;div id="askmint"&gt;&lt;/div&gt;</code> where you want it. Done.</li>
+      </ol>
+      <p class="how-note">Prefer JSON config? <code>&lt;div id="askmint" data-config="config.json"&gt;&lt;/div&gt;</code> works too. Delivery modes: <code>email</code> (default), <code>link</code> (any form endpoint with <code>{text}</code> and <code>{category}</code> placeholders), or <code>copy</code> (clipboard).</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Drafts are saved in the visitor's own browser only ·
+      <a href="https://github.com/mukund-buddy/askmint">Source</a> ·
+      Part of <a href="https://github.com/mukund-buddy">The Antigle</a></p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="widget.js"></script>
+</body>
+</html>

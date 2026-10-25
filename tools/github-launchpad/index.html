@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Launchpad — repo description, topics &amp; tagline generator</title>
+  <meta name="description" content="Fill in what your repo does, get a ready-to-paste GitHub description (≤350 chars), validated topics, social preview text and README tagline. Local, no API.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080a0d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GitHub Launchpad — package your repo properly">
+  <meta property="og:description" content="Description, topics, social preview and README tagline — generated locally from what your repo does.">
+  <meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/github-launchpad/">
+  <meta property="og:image" content="https://mukund-buddy.github.io/AntigleKit/tools/github-launchpad/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GitHub Launchpad — package your repo properly">
+  <meta name="twitter:description" content="Description, topics, social preview and README tagline — generated locally.">
+  <link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/github-launchpad/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='6' fill='%23080a0d'/><text x='50' y='66' font-size='46' text-anchor='middle' fill='%233dff9e' font-family='monospace' font-weight='bold'>&gt;_</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#layout">Skip to the generator</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <div class="brand"><span class="prompt">&gt;</span> github-launchpad</div>
+      <div class="actions">
+        <button id="btnCopyAll" class="btn primary" type="button">Copy everything</button>
+        <button id="btnReset" class="btn ghost" type="button">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap layout" id="layout">
+    <noscript>
+      <p class="noscript-note">[!] github-launchpad needs JavaScript. The templates run in your browser — enable it to generate.</p>
+    </noscript>
+
+    <!-- ============ FORM ============ -->
+    <section class="panel form" aria-label="Repo details">
+      <h2 class="panel-h">INPUT</h2>
+
+      <div class="field">
+        <label for="fName">Repo name</label>
+        <input id="fName" type="text" value="json-to-types" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="field">
+        <label for="fWhat">What does it do? <span class="req">required</span></label>
+        <textarea id="fWhat" rows="4" maxlength="400" spellcheck="true">Paste JSON and get a TypeScript interface, Python TypedDict, Zod schema and Go struct — inferred, formatted, copy-pasted in seconds.</textarea>
+        <span class="count" id="cWhat"></span>
+      </div>
+
+      <div class="field">
+        <label for="fWho">Who is it for? <span class="opt">optional</span></label>
+        <input id="fWho" type="text" value="developers tired of hand-writing types" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="fType">Project type</label>
+        <select id="fType">
+          <option value="tool">Tool</option>
+          <option value="library">Library</option>
+          <option value="website">Website</option>
+          <option value="docs">Docs</option>
+          <option value="game">Game</option>
+          <option value="automation">Automation</option>
+        </select>
+      </div>
+
+      <fieldset class="field">
+        <legend>Stack tags <span class="opt">Enter to add</span></legend>
+        <input id="fStack" type="text" placeholder="javascript, css, web" autocomplete="off">
+        <div class="chips" id="stackChips" aria-live="polite"></div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Honest constraints <span class="opt">only check what's true</span></legend>
+        <div class="checks">
+          <label><input type="checkbox" value="No backend, no tracking." checked> Client-side only</label>
+          <label><input type="checkbox" value="No build step, no dependencies." checked> No build step</label>
+          <label><input type="checkbox" value="MIT licensed."> MIT licensed</label>
+          <label><input type="checkbox" value="Works offline."> Works offline</label>
+        </div>
+      </fieldset>
+
+      <div class="alert" id="alert" role="alert" hidden></div>
+    </section>
+
+    <!-- ============ OUTPUTS ============ -->
+    <section class="outputs" aria-label="Generated packaging">
+      <div class="noscript-note alt" id="readyNote" hidden>[i] templates ready — outputs update as you type</div>
+
+      <!-- description -->
+      <article class="panel card">
+        <header class="card-head">
+          <h2 class="panel-h">DESCRIPTION <span class="limit" id="descCount">0 / 350</span></h2>
+          <button class="btn tiny" type="button" data-copy="outDesc">Copy</button>
+        </header>
+        <p class="out" id="outDesc">—</p>
+        <p class="note">GitHub's hard limit is 350 characters. Search results show roughly the first 100 — lead with the verb.</p>
+      </article>
+
+      <!-- topics -->
+      <article class="panel card">
+        <header class="card-head">
+          <h2 class="panel-h">TOPICS <span class="limit" id="topicCount">0</span></h2>
+          <button class="btn tiny" type="button" data-copy="outTopics">Copy all</button>
+        </header>
+        <span class="vh" id="outTopics" aria-hidden="true"></span>
+        <div class="topic-chips" id="topicChips" aria-live="polite"></div>
+        <div class="topic-add">
+          <input id="fTopic" type="text" placeholder="add custom topic + Enter" autocomplete="off" aria-label="Add a custom topic">
+        </div>
+        <p class="note warn-note" id="topicWarn" hidden></p>
+        <p class="note">Topics drive GitHub search. Aim for 5–10: what it is, what it uses, who it's for.</p>
+      </article>
+
+      <!-- social preview -->
+      <article class="panel card">
+        <header class="card-head">
+          <h2 class="panel-h">SOCIAL PREVIEW</h2>
+          <button class="btn tiny" type="button" data-copy="outSocial">Copy</button>
+        </header>
+        <pre class="out pre" id="outSocial">—</pre>
+        <p class="note">Paste into the repo's social preview image / tweet. Two lines survive most embeds.</p>
+      </article>
+
+      <!-- readme -->
+      <article class="panel card">
+        <header class="card-head">
+          <h2 class="panel-h">README OPENING</h2>
+          <button class="btn tiny" type="button" data-copy="outReadme">Copy</button>
+        </header>
+        <pre class="out pre" id="outReadme">—</pre>
+        <p class="note">Drop this at the top of your README.</p>
+      </article>
+
+      <!-- why -->
+      <article class="panel card subtle">
+        <h2 class="panel-h">WHY THIS MATTERS</h2>
+        <ul class="why">
+          <li><strong>Description</strong> — shows in repo search and Google. First 100 chars do the selling.</li>
+          <li><strong>Topics</strong> — the actual indexing GitHub search uses. Free discoverability.</li>
+          <li><strong>Social preview</strong> — decides whether a link gets clicked at all.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Template-driven — no API calls, nothing uploaded ·
+        <a href="https://github.com/mukund-buddy/github-launchpad">Source</a> ·
+        Part of <a href="https://github.com/mukund-buddy">The Antigle</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
