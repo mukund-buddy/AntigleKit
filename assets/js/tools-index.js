@@ -2,7 +2,7 @@
    from assets/data/tools.json (progressive enhancement; live tools are
    hard-coded in the HTML for SEO, this only fills the upcoming list).
    CSP-safe: DOM APIs + textContent only, no innerHTML with data. */
-const PLAN_ORDER = ['minecraft', 'youtube', 'web', 'student', 'design', 'security', 'file'];
+const PLAN_ORDER = ['minecraft', 'nbt', 'student', 'youtube', 'security', 'web', 'design', 'other', 'file'];
 
 function esc(s) {
   return String(s == null ? '' : s);

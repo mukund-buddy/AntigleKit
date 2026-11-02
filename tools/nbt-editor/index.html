@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>NBT Editor for Minecraft — level.dat, .mcstructure, .nbt online | AntigleKit</title>
+<meta name="description" content="Free online NBT editor for Minecraft Bedrock and Java. Open level.dat, .mcstructure, playerdata, .nbt or .schem, edit any tag with 64-bit precision, and download it back in the same binary format — fully in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/nbt-editor/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="NBT Editor for Minecraft — level.dat, .mcstructure, .nbt online | AntigleKit">
+<meta property="og:description" content="Edit level.dat, .mcstructure, .nbt and .schem files online — every edition, every encoding, fully in your browser.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/nbt-editor/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NBT Editor for Minecraft — level.dat, .mcstructure, .nbt online | AntigleKit">
+<meta name="twitter:description" content="Edit level.dat, .mcstructure, .nbt and .schem files online — every edition, every encoding, fully in your browser.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<link rel="stylesheet" href="../../assets/css/nbt.css">
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mukund-buddy.github.io/AntigleKit/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "All Tools",
+          "item": "https://mukund-buddy.github.io/AntigleKit/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "NBT Editor",
+          "item": "https://mukund-buddy.github.io/AntigleKit/tools/nbt-editor/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "NBT Editor",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Any (browser)",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/nbt-editor/",
+      "description": "Free online NBT editor for Minecraft Bedrock and Java. Open level.dat, .mcstructure, playerdata, .nbt or .schem, edit any tag with 64-bit precision, and download it back in the same binary format — fully in your browser.",
+      "softwareRequirements": "Modern browser with BigInt and Compression Streams support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Antigle",
+        "url": "https://mukund-buddy.github.io/AntigleKit/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this NBT editor free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every tool on AntigleKit is free and runs entirely in your browser. Nothing is uploaded, stored, or processed on a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which files can it open?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any NBT file, from any edition: level.dat, playerdata/*.dat, structure .nbt, Bedrock .mcstructure, WorldEdit .schem and legacy .schematic, LevelDB values, region payload chunks and packet dumps. The engine detects the encoding, byte order, header and compression from the bytes themselves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it support both Java and Bedrock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — big-endian Java (Vanilla, Paper, Spigot, Fabric, Forge and the rest) and little-endian Bedrock (BDS, PocketMine-MP, Nukkit) including the 8-byte level.dat header, plus varint network variants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it corrupt my world?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The editor writes a new download rather than touching the file you drop in. Keep a backup until the world has loaded once, stop the server before copying, and edit values rather than tag types or names."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does it need a modern browser?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TAG_Long uses BigInt and gzip/zlib use the Compression Streams API, so a current version of Chrome, Edge, Firefox or Safari is required. Older browsers will report a clear error."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+
+<div data-chrome="header"></div>
+
+
+
+<main id="main" class="nbt-app">
+
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="https://mukund-buddy.github.io/AntigleKit/">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="https://mukund-buddy.github.io/AntigleKit/tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">NBT Editor</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Minecraft Files · Free tool</div>
+      <h1>NBT Editor — every Minecraft NBT file</h1>
+      <p class="lead">Drop a <code>level.dat</code>, <code>.mcstructure</code>, playerdata, <code>.nbt</code>, <code>.schem</code> or <code>.schematic</code> file in, edit any tag in the tree, and save it back byte-for-byte. Edition, encoding and compression are detected from the bytes themselves — Java, Bedrock, servers, datapacks and chunk dumps all open in one editor.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+
+  <section class="section-pad--sm" aria-label="NBT editor">
+    <div class="container">
+
+<div id="editor">
+
+<div class="dropzone" id="dropZone" role="button" tabindex="0" aria-label="Drop an NBT file here or click to browse">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M20 16v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"/></svg>
+<p>Drop <strong>any NBT file</strong> here</p>
+<button class="btn-pick" type="button">Choose File</button>
+<span class="hint">level.dat · .nbt · .mcstructure · .schem · .schematic · .dat · chunk dumps</span>
+<input type="file" id="fileInput">
+</div>
+
+<div id="editorArea">
+<div class="file-info" id="fileInfo"></div>
+
+<div class="out-bar" id="outBar">
+<label>Output format<select id="outFormat">
+<option value="java">Java — big-endian, named root</option>
+<option value="java-network">Java network — big-endian, nameless root</option>
+<option value="bedrock-level">Bedrock level.dat — little-endian + 8-byte header</option>
+<option value="bedrock">Bedrock raw — little-endian</option>
+<option value="bedrock-network">Bedrock network — little-endian varint</option>
+</select>
+</label>
+<label>Compression<select id="outCompression">
+<option value="none">None (raw)</option>
+<option value="gzip">gzip</option>
+<option value="zlib">zlib (deflate)</option>
+</select>
+</label>
+</div>
+
+<div class="search-bar">
+<input type="search" id="searchInput" placeholder="Search tag name or value…" autocomplete="off" spellcheck="false" aria-label="Search NBT tags">
+<button type="button" id="btnSearch">Search</button>
+<button type="button" id="btnCollapse">Collapse all</button>
+</div>
+<div class="search-results" id="searchResults"></div>
+
+<div class="tree" id="treeRoot"></div>
+</div>
+
+<div class="bottom-bar" id="bottomBar">
+<button class="btn-add" id="btnAddRoot" type="button">+ Add Tag</button>
+<button class="btn-save" id="btnSave" type="button">Save &amp; Download</button>
+<button class="btn-snbt" id="btnSnbt" type="button">Export SNBT</button>
+<button class="btn-close" id="btnCloseFile" type="button">Close</button>
+</div>
+
+</div>
+<div id="contentSections">
+
+
+
+<!-- CONTENT -->
+  <section class="section-pad--sm" aria-labelledby="files-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Reference</div>
+        <h2 class="section-title" id="files-title">Every NBT file Minecraft writes</h2>
+      </div>
+      <div class="content-table-wrap">
+        <p>NBT (Named Binary Tag) is one format with several encodings, and every Minecraft edition, launcher and server core uses a different combination of them. This editor implements all of them and picks the right one from the bytes themselves, so you never have to know which variant a file is before you open it.</p>
+        <div class="content-table"><table>
+          <thead><tr><th>File</th><th>Comes from</th><th>Encoding</th><th>Compression</th></tr></thead>
+          <tbody>
+            <tr><td><code>level.dat</code></td><td>Java world — Vanilla, Paper, Spigot, Fabric, Forge</td><td>Big-endian, named root</td><td>gzip</td></tr>
+            <tr><td><code>level.dat</code></td><td>Bedrock world — BDS, PocketMine-MP, Nukkit, MCPE</td><td>Little-endian + 8-byte header</td><td>None</td></tr>
+            <tr><td><code>&lt;uuid&gt;.dat</code></td><td>Java <code>playerdata/</code></td><td>Big-endian</td><td>gzip</td></tr>
+            <tr><td><code>servers.dat</code>, <code>hotbar.nbt</code></td><td>Java client</td><td>Big-endian</td><td>None</td></tr>
+            <tr><td><code>idcounts.dat</code>, <code>raids.dat</code>, <code>map_*.dat</code></td><td>Java world <code>data/</code></td><td>Big-endian</td><td>gzip</td></tr>
+            <tr><td><code>.nbt</code></td><td>Structure blocks, datapack structures</td><td>Big-endian</td><td>gzip</td></tr>
+            <tr><td><code>.schem</code>, <code>.schematic</code></td><td>WorldEdit, Sponge, MCEdit</td><td>Big-endian</td><td>gzip</td></tr>
+            <tr><td><code>.mcstructure</code></td><td>Bedrock structure blocks</td><td>Little-endian</td><td>None</td></tr>
+            <tr><td>Chunk payload</td><td>Region <code>.mca</code> extract, LevelDB value</td><td>Either byte order</td><td>zlib or none</td></tr>
+            <tr><td>Packet dump</td><td>Bedrock protocol, Java 1.20.2+ protocol</td><td>Varint LE / nameless BE</td><td>None</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Guide</div>
+        <h2 class="section-title" id="how-title">How to edit an NBT file</h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><div><p><strong>Get the file off the server or device.</strong> Java servers keep it in <code>world/</code>, Bedrock servers in <code>worlds/YourWorld/</code>, Android in <code>games/com.mojang/minecraftWorlds/&lt;id&gt;/</code>. Stop the server first so the file is not being written while you copy it.</p></div></li>
+        <li class="step"><div><p><strong>Drop it into the editor.</strong> The badge above the tree tells you what was detected — edition, encoding, compression and, for Bedrock, the storage version from the header.</p></div></li>
+        <li class="step"><div><p><strong>Edit.</strong> Tap a value to change it in place. Use search to jump to a tag by name or value, <strong>+</strong> to add tags to any compound or list, <strong>×</strong> to remove them.</p></div></li>
+        <li class="step"><div><p><strong>Save &amp; Download.</strong> The output format and compression selectors default to whatever the file arrived as, so a plain edit is a byte-faithful round trip.</p></div></li>
+        <li class="step"><div><p><strong>Put it back and restart.</strong> Keep the original as a backup until the world has loaded once and looks right.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" aria-labelledby="features-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Under the hood</div>
+        <h2 class="section-title" id="features-title">What this editor handles</h2>
+      </div>
+      <ul class="nbt-feature-list">
+        <li>All five encodings — Java big-endian, Java network (nameless root), Bedrock level.dat (8-byte header), Bedrock raw little-endian, and Bedrock network varint.</li>
+        <li>All 13 NBT tag types with real 64-bit <code>TAG_Long</code> precision — no rounded doubles.</li>
+        <li>gzip, zlib and raw compression, straight through the browser's built-in Compression Streams API.</li>
+        <li>In-place value editing, tag add/remove, array editing, search by name or value, and SNBT export.</li>
+        <li>Nothing ever leaves your device — the file is parsed and written by JavaScript in your browser.</li>
+      </ul>
+    </div>
+  </section>
+
+<div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+<section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Questions &amp; answers</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Is this NBT editor free?</summary>
+          <div><p>Yes. Every tool on AntigleKit is free and runs entirely in your browser. Nothing is uploaded, stored, or processed on a server.</p></div>
+        </details>
+        <details>
+          <summary>Which files can it open?</summary>
+          <div><p>Any NBT file, from any edition: <code>level.dat</code>, <code>playerdata/*.dat</code>, structure <code>.nbt</code>, Bedrock <code>.mcstructure</code>, WorldEdit <code>.schem</code> and legacy <code>.schematic</code>, LevelDB values, region payload chunks and packet dumps. The engine detects the encoding, byte order, header and compression from the bytes themselves.</p></div>
+        </details>
+        <details>
+          <summary>Does it support both Java and Bedrock?</summary>
+          <div><p>Yes — big-endian Java (Vanilla, Paper, Spigot, Fabric, Forge and the rest) and little-endian Bedrock (BDS, PocketMine-MP, Nukkit) including the 8-byte <code>level.dat</code> header, plus varint network variants.</p></div>
+        </details>
+        <details>
+          <summary>Will it corrupt my world?</summary>
+          <div><p>The editor writes a new download rather than touching the file you drop in. Keep a backup until the world has loaded once, stop the server before copying, and edit values rather than tag types or names.</p></div>
+        </details>
+        <details>
+          <summary>Why does it need a modern browser?</summary>
+          <div><p><code>TAG_Long</code> uses BigInt and gzip/zlib use the Compression Streams API, so a current version of Chrome, Edge, Firefox or Safari is required. Older browsers will report a clear error.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+<div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<div class="modal-overlay" id="addTagModal">
+<div class="modal">
+<h3>Add New Tag</h3>
+<label for="newTagName">Tag Name</label>
+<input type="text" id="newTagName" placeholder="e.g. MyTag" autocomplete="off">
+<label for="newTagType">Tag Type</label>
+<select id="newTagType">
+<option value="1">TAG_Byte</option>
+<option value="2">TAG_Short</option>
+<option value="3">TAG_Int</option>
+<option value="4">TAG_Long</option>
+<option value="5">TAG_Float</option>
+<option value="6">TAG_Double</option>
+<option value="7">TAG_Byte_Array</option>
+<option value="8" selected>TAG_String</option>
+<option value="9">TAG_List</option>
+<option value="10">TAG_Compound</option>
+<option value="11">TAG_Int_Array</option>
+<option value="12">TAG_Long_Array</option>
+</select>
+<label for="newTagValue">Value</label>
+<input type="text" id="newTagValue" placeholder="Value" autocomplete="off">
+<div id="listSubtypeRow" style="display:none">
+<label for="newListSubtype">List Element Type</label>
+<select id="newListSubtype">
+<option value="1">TAG_Byte</option>
+<option value="2">TAG_Short</option>
+<option value="3">TAG_Int</option>
+<option value="4">TAG_Long</option>
+<option value="5">TAG_Float</option>
+<option value="6">TAG_Double</option>
+<option value="7">TAG_Byte_Array</option>
+<option value="8">TAG_String</option>
+<option value="9">TAG_List</option>
+<option value="10">TAG_Compound</option>
+<option value="11">TAG_Int_Array</option>
+<option value="12">TAG_Long_Array</option>
+</select>
+</div>
+<div class="modal-btns">
+<button class="btn-cancel" type="button" id="addTagCancel">Cancel</button>
+<button class="btn-confirm" type="button" id="addTagConfirm">Add</button>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="arrayModal">
+<div class="modal">
+<h3 id="arrayModalTitle">Edit Array</h3>
+<label for="arrayModalText">Comma-separated values</label>
+<textarea id="arrayModalText" spellcheck="false" autocomplete="off"></textarea>
+<div class="modal-btns">
+<button class="btn-cancel" type="button" id="arrayModalCancel">Cancel</button>
+<button class="btn-confirm" type="button" id="arrayModalConfirm">Apply</button>
+</div>
+</div>
+</div>
+
+</main>
+
+<div data-chrome="footer"></div>
+
+
+<script src="../../assets/js/tools/nbt/nbt-strings.js"></script>
+<script src="../../assets/js/tools/nbt/nbt.js" defer></script>
+
+<script src="../../assets/js/chrome.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

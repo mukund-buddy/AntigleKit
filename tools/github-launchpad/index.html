@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,8 @@
   <title>GitHub Launchpad — repo description, topics &amp; tagline generator</title>
   <meta name="description" content="Fill in what your repo does, get a ready-to-paste GitHub description (≤350 chars), validated topics, social preview text and README tagline. Local, no API.">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#080a0d">
+  <meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+  <script src="../../assets/js/theme-init.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="GitHub Launchpad — package your repo properly">
   <meta property="og:description" content="Description, topics, social preview and README tagline — generated locally from what your repo does.">
@@ -20,22 +21,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/app.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../assets/css/legacy-shell.css">
 </head>
-<body>
-  <a class="skip" href="#layout">Skip to the generator</a>
+<body class="legacy-tool">
+  <div data-chrome="header"></div>
 
-  <header class="topbar">
-    <div class="wrap topbar-in">
-      <div class="brand"><span class="prompt">&gt;</span> github-launchpad</div>
-      <div class="actions">
+  <section class="tool-hero-legacy">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">GitHub Launchpad</span>
+      </nav>
+      <h1 class="section-title">GitHub Launchpad</h1>
+      <p class="lead">Turn what your repo does into a description within GitHub’s 350-character limit, validated topics, a social preview and a README opener.</p>
+
+      <div class="legacy-actions">
         <button id="btnCopyAll" class="btn primary" type="button">Copy everything</button>
         <button id="btnReset" class="btn ghost" type="button">Reset</button>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap layout" id="layout">
+
+  <main class="wrap layout" id="main">
     <noscript>
       <p class="noscript-note">[!] github-launchpad needs JavaScript. The templates run in your browser — enable it to generate.</p>
     </noscript>
@@ -152,14 +166,12 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <p>Template-driven — no API calls, nothing uploaded ·
-        <a href="https://github.com/mukund-buddy/github-launchpad">Source</a> ·
-        Part of <a href="https://github.com/mukund-buddy">The Antigle</a></p>
-    </div>
-  </footer>
+  <div data-chrome="footer"></div>
 
   <script src="app.js"></script>
+<script src="../../assets/js/chrome.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
 </body>
 </html>

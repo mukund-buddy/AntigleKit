@@ -1,0 +1,562 @@
+/* ── NBT editor suite ─────────────────────────────────────────────
+   Styles the Bedrock NBT engine UI (assets/js/tools/nbt/nbt.js, adapted
+   from w1zardz/bedrock-nbt-editor, MIT) onto Antigle Kit tokens.
+   Scoped under .nbt-app: nothing leaks into site-wide styles. */
+
+.nbt-app {
+  --nbt-elev: var(--elevated);
+  --nbt-mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* drop zone */
+.nbt-app .dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  min-height: 220px;
+  max-width: 960px;
+  margin: var(--s-5) auto;
+  padding: var(--s-7) var(--s-5);
+  border: 2px dashed var(--hairline);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 63, 16, 0.05), transparent 55%),
+    var(--glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.nbt-app .dropzone.active {
+  border-color: var(--brand-bright);
+  background: rgba(255, 63, 16, 0.08);
+}
+.nbt-app .dropzone svg {
+  width: 44px;
+  height: 44px;
+  color: var(--mist);
+}
+.nbt-app .dropzone p {
+  color: var(--bright);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+.nbt-app .dropzone .btn-pick {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 12px var(--s-5);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--brand-gradient);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.nbt-app .dropzone .btn-pick:active { opacity: 0.85; }
+.nbt-app .dropzone .hint {
+  font-size: 0.78rem;
+  color: var(--dim);
+}
+.nbt-app #fileInput { display: none; }
+
+/* editor area + file info */
+.nbt-app #editorArea { display: none; max-width: 960px; margin: 0 auto; padding: 0 0 var(--s-7); }
+.nbt-app #editorArea.visible { display: block; }
+.nbt-app .file-info {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  padding: var(--s-3) var(--s-4);
+  margin-bottom: var(--s-3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  font-size: 0.9rem;
+}
+.nbt-app .file-info .fname {
+  font-weight: 600;
+  font-family: var(--nbt-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--bright);
+}
+.nbt-app .file-info .fmeta { color: var(--dim); font-size: 0.8rem; }
+.nbt-app .fmt-badge {
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.nbt-app .fmt-badge.java {
+  background: rgba(111, 191, 140, 0.12);
+  color: var(--ok);
+  border: 1px solid rgba(111, 191, 140, 0.3);
+}
+.nbt-app .fmt-badge.bedrock {
+  background: rgba(255, 63, 16, 0.1);
+  color: var(--brand-bright);
+  border: 1px solid rgba(255, 63, 16, 0.3);
+}
+
+/* output bar */
+.nbt-app .out-bar {
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  align-items: start;
+  padding: var(--s-3) var(--s-4);
+  margin-bottom: var(--s-3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+}
+.nbt-app .out-bar label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 220px;
+  min-width: 0;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.nbt-app .out-bar select {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--bright);
+  font-size: 0.88rem;
+  font-family: inherit;
+}
+
+/* search */
+.nbt-app .search-bar {
+  display: flex;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-3);
+}
+.nbt-app .search-bar input {
+  flex: 1 1 220px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--radius-md);
+  background: var(--glass);
+  color: var(--bright);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.nbt-app .search-bar button {
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--radius-md);
+  background: var(--white-05);
+  color: var(--bright);
+  font-size: 0.88rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nbt-app .search-bar button:active { opacity: 0.8; }
+.nbt-app .search-results {
+  display: none;
+  max-height: 260px;
+  overflow-y: auto;
+  margin-bottom: var(--s-3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+}
+.nbt-app .search-results.visible { display: block; }
+.nbt-app .search-results .sr-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hairline-soft);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: var(--nbt-mono);
+  color: var(--mist);
+  word-break: break-all;
+}
+.nbt-app .search-results .sr-item:last-child { border-bottom: none; }
+.nbt-app .search-results .sr-item:hover { background: var(--white-04); color: var(--bright); }
+.nbt-app .search-results .sr-item b { color: var(--brand-bright); font-weight: 600; }
+.nbt-app .search-results .sr-empty { padding: 12px; color: var(--dim); font-size: 0.85rem; }
+
+/* tag tree */
+.nbt-app .tree {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  overflow: hidden;
+}
+.nbt-app .tree-node { border-bottom: 1px solid var(--hairline-soft); }
+.nbt-app .tree-node:last-child { border-bottom: none; }
+.nbt-app .node-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  min-height: 44px;
+  flex-wrap: nowrap;
+}
+.nbt-app .node-row:active { background: var(--white-03); }
+.nbt-app .node-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  background: none;
+  color: var(--dim);
+  font-size: 0.8rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nbt-app .node-toggle:hover { background: var(--white-04); color: var(--bright); }
+.nbt-app .node-toggle.leaf { visibility: hidden; }
+.nbt-app .tag-badge {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm, 6px);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  background: var(--white-06);
+  color: var(--mist);
+}
+.nbt-app .tag-badge[data-t="1"],
+.nbt-app .tag-badge[data-t="8"] { color: var(--ok); }
+.nbt-app .tag-badge[data-t="3"],
+.nbt-app .tag-badge[data-t="10"] { color: var(--brand-bright); }
+.nbt-app .tag-badge[data-t="2"],
+.nbt-app .tag-badge[data-t="12"] { color: #8FD4E8; }
+.nbt-app .tag-badge[data-t="4"],
+.nbt-app .tag-badge[data-t="6"] { color: #C3A6FF; }
+.nbt-app .tag-badge[data-t="5"] { color: var(--warn); }
+.nbt-app .tag-badge[data-t="7"],
+.nbt-app .tag-badge[data-t="11"] { color: #E398C4; }
+.nbt-app .tag-badge[data-t="9"] { color: var(--danger); }
+.nbt-app .node-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--bright);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 0;
+}
+.nbt-app .node-value {
+  flex: 1;
+  min-width: 0;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm, 6px);
+  font-family: var(--nbt-mono);
+  font-size: 0.85rem;
+  color: var(--mist);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.nbt-app .node-value:hover { background: var(--white-04); }
+.nbt-app .node-value.editing {
+  background: var(--surface);
+  border: 1px solid var(--brand-bright);
+  cursor: text;
+}
+.nbt-app .node-value.ro { cursor: default; }
+.nbt-app .node-value.ro:hover { background: none; }
+.nbt-app .node-value input,
+.nbt-app .node-value textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--bright);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+  padding: 0;
+}
+.nbt-app .node-value textarea { resize: vertical; min-height: 60px; }
+.nbt-app .node-children { display: none; padding-left: 16px; }
+.nbt-app .node-children.open { display: block; }
+.nbt-app .load-more {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  color: var(--brand-bright);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+}
+.nbt-app .load-more:hover { background: var(--white-04); }
+.nbt-app .node-row.ln-flash { animation: nbt-flash 1.6s ease; }
+@keyframes nbt-flash {
+  0%, 100% { background: transparent; }
+  15% { background: rgba(255, 63, 16, 0.25); }
+}
+.nbt-app .ln-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  min-height: 32px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  background: var(--brand-deep);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nbt-app .node-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.nbt-app .node-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  background: var(--white-05);
+  color: var(--dim);
+  font-size: 0.85rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nbt-app .node-actions button:hover { background: var(--white-10); color: var(--bright); }
+.nbt-app .node-actions button.del:hover { color: var(--danger); }
+
+/* bottom action bar */
+.nbt-app .bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: none;
+  gap: var(--s-2);
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: var(--scrim-78);
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+.nbt-app .bottom-bar.visible { display: flex; }
+.nbt-app .bottom-bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nbt-app .bottom-bar button:active { opacity: 0.85; }
+.nbt-app .btn-save { background: var(--brand-gradient); color: #fff; }
+.nbt-app .btn-add { background: var(--brand-deep); color: #fff; }
+.nbt-app .btn-close,
+.nbt-app .btn-snbt { background: var(--white-06); color: var(--bright); }
+
+/* toasts (engine-internal; separate from site tg-toast) */
+.nbt-app .toast-container {
+  position: fixed;
+  top: 84px;
+  right: 16px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nbt-app .toast {
+  max-width: 320px;
+  padding: 12px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--scrim-82);
+  color: var(--bright);
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  animation: nbt-toast-in 0.25s ease;
+}
+.nbt-app .toast.success { border-left: 3px solid var(--ok); }
+.nbt-app .toast.error { border-left: 3px solid var(--danger); }
+.nbt-app .toast.info { border-left: 3px solid var(--brand); }
+@keyframes nbt-toast-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* modals */
+.nbt-app .modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--scrim-72);
+}
+.nbt-app .modal-overlay.visible { display: flex; }
+.nbt-app .modal {
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: var(--s-5);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--elevated);
+}
+.nbt-app .modal h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bright);
+  margin-bottom: var(--s-2);
+}
+.nbt-app .modal label {
+  display: block;
+  margin-top: var(--s-3);
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.nbt-app .modal input,
+.nbt-app .modal select,
+.nbt-app .modal textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--bright);
+  font-size: 1rem;
+  font-family: inherit;
+}
+.nbt-app .modal textarea {
+  font-family: var(--nbt-mono);
+  font-size: 0.85rem;
+  min-height: 160px;
+  resize: vertical;
+}
+.nbt-app .modal .modal-btns {
+  display: flex;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+}
+.nbt-app .modal .modal-btns button {
+  flex: 1;
+  min-height: 44px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.nbt-app .modal .btn-confirm { background: var(--brand-gradient); color: #fff; }
+.nbt-app .modal .btn-cancel { background: var(--white-06); color: var(--bright); }
+
+/* content/state sections */
+.nbt-app #contentSections.hidden { display: none; }
+
+/* reference tables (guide sections) */
+.nbt-app .content-table-wrap {
+  max-width: none;
+}
+.nbt-app .content-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  margin-top: var(--s-4);
+}
+.nbt-app .content-table table {
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.nbt-app .content-table th,
+.nbt-app .content-table td {
+  text-align: left;
+  padding: var(--s-2) var(--s-3);
+  border-bottom: 1px solid var(--hairline);
+  white-space: nowrap;
+  color: var(--dim);
+}
+.nbt-app .content-table th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.nbt-app .content-table tr:last-child td { border-bottom: none; }
+.nbt-app .content-table code {
+  font-family: var(--mono, ui-monospace, monospace);
+  color: var(--bright);
+}
+
+/* responsive */
+@media (max-width: 640px) {
+  .nbt-app .node-row { padding: 6px 8px; gap: 4px; }
+  .nbt-app .node-children { padding-left: 10px; }
+  .nbt-app .node-name { font-size: 0.82rem; }
+  .nbt-app .node-value { font-size: 0.8rem; padding: 4px 6px; }
+  .nbt-app .tag-badge { font-size: 0.58rem; padding: 1px 4px; }
+  .nbt-app .bottom-bar button { padding: 10px 14px; font-size: 0.88rem; }
+}

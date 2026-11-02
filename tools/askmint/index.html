@@ -6,7 +6,8 @@
   <title>AskMint — ask box widget for static sites</title>
   <meta name="description" content="An embeddable ask-me-anything box for static websites. No backend, no popup — configurable in one small JS file. Nothing you type leaves the visitor's browser.">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#101426">
+  <meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+  <script src="../../assets/js/theme-init.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="AskMint — ask box widget for static sites">
   <meta property="og:description" content="An embeddable ask-me-anything box for static websites. No backend, no popup — configurable in one small JS file.">
@@ -20,13 +21,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/app.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../assets/css/legacy-shell.css">
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
+<body class="legacy-tool">
+  <div data-chrome="header"></div>
+
 
   <main class="demo" id="main">
     <header class="demo-head">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">AskMint</span>
+      </nav>
       <p class="eyebrow">The Antigle · widget</p>
       <h1>AskMint</h1>
       <p>An embeddable ask box for static sites — no backend, no popup, no redirect service. Visitors type a question, your mail app opens with it pre-filled.</p>
@@ -50,13 +62,13 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <p>Drafts are saved in the visitor's own browser only ·
-      <a href="https://github.com/mukund-buddy/askmint">Source</a> ·
-      Part of <a href="https://github.com/mukund-buddy">The Antigle</a></p>
-  </footer>
+  <div data-chrome="footer"></div>
 
   <script src="config.js"></script>
   <script src="widget.js"></script>
+<script src="../../assets/js/chrome.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
 </body>
 </html>

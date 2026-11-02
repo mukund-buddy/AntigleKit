@@ -1139,6 +1139,10 @@ p { max-width: var(--measure); }
   gap: var(--s-6);
   align-items: start;
 }
+/* Grid items default to min-width:auto (largest unbreakable child wins);
+   states like the JSON preview then refuse to shrink under 1fr, pushing
+   the whole layout past the viewport on narrow screens. */
+.tool-layout > * { min-width: 0; }
 .tool-panel {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
@@ -1458,6 +1462,57 @@ select.input option { background: var(--elevated); color: var(--bright); }
   max-width: 52ch;
   margin-inline: auto;
 }
+.pin-media {
+  margin-top: var(--s-5);
+  padding: var(--s-4);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+.pin-media-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-3);
+}
+.pin-media-head .pin-hint { margin: 0; text-align: left; flex: 1 1 240px; }
+.pin-size-field { display: flex; align-items: center; gap: var(--s-2); }
+.pin-size-field > span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.pin-size-field .input {
+  width: auto;
+  min-width: 130px;
+  padding: 6px var(--s-2);
+  font-size: 0.8rem;
+}
+.pin-image {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  max-height: 70vh;
+  object-fit: contain;
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--hairline-soft);
+  background: var(--white-02);
+}
+.pin-media-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  margin-top: var(--s-4);
+}
 @media (max-width: 640px) {
   .pin-stage { padding: var(--s-4) var(--s-3); }
 }
@@ -1551,6 +1606,16 @@ select.input option { background: var(--elevated); color: var(--bright); }
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--mist);
+}
+.thumb-card-url {
+  margin: 0;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--dim);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  user-select: all;
 }
 .thumb-card-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: auto; }
 .thumb-card-actions .btn { flex: 1; min-height: 36px; padding: var(--s-1) var(--s-2); font-size: 0.72rem; }

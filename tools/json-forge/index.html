@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,8 @@
   <title>JSON Forge — format, validate, inspect. Client-side.</title>
   <meta name="description" content="A privacy-first JSON toolkit. Format, validate, minify and inspect JSON with real line/column errors — it never leaves your browser.">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0a0c10">
+  <meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+  <script src="../../assets/js/theme-init.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="JSON Forge — format, validate, inspect. Client-side.">
   <meta property="og:description" content="A privacy-first JSON toolkit with real line/column errors. Nothing ever leaves your browser.">
@@ -20,26 +21,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/app.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../assets/css/legacy-shell.css">
 </head>
-<body>
-  <a class="skip" href="#layout">Skip to editor</a>
+<body class="legacy-tool">
+  <div data-chrome="header"></div>
 
-  <header class="topbar">
-    <div class="wrap topbar-in">
-      <div class="brand">JSON<span class="hot">Forge</span></div>
-      <div class="actions">
+  <section class="tool-hero-legacy">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="../../tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">JSON Forge</span>
+      </nav>
+      <h1 class="section-title">JSON Forge</h1>
+      <p class="lead">Format, validate, minify and inspect JSON in a three-pane workspace that never sends your data anywhere.</p>
+
+      <div class="legacy-actions">
         <button id="btnFormat" class="btn primary" type="button" title="Ctrl/Cmd + Enter">Format</button>
         <button id="btnMinify" class="btn" type="button">Minify</button>
         <button id="btnTree" class="btn" type="button">Tree View</button>
-        <span class="divider" aria-hidden="true"></span>
         <button id="btnSample" class="btn ghost" type="button">Sample</button>
         <button id="btnClear" class="btn ghost" type="button">Clear</button>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap" id="layout">
+
+  <main class="wrap" id="main">
     <noscript>
       <p class="noscript-note"><strong>JSON Forge needs JavaScript.</strong> It formats and validates JSON entirely inside your browser — nothing is ever uploaded. Enable JavaScript to use it.</p>
     </noscript>
@@ -85,14 +98,12 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <p>Runs 100% in your browser — nothing is uploaded, ever. Your last buffer is saved locally. ·
-        <a href="https://github.com/mukund-buddy/json-forge" target="_blank" rel="noopener">Source</a> ·
-        Part of <a href="https://github.com/mukund-buddy" target="_blank" rel="noopener">The Antigle</a></p>
-    </div>
-  </footer>
+  <div data-chrome="footer"></div>
 
   <script src="app.js"></script>
+<script src="../../assets/js/chrome.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
 </body>
 </html>

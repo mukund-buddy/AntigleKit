@@ -136,7 +136,7 @@
         "manifest-generator",
         "pack-structure-checker"
       ],
-      "sortOrder": 55
+      "sortOrder": 60
     },
     {
       "id": "cmd-builder",
@@ -161,29 +161,93 @@
         "manifest-generator",
         "identifier-validator"
       ],
-      "sortOrder": 60
+      "sortOrder": 70
     },
     {
-      "id": "thumbnail-fetcher",
-      "slug": "thumbnail-fetcher",
-      "name": "Thumbnail Fetcher",
-      "category": "youtube",
-      "categoryLabel": "YouTube",
-      "tagline": "Get a video's thumbnail URL from its link — no login, no account.",
+      "id": "nbt-editor",
+      "slug": "nbt-editor",
+      "name": "NBT Editor",
+      "category": "nbt",
+      "categoryLabel": "Minecraft Files",
+      "tagline": "Open level.dat, .mcstructure, playerdata or .nbt files, edit every tag with 64-bit precision, and download in the same format.",
       "status": "live",
-      "href": "/tools/thumbnail-fetcher/",
+      "href": "/tools/nbt-editor/",
       "keywords": [
-        "youtube",
-        "thumbnail",
-        "video",
-        "image",
-        "url"
+        "nbt",
+        "level.dat",
+        "mcstructure",
+        "playerdata",
+        "bedrock",
+        "schem"
       ],
       "related": [
-        "thumbnail-downloader",
-        "timestamp-generator"
+        "level-dat-editor",
+        "mcstructure-editor"
       ],
-      "sortOrder": 60
+      "sortOrder": 80
+    },
+    {
+      "id": "mcstructure-editor",
+      "slug": "mcstructure-editor",
+      "name": "mcstructure Editor",
+      "category": "nbt",
+      "categoryLabel": "Minecraft Files",
+      "tagline": "Edit Bedrock .mcstructure structure files — block palette, size, indices and block entities — saved back in the same encoding.",
+      "status": "live",
+      "href": "/tools/mcstructure-editor/",
+      "keywords": [
+        "mcstructure",
+        "bedrock",
+        "structure block",
+        "block palette"
+      ],
+      "related": [
+        "nbt-editor",
+        "level-dat-editor"
+      ],
+      "sortOrder": 90
+    },
+    {
+      "id": "level-dat-editor",
+      "slug": "level-dat-editor",
+      "name": "level.dat Editor",
+      "category": "nbt",
+      "categoryLabel": "Minecraft Files",
+      "tagline": "Edit world name, game mode, difficulty, gamerules and spawn point in a level.dat — Java and Bedrock, right in the browser.",
+      "status": "live",
+      "href": "/tools/level-dat-editor/",
+      "keywords": [
+        "level.dat",
+        "level dat",
+        "world name",
+        "gamerules",
+        "difficulty"
+      ],
+      "related": [
+        "nbt-editor",
+        "mcstructure-editor"
+      ],
+      "sortOrder": 100
+    },
+    {
+      "id": "nbt-format",
+      "slug": "nbt-format",
+      "name": "NBT Format Reference",
+      "category": "nbt",
+      "categoryLabel": "Minecraft Files",
+      "tagline": "Reference for the NBT tag types and the byte encodings Minecraft uses across editions.",
+      "status": "planned",
+      "href": "/tools/nbt-format/",
+      "keywords": [
+        "nbt",
+        "format",
+        "tag types",
+        "binary"
+      ],
+      "related": [
+        "nbt-editor"
+      ],
+      "sortOrder": 110
     },
     {
       "id": "thumbnail-downloader",
@@ -202,10 +266,9 @@
         "image"
       ],
       "related": [
-        "thumbnail-fetcher",
         "video-downloader"
       ],
-      "sortOrder": 70
+      "sortOrder": 130
     },
     {
       "id": "video-downloader",
@@ -231,10 +294,9 @@
       ],
       "related": [
         "thumbnail-downloader",
-        "thumbnail-fetcher",
         "pinterest-downloader"
       ],
-      "sortOrder": 75
+      "sortOrder": 140
     },
     {
       "id": "timestamp-generator",
@@ -256,7 +318,7 @@
         "chapter-formatter",
         "description-generator"
       ],
-      "sortOrder": 80
+      "sortOrder": 150
     },
     {
       "id": "chapter-formatter",
@@ -277,7 +339,7 @@
         "timestamp-generator",
         "description-generator"
       ],
-      "sortOrder": 90
+      "sortOrder": 160
     },
     {
       "id": "description-generator",
@@ -299,7 +361,7 @@
         "chapter-formatter",
         "hashtag-formatter"
       ],
-      "sortOrder": 100
+      "sortOrder": 170
     },
     {
       "id": "title-length-checker",
@@ -321,7 +383,7 @@
         "hashtag-formatter",
         "description-generator"
       ],
-      "sortOrder": 110
+      "sortOrder": 180
     },
     {
       "id": "hashtag-formatter",
@@ -343,7 +405,7 @@
         "description-generator",
         "title-length-checker"
       ],
-      "sortOrder": 120
+      "sortOrder": 190
     },
     {
       "id": "meta-tag-generator",
@@ -366,7 +428,7 @@
         "robots-generator",
         "sitemap-generator"
       ],
-      "sortOrder": 130
+      "sortOrder": 200
     },
     {
       "id": "robots-generator",
@@ -388,7 +450,7 @@
         "sitemap-generator",
         "meta-tag-generator"
       ],
-      "sortOrder": 140
+      "sortOrder": 210
     },
     {
       "id": "sitemap-generator",
@@ -410,7 +472,7 @@
         "robots-generator",
         "meta-tag-generator"
       ],
-      "sortOrder": 150
+      "sortOrder": 220
     },
     {
       "id": "open-graph-generator",
@@ -431,7 +493,7 @@
         "meta-tag-generator",
         "favicon-generator"
       ],
-      "sortOrder": 160
+      "sortOrder": 230
     },
     {
       "id": "json-formatter",
@@ -454,7 +516,7 @@
         "yaml-json",
         "csv-json"
       ],
-      "sortOrder": 170
+      "sortOrder": 240
     },
     {
       "id": "json-validator",
@@ -476,7 +538,7 @@
         "json-formatter",
         "xml-formatter"
       ],
-      "sortOrder": 180
+      "sortOrder": 250
     },
     {
       "id": "base64-encode-decode",
@@ -497,7 +559,7 @@
         "url-encoder",
         "url-decoder"
       ],
-      "sortOrder": 190
+      "sortOrder": 260
     },
     {
       "id": "url-encoder",
@@ -518,7 +580,7 @@
         "url-decoder",
         "slug-generator"
       ],
-      "sortOrder": 200
+      "sortOrder": 270
     },
     {
       "id": "url-decoder",
@@ -538,7 +600,7 @@
       "related": [
         "url-encoder"
       ],
-      "sortOrder": 210
+      "sortOrder": 280
     },
     {
       "id": "slug-generator",
@@ -560,7 +622,7 @@
         "url-encoder",
         "meta-tag-generator"
       ],
-      "sortOrder": 220
+      "sortOrder": 290
     },
     {
       "id": "regex-tester",
@@ -581,7 +643,7 @@
         "slug-generator",
         "json-validator"
       ],
-      "sortOrder": 230
+      "sortOrder": 300
     },
     {
       "id": "uuid-generator",
@@ -602,7 +664,7 @@
         "manifest-generator",
         "json-formatter"
       ],
-      "sortOrder": 240
+      "sortOrder": 310
     },
     {
       "id": "css-gradient-generator",
@@ -624,7 +686,7 @@
         "css-shadow-generator",
         "color-palette-generator"
       ],
-      "sortOrder": 250
+      "sortOrder": 320
     },
     {
       "id": "css-shadow-generator",
@@ -645,7 +707,7 @@
         "css-gradient-generator",
         "border-radius-generator"
       ],
-      "sortOrder": 260
+      "sortOrder": 330
     },
     {
       "id": "flexbox-generator",
@@ -663,30 +725,9 @@
         "layout"
       ],
       "related": [
-        "grid-generator",
         "css-gradient-generator"
       ],
-      "sortOrder": 270
-    },
-    {
-      "id": "grid-generator",
-      "slug": "grid-generator",
-      "name": "Grid Generator",
-      "category": "web",
-      "categoryLabel": "Web Development",
-      "tagline": "Configure CSS grid templates and copy the CSS.",
-      "status": "live",
-      "href": "/tools/grid-generator/",
-      "keywords": [
-        "css",
-        "grid",
-        "layout",
-        "template"
-      ],
-      "related": [
-        "flexbox-generator"
-      ],
-      "sortOrder": 280
+      "sortOrder": 340
     },
     {
       "id": "mcq-generator",
@@ -709,7 +750,7 @@
         "study-planner",
         "revision-planner"
       ],
-      "sortOrder": 290
+      "sortOrder": 360
     },
     {
       "id": "study-planner",
@@ -731,7 +772,7 @@
         "revision-planner",
         "attendance-calculator"
       ],
-      "sortOrder": 300
+      "sortOrder": 370
     },
     {
       "id": "revision-planner",
@@ -752,7 +793,7 @@
         "study-planner",
         "reading-time-calculator"
       ],
-      "sortOrder": 310
+      "sortOrder": 380
     },
     {
       "id": "attendance-calculator",
@@ -772,7 +813,7 @@
       "related": [
         "percentage-calculator"
       ],
-      "sortOrder": 320
+      "sortOrder": 390
     },
     {
       "id": "percentage-calculator",
@@ -793,7 +834,7 @@
         "attendance-calculator",
         "cgpa-calculator"
       ],
-      "sortOrder": 330
+      "sortOrder": 400
     },
     {
       "id": "cgpa-calculator",
@@ -814,7 +855,7 @@
       "related": [
         "percentage-calculator"
       ],
-      "sortOrder": 340
+      "sortOrder": 410
     },
     {
       "id": "reading-time-calculator",
@@ -834,7 +875,7 @@
       "related": [
         "word-counter"
       ],
-      "sortOrder": 350
+      "sortOrder": 420
     },
     {
       "id": "word-counter",
@@ -855,7 +896,7 @@
         "character-counter",
         "reading-time-calculator"
       ],
-      "sortOrder": 360
+      "sortOrder": 430
     },
     {
       "id": "character-counter",
@@ -876,7 +917,7 @@
         "word-counter",
         "title-length-checker"
       ],
-      "sortOrder": 370
+      "sortOrder": 440
     },
     {
       "id": "color-palette-generator",
@@ -1049,7 +1090,7 @@
       "related": [
         "password-strength-checker"
       ],
-      "sortOrder": 510
+      "sortOrder": 520
     },
     {
       "id": "password-strength-checker",
@@ -1070,7 +1111,7 @@
       "related": [
         "password-generator"
       ],
-      "sortOrder": 520
+      "sortOrder": 530
     },
     {
       "id": "sha256-generator",
@@ -1091,7 +1132,7 @@
         "password-generator",
         "base64-encode-decode"
       ],
-      "sortOrder": 530
+      "sortOrder": 540
     },
     {
       "id": "qrcode-generator",
@@ -1111,7 +1152,7 @@
       "related": [
         "qr-code-scanner"
       ],
-      "sortOrder": 540
+      "sortOrder": 550
     },
     {
       "id": "qr-code-scanner",
@@ -1131,7 +1172,7 @@
       "related": [
         "qrcode-generator"
       ],
-      "sortOrder": 550
+      "sortOrder": 560
     },
     {
       "id": "csv-json",
@@ -1152,7 +1193,7 @@
         "json-formatter",
         "yaml-json"
       ],
-      "sortOrder": 560
+      "sortOrder": 570
     },
     {
       "id": "yaml-json",
@@ -1172,7 +1213,7 @@
         "json-formatter",
         "csv-json"
       ],
-      "sortOrder": 570
+      "sortOrder": 580
     },
     {
       "id": "xml-formatter",
@@ -1193,7 +1234,7 @@
         "json-formatter",
         "json-validator"
       ],
-      "sortOrder": 580
+      "sortOrder": 590
     },
     {
       "id": "markdown-preview",
@@ -1213,7 +1254,7 @@
       "related": [
         "diff-checker"
       ],
-      "sortOrder": 590
+      "sortOrder": 600
     },
     {
       "id": "diff-checker",
@@ -1234,7 +1275,7 @@
         "markdown-preview",
         "json-formatter"
       ],
-      "sortOrder": 600
+      "sortOrder": 610
     },
     {
       "id": "skin-converter",
@@ -1251,7 +1292,7 @@
         "64x64"
       ],
       "related": [],
-      "sortOrder": 610
+      "sortOrder": 620
     },
     {
       "id": "skin-preview",
@@ -1268,7 +1309,7 @@
         "3d"
       ],
       "related": [],
-      "sortOrder": 620
+      "sortOrder": 630
     },
     {
       "id": "pack-generator",
@@ -1285,7 +1326,7 @@
         "scaffold"
       ],
       "related": [],
-      "sortOrder": 630
+      "sortOrder": 640
     },
     {
       "id": "geometry-tools",
@@ -1301,7 +1342,7 @@
         "model"
       ],
       "related": [],
-      "sortOrder": 640
+      "sortOrder": 650
     },
     {
       "id": "entity-generator",
@@ -1316,22 +1357,6 @@
         "entity",
         "mob",
         "behavior"
-      ],
-      "related": [],
-      "sortOrder": 650
-    },
-    {
-      "id": "nbt-helpers",
-      "slug": "nbt-helpers",
-      "name": "NBT Helpers",
-      "category": "backlog",
-      "categoryLabel": "Backlog",
-      "tagline": "Format, validate, and simplify NBT structures.",
-      "status": "backlog",
-      "href": "/tools/nbt-helpers/",
-      "keywords": [
-        "nbt",
-        "tag"
       ],
       "related": [],
       "sortOrder": 660
@@ -1480,7 +1505,7 @@
         "word-counter",
         "character-counter"
       ],
-      "sortOrder": 610
+      "sortOrder": 750
     },
     {
       "id": "lorem-ipsum-generator",
@@ -1502,7 +1527,7 @@
         "case-converter",
         "word-counter"
       ],
-      "sortOrder": 620
+      "sortOrder": 760
     },
     {
       "id": "html-minifier",
@@ -1523,7 +1548,7 @@
         "svg-optimizer",
         "css-minifier"
       ],
-      "sortOrder": 630
+      "sortOrder": 770
     },
     {
       "id": "css-minifier",
@@ -1544,7 +1569,7 @@
         "html-minifier",
         "css-gradient-generator"
       ],
-      "sortOrder": 640
+      "sortOrder": 780
     },
     {
       "id": "random-number-generator",
@@ -1565,7 +1590,7 @@
         "password-generator",
         "case-converter"
       ],
-      "sortOrder": 650
+      "sortOrder": 790
     },
     {
       "id": "study-timer",
@@ -1586,7 +1611,7 @@
         "study-planner",
         "revision-planner"
       ],
-      "sortOrder": 660
+      "sortOrder": 800
     },
     {
       "id": "list-sorter",
@@ -1607,7 +1632,7 @@
         "diff-checker",
         "case-converter"
       ],
-      "sortOrder": 670
+      "sortOrder": 810
     },
     {
       "id": "barcode-generator",
@@ -1632,7 +1657,7 @@
         "qrcode-generator",
         "qr-code-scanner"
       ],
-      "sortOrder": 560
+      "sortOrder": 820
     },
     {
       "id": "unit-converter",
@@ -1661,14 +1686,14 @@
         "percentage-calculator",
         "barcode-generator"
       ],
-      "sortOrder": 570
+      "sortOrder": 830
     },
     {
       "id": "pinterest-downloader",
       "slug": "pinterest-downloader",
       "name": "Pinterest Pin Saver",
-      "category": "web",
-      "categoryLabel": "Web Development",
+      "category": "youtube",
+      "categoryLabel": "Downloads",
       "tagline": "Preview any Pinterest pin — photos and video pins — and save the image with your browser's save menu.",
       "status": "live",
       "href": "/tools/pinterest-downloader/",
@@ -1682,10 +1707,9 @@
         "preview"
       ],
       "related": [
-        "thumbnail-downloader",
-        "thumbnail-fetcher"
+        "thumbnail-downloader"
       ],
-      "sortOrder": 580
+      "sortOrder": 150
     },
     {
       "id": "json-to-types",
@@ -1712,7 +1736,7 @@
         "json-validator",
         "csv-json"
       ],
-      "sortOrder": 660
+      "sortOrder": 850
     },
     {
       "id": "json-forge",
@@ -1738,7 +1762,7 @@
         "json-validator",
         "json-to-types"
       ],
-      "sortOrder": 670
+      "sortOrder": 860
     },
     {
       "id": "github-launchpad",
@@ -1763,7 +1787,7 @@
         "meta-tag-generator",
         "title-length-checker"
       ],
-      "sortOrder": 680
+      "sortOrder": 870
     },
     {
       "id": "askmint",
@@ -1788,7 +1812,7 @@
         "meta-tag-generator",
         "open-graph-generator"
       ],
-      "sortOrder": 690
+      "sortOrder": 880
     }
   ]
 }

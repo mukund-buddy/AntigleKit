@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" id="themeColorMeta" content="#0C0C0E">
+<script src="../../assets/js/theme-init.js"></script>
+<title>mcstructure Editor — Edit Bedrock Structure Files Online | AntigleKit</title>
+<meta name="description" content="Open and edit Bedrock .mcstructure files online: block palette, size, block indices and block entity data, saved back in the same tiny-endian encoding. Free, no upload, runs fully in your browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mukund-buddy.github.io/AntigleKit/tools/mcstructure-editor/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AntigleKit">
+<meta property="og:title" content="mcstructure Editor — Edit Bedrock Structure Files Online | AntigleKit">
+<meta property="og:description" content="Edit Bedrock .mcstructure structure files online — palette, indices and block entities, saved back in the same encoding.">
+<meta property="og:url" content="https://mukund-buddy.github.io/AntigleKit/tools/mcstructure-editor/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mcstructure Editor — Edit Bedrock Structure Files Online | AntigleKit">
+<meta name="twitter:description" content="Edit Bedrock .mcstructure structure files online — palette, indices and block entities, saved back in the same encoding.">
+
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<link rel="stylesheet" href="../../assets/css/nbt.css">
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mukund-buddy.github.io/AntigleKit/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "All Tools",
+          "item": "https://mukund-buddy.github.io/AntigleKit/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "mcstructure Editor",
+          "item": "https://mukund-buddy.github.io/AntigleKit/tools/mcstructure-editor/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "mcstructure Editor",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Any (browser)",
+      "url": "https://mukund-buddy.github.io/AntigleKit/tools/mcstructure-editor/",
+      "description": "Open and edit Bedrock .mcstructure files online: block palette, size, block indices and block entity data, saved back in the same tiny-endian encoding. Free, no upload, runs fully in your browser.",
+      "softwareRequirements": "Modern browser with BigInt and Compression Streams support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Antigle",
+        "url": "https://mukund-buddy.github.io/AntigleKit/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I convert a .mcstructure to a Java .nbt structure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The editor can re-encode the bytes to big-endian gzip, but the tag layout differs — Java structures use palette/blocks with different keys and block names. A re-encoded file is readable, not a valid Java structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my .mcstructure not compressed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bedrock writes structure files as raw little-endian NBT with no gzip wrapper. That is normal; the editor detects it as Bedrock raw."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does an index of -1 mean in block_indices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It marks a position the structure does not touch, so the existing block in the world is kept when the structure is placed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I resize a structure by editing size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not on its own — block_indices has one entry per position, so the array length has to match the new volume exactly. Changing size alone produces a file the game refuses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it free and private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — every AntigleKit tool is free, and this one runs entirely in your browser with no uploads of your world files."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+
+<div data-chrome="header"></div>
+
+
+
+<main id="main" class="nbt-app">
+
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="https://mukund-buddy.github.io/AntigleKit/">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="https://mukund-buddy.github.io/AntigleKit/tools/">Tools</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span aria-current="page">mcstructure Editor</span>
+      </nav>
+      <div class="section-tag section-tag--plain">Minecraft Files · Free tool</div>
+      <h1>mcstructure Editor — Bedrock structure files</h1>
+      <p class="lead">A <code>.mcstructure</code> file is uncompressed little-endian NBT written by a Bedrock structure block. Drop one below to read its size, block palette, block indices and block entity data, edit any of it, and download the file back in the same encoding — what add-on and map makers need to patch a structure without reopening the world.</p>
+    </div>
+  </section>
+
+  <div class="container ad-slot ad-slot--banner" data-slot="top" aria-label="Advertisement space">Ad space</div>
+
+
+  <section class="section-pad--sm" aria-label="mcstructure editor">
+    <div class="container">
+
+<div id="editor">
+
+<div class="dropzone" id="dropZone" role="button" tabindex="0" aria-label="Drop an NBT file here or click to browse">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M20 16v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"/></svg>
+<p>Drop <strong>a .mcstructure file</strong> here</p>
+<button class="btn-pick" type="button">Choose File</button>
+<span class="hint">level.dat · .nbt · .mcstructure · .schem · .schematic · .dat · chunk dumps</span>
+<input type="file" id="fileInput">
+</div>
+
+<div id="editorArea">
+<div class="file-info" id="fileInfo"></div>
+
+<div class="out-bar" id="outBar">
+<label>Output format<select id="outFormat">
+<option value="java">Java — big-endian, named root</option>
+<option value="java-network">Java network — big-endian, nameless root</option>
+<option value="bedrock-level">Bedrock level.dat — little-endian + 8-byte header</option>
+<option value="bedrock">Bedrock raw — little-endian</option>
+<option value="bedrock-network">Bedrock network — little-endian varint</option>
+</select>
+</label>
+<label>Compression<select id="outCompression">
+<option value="none">None (raw)</option>
+<option value="gzip">gzip</option>
+<option value="zlib">zlib (deflate)</option>
+</select>
+</label>
+</div>
+
+<div class="search-bar">
+<input type="search" id="searchInput" placeholder="Search tag name or value…" autocomplete="off" spellcheck="false" aria-label="Search NBT tags">
+<button type="button" id="btnSearch">Search</button>
+<button type="button" id="btnCollapse">Collapse all</button>
+</div>
+<div class="search-results" id="searchResults"></div>
+
+<div class="tree" id="treeRoot"></div>
+</div>
+
+<div class="bottom-bar" id="bottomBar">
+<button class="btn-add" id="btnAddRoot" type="button">+ Add Tag</button>
+<button class="btn-save" id="btnSave" type="button">Save &amp; Download</button>
+<button class="btn-snbt" id="btnSnbt" type="button">Export SNBT</button>
+<button class="btn-close" id="btnCloseFile" type="button">Close</button>
+</div>
+
+</div>
+<div id="contentSections">
+
+
+
+<!-- CONTENT -->
+  <section class="section-pad--sm" aria-labelledby="inside-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Reference</div>
+        <h2 class="section-title" id="inside-title">What is inside a .mcstructure</h2>
+      </div>
+      <div class="content-table-wrap">
+        <div class="content-table"><table>
+          <thead><tr><th>Tag</th><th>Type</th><th>What it holds</th></tr></thead>
+          <tbody>
+            <tr><td><code>format_version</code></td><td>Int</td><td>Structure format revision, 1 in current files</td></tr>
+            <tr><td><code>size</code></td><td>List of Int</td><td>X, Y, Z dimensions of the captured volume</td></tr>
+            <tr><td><code>structure_world_origin</code></td><td>List of Int</td><td>Where the structure was captured in the world</td></tr>
+            <tr><td><code>structure</code></td><td>Compound</td><td>Everything below lives here</td></tr>
+            <tr><td><code>structure.block_indices</code></td><td>List of Int[]</td><td>Two layers of palette indices — normally blocks and waterlogging; <code>-1</code> means "leave whatever is there"</td></tr>
+            <tr><td><code>structure.entities</code></td><td>List of Compound</td><td>Entities captured with the structure</td></tr>
+            <tr><td><code>structure.palette.default.block_palette</code></td><td>List of Compound</td><td>Every distinct block state: <code>name</code>, <code>states</code>, <code>version</code></td></tr>
+            <tr><td><code>structure.palette.default.block_position_data</code></td><td>Compound</td><td>Block entity NBT keyed by the flat index of the position</td></tr>
+          </tbody>
+        </table></div>
+        <p>Indices in <code>block_indices</code> run X, then Z, then Y — a flat index of <code>(x * sizeZ + z) * sizeY + y</code> into the palette list. That mapping is what lets you fix a single mis-set block without regenerating the structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" aria-labelledby="edits-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Guide</div>
+        <h2 class="section-title" id="edits-title">What people change here</h2>
+      </div>
+      <ul class="nbt-feature-list">
+        <li><strong>Swap a block type everywhere</strong> by editing one entry in <code>block_palette</code> — every position pointing at that index changes with it.</li>
+        <li><strong>Fix a block state</strong> such as a wrong <code>facing</code> or an accidental <code>waterlogged</code> in the <code>states</code> compound.</li>
+        <li><strong>Strip entities</strong> that were caught by accident, by removing entries from the <code>entities</code> list.</li>
+        <li><strong>Repair block entity data</strong> — chest contents, sign text, spawner settings — inside <code>block_position_data</code>.</li>
+        <li><strong>Check the version stamp</strong> on palette entries when a structure imports with the wrong blocks after a game update.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-pad--sm" aria-labelledby="where-title">
+    <div class="container">
+      <div class="section-header section-header--left reveal">
+        <div class="section-tag section-tag--left">Files</div>
+        <h2 class="section-title" id="where-title">Where the files are</h2>
+      </div>
+      <p>Structure blocks save into the world's <code>structures/</code> folder inside the world directory, in files named <code>&lt;namespace&gt;_&lt;name&gt;.mcstructure</code>. Behaviour packs ship them under <code>structures/</code> in the pack, where the game loads them by namespace. Both are the same format and both open here.</p>
+      <p class="mb">Java Edition's equivalent is the gzip big-endian <code>.nbt</code> structure file — a different encoding with a different tag layout. The <a href="../../tools/nbt-editor/">NBT Editor</a> covers those, and this editor opens them too.</p>
+      <div class="callout callout--danger">
+        <p><strong>Please use responsibly.</strong> Structures and maps belong to their creators. Edit only files you own or have permission to modify.</p>
+      </div>
+    </div>
+  </section>
+
+<div class="container ad-slot ad-slot--inline" data-ad-slot="5" aria-label="Advertisement"></div>
+
+<section class="section-pad--sm" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Questions</div>
+        <h2 class="section-title" id="faq-title">Questions &amp; answers</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Can I convert a .mcstructure to a Java .nbt structure?</summary>
+          <div><p>The editor can re-encode the bytes to big-endian gzip, but the tag layout differs — Java structures use <code>palette</code>/<code>blocks</code> with different keys and block names. A re-encoded file is readable, not a valid Java structure.</p></div>
+        </details>
+        <details>
+          <summary>Why is my .mcstructure not compressed?</summary>
+          <div><p>Bedrock writes structure files as raw little-endian NBT with no gzip wrapper. That is normal; the editor detects it as <em>Bedrock raw</em>.</p></div>
+        </details>
+        <details>
+          <summary>What does an index of -1 mean in block_indices?</summary>
+          <div><p>It marks a position the structure does not touch, so the existing block in the world is kept when the structure is placed.</p></div>
+        </details>
+        <details>
+          <summary>Can I resize a structure by editing size?</summary>
+          <div><p>Not on its own — <code>block_indices</code> has one entry per position, so the array length has to match the new volume exactly. Changing <code>size</code> alone produces a file the game refuses.</p></div>
+        </details>
+        <details>
+          <summary>Is it free and private?</summary>
+          <div><p>Yes — every AntigleKit tool is free, and this one runs entirely in your browser with no uploads of your world files.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+<div class="container ad-slot ad-slot--footer" data-ad-slot="6" aria-label="Advertisement">Ad reserved</div>
+
+
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<div class="modal-overlay" id="addTagModal">
+<div class="modal">
+<h3>Add New Tag</h3>
+<label for="newTagName">Tag Name</label>
+<input type="text" id="newTagName" placeholder="e.g. MyTag" autocomplete="off">
+<label for="newTagType">Tag Type</label>
+<select id="newTagType">
+<option value="1">TAG_Byte</option>
+<option value="2">TAG_Short</option>
+<option value="3">TAG_Int</option>
+<option value="4">TAG_Long</option>
+<option value="5">TAG_Float</option>
+<option value="6">TAG_Double</option>
+<option value="7">TAG_Byte_Array</option>
+<option value="8" selected>TAG_String</option>
+<option value="9">TAG_List</option>
+<option value="10">TAG_Compound</option>
+<option value="11">TAG_Int_Array</option>
+<option value="12">TAG_Long_Array</option>
+</select>
+<label for="newTagValue">Value</label>
+<input type="text" id="newTagValue" placeholder="Value" autocomplete="off">
+<div id="listSubtypeRow" style="display:none">
+<label for="newListSubtype">List Element Type</label>
+<select id="newListSubtype">
+<option value="1">TAG_Byte</option>
+<option value="2">TAG_Short</option>
+<option value="3">TAG_Int</option>
+<option value="4">TAG_Long</option>
+<option value="5">TAG_Float</option>
+<option value="6">TAG_Double</option>
+<option value="7">TAG_Byte_Array</option>
+<option value="8">TAG_String</option>
+<option value="9">TAG_List</option>
+<option value="10">TAG_Compound</option>
+<option value="11">TAG_Int_Array</option>
+<option value="12">TAG_Long_Array</option>
+</select>
+</div>
+<div class="modal-btns">
+<button class="btn-cancel" type="button" id="addTagCancel">Cancel</button>
+<button class="btn-confirm" type="button" id="addTagConfirm">Add</button>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="arrayModal">
+<div class="modal">
+<h3 id="arrayModalTitle">Edit Array</h3>
+<label for="arrayModalText">Comma-separated values</label>
+<textarea id="arrayModalText" spellcheck="false" autocomplete="off"></textarea>
+<div class="modal-btns">
+<button class="btn-cancel" type="button" id="arrayModalCancel">Cancel</button>
+<button class="btn-confirm" type="button" id="arrayModalConfirm">Apply</button>
+</div>
+</div>
+</div>
+
+</main>
+
+<div data-chrome="footer"></div>
+
+
+<script src="../../assets/js/tools/nbt/nbt-strings.js"></script>
+<script src="../../assets/js/tools/nbt/nbt.js" defer></script>
+
+<script src="../../assets/js/chrome.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

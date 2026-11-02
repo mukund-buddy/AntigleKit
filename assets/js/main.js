@@ -113,7 +113,10 @@
     { name: "Pack Version Generator", href: "/tools/pack-version-generator/", tagline: "Pick the correct next version for your pack, with bumping and consistency checks.", categoryLabel: "Minecraft", status: "live", keywords: ["version","pack","semver","bedrock","manifest"], sortOrder: 50 },
     { name: "MC Title Studio", href: "/tools/mc-title-studio/", tagline: "Turn a photo into a Bedrock resource pack that fills the full title screen — cropped, packed, and downloaded in your browser.", categoryLabel: "Minecraft", status: "live", keywords: ["minecraft","bedrock","title screen","background","mcpack","resource pack","wallpaper","json ui"], sortOrder: 55 },
     { name: "Command Builder", href: "/tools/cmd-builder/", tagline: "Build and validate Minecraft Bedrock commands — /give, /tp, /effect, /tag and more — with copy-ready output.", categoryLabel: "Minecraft", status: "live", keywords: ["minecraft","bedrock","commands","give","tp","effect","tag","command block"], sortOrder: 60 },
-    { name: "Thumbnail Fetcher", href: "/tools/thumbnail-fetcher/", tagline: "Get a video's thumbnail URL from its link — no login, no account.", categoryLabel: "YouTube", status: "live", keywords: ["youtube","thumbnail","video","image","url"], sortOrder: 60 },
+    { name: "NBT Editor", href: "/tools/nbt-editor/", tagline: "Open level.dat, .mcstructure, playerdata or .nbt files, edit every tag with 64-bit precision, and download in the same format.", categoryLabel: "Minecraft", status: "live", keywords: ["nbt","level.dat","mcstructure","playerdata","bedrock","schem"], sortOrder: 80 },
+    { name: "mcstructure Editor", href: "/tools/mcstructure-editor/", tagline: "Edit Bedrock .mcstructure structure files — block palette, size, indices and block entities — saved back in the same encoding.", categoryLabel: "Minecraft", status: "live", keywords: ["mcstructure","bedrock","structure block","block palette"], sortOrder: 90 },
+    { name: "level.dat Editor", href: "/tools/level-dat-editor/", tagline: "Edit world name, game mode, difficulty, gamerules and spawn point in a level.dat — Java and Bedrock, right in the browser.", categoryLabel: "Minecraft", status: "live", keywords: ["level.dat","level dat","world name","gamerules","difficulty"], sortOrder: 100 },
+
     { name: "Thumbnail Downloader", href: "/tools/thumbnail-downloader/", tagline: "Download a video thumbnail in several sizes — default, hq, maxres.", categoryLabel: "YouTube", status: "live", keywords: ["youtube","thumbnail","download","maxres","image"], sortOrder: 70 },
     { name: "Timestamp Generator", href: "/tools/timestamp-generator/", tagline: "Convert a list of minute/second markers into clean, copy-ready timestamps.", categoryLabel: "YouTube", status: "live", keywords: ["youtube","timestamp","chapters","minutes","seconds"], sortOrder: 80 },
     { name: "Chapter Formatter", href: "/tools/chapter-formatter/", tagline: "Format raw notes into YouTube's accepted chapter lines with headings and times.", categoryLabel: "YouTube", status: "live", keywords: ["youtube","chapters","format","timestamps"], sortOrder: 90 },
@@ -136,7 +139,7 @@
     { name: "CSS Gradient Generator", href: "/tools/css-gradient-generator/", tagline: "Design linear and radial gradients visually and copy CSS.", categoryLabel: "Web Development", status: "live", keywords: ["css","gradient","color","linear","radial"], sortOrder: 250 },
     { name: "CSS Shadow Generator", href: "/tools/css-shadow-generator/", tagline: "Fine-tune box-shadows visually and copy the CSS.", categoryLabel: "Web Development", status: "live", keywords: ["css","box-shadow","shadow","design"], sortOrder: 260 },
     { name: "Flexbox Generator", href: "/tools/flexbox-generator/", tagline: "Configure flex containers and items and copy the CSS.", categoryLabel: "Web Development", status: "live", keywords: ["css","flexbox","flex","layout"], sortOrder: 270 },
-    { name: "Grid Generator", href: "/tools/grid-generator/", tagline: "Configure CSS grid templates and copy the CSS.", categoryLabel: "Web Development", status: "live", keywords: ["css","grid","layout","template"], sortOrder: 280 },
+
     { name: "Attendance Calculator", href: "/tools/attendance-calculator/", tagline: "Calculate attendance percentages and what is needed to stay above a threshold.", categoryLabel: "Student", status: "live", keywords: ["attendance","percentage","college","classes"], sortOrder: 320 },
     { name: "Percentage Calculator", href: "/tools/percentage-calculator/", tagline: "Find percentages, changes, and percentage differences instantly.", categoryLabel: "Student", status: "live", keywords: ["percentage","calculator","marks","grade"], sortOrder: 330 },
     { name: "CGPA Calculator", href: "/tools/cgpa-calculator/", tagline: "Compute CGPA from semester credits and grades.", categoryLabel: "Student", status: "live", keywords: ["cgpa","gpa","grade","credits","semester"], sortOrder: 340 },
@@ -428,7 +431,7 @@
 (function () {
   'use strict';
   var REPORT_EMAIL = (function () {
-    var c = [106,104,97,109,117,107,117,110,100,50,49,53,64,103,109,97,105,108,46,99,111,109];
+      var c = [106,109,117,107,117,110,100,57,54,50,53,64,103,109,97,105,108,46,99,111,109];
     var s = '';
     for (var i = 0; i < c.length; i++) s += String.fromCharCode(c[i]);
     return s;

@@ -1,9 +1,9 @@
 /* pinterest-downloader.js — preview a Pinterest pin (image or video) in the
-   official Pinterest embed, then guide the user to save it with the
-   browser's own save menu. Pinterest's CDN does not send CORS headers and
-   has no working JSONP, so a direct fetch+blob download is impossible from
-   a static site; the embed is the lawful, server-free render. CSP-safe:
-   DOM APIs + textContent; iframe from assets.pinterest.com (frame-src). */
+   official Pinterest embed, then fetch its real media file. Sizes and URLs
+   come from the public pidgets info endpoint, which answers with
+   Access-Control-Allow-Origin: *, so the CDN file can be streamed as a blob
+   and saved without a server. If the browser blocks the blob download, the
+   full image opens in a new tab instead. CSP-safe: DOM APIs + textContent. */
 import { showToast } from '../components/tg-toast.js';
 
 const $ = (id) => document.getElementById(id);
@@ -11,9 +11,13 @@ const $ = (id) => document.getElementById(id);
 const SAMPLE_ID = '617415430169271912';
 const EMBED_BASE = 'https://assets.pinterest.com/ext/embed.html';
 const PIN_BASE = 'https://www.pinterest.com/pin/';
+const INFO_BASE = 'https://widgets.pinterest.com/v3/pidgets/pins/info/?pin_ids=';
 const LOAD_TIMEOUT_MS = 12000;
 
 let currentId = null;
+let imageSizes = [];   /* [{ key, url, width, height }] sorted best-first */
+let videoFiles = [];   /* [{ key, url, width, height }] sorted best-first */
+let activeImageIndex = 0;
 
 function detectPlatform() {
   const ua = navigator.userAgent;
@@ -59,11 +63,11 @@ function setBusy(btn, busy) {
   btn.disabled = busy;
 }
 
-function copyText(text, btn) {
+function copyText(text, btn, idleLabel) {
   const done = function (ok) {
     btn.textContent = ok ? 'Copied!' : 'Copy failed';
-    showToast(ok ? 'Link copied to clipboard' : 'Could not access clipboard');
-    setTimeout(function () { btn.textContent = 'Copy link'; }, 1600);
+    showToast(ok ? 'URL copied to clipboard' : 'Could not access clipboard');
+    setTimeout(function () { btn.textContent = idleLabel; }, 1600);
   };
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).then(function () { done(true); }, function () { legacyCopy(text, done); });
@@ -86,6 +90,248 @@ function legacyCopy(text, done) {
   done(ok);
 }
 
+function extOf(url, fallback) {
+  const m = /\.([a-z0-9]{2,5})(?:[?#]|$)/i.exec(url);
+  return m ? m[1].toLowerCase() : fallback;
+}
+
+/* Pull every distinct image candidate out of the pidgets response. */
+function collectImages(info) {
+  const images = (info && info.images) || {};
+  const byUrl = new Map();
+  Object.keys(images).forEach(function (key) {
+    const entry = images[key];
+    if (!entry || !entry.url) return;
+    const url = entry.url.replace(/^http:/, 'https:');
+    if (!/^https:\/\/i\.pinimg\.com\//.test(url)) return;
+    const width = Number(entry.width) || 0;
+    const height = Number(entry.height) || 0;
+    if (byUrl.has(url)) {
+      const kept = byUrl.get(url);
+      if (width > kept.width) { kept.width = width; kept.height = height; }
+    } else {
+      byUrl.set(url, { key, url, width, height });
+    }
+  });
+  return Array.from(byUrl.values()).sort(function (a, b) {
+    return (b.width || 0) - (a.width || 0) || (b.height || 0) - (a.height || 0);
+  });
+}
+
+function collectVideos(info) {
+  const list = (info && info.videos && info.videos.video_list) || {};
+  const files = [];
+  Object.keys(list).forEach(function (key) {
+    const entry = list[key];
+    if (!entry || !entry.url) return;
+    const url = String(entry.url);
+    if (!/^https?:\/\/.*\.(mp4|m3u8)/i.test(url) && !/thumb/i.test(url)) return;
+    files.push({ key, url, width: Number(entry.width) || 0, height: Number(entry.height) || 0 });
+  });
+  return files.sort(function (a, b) { return (b.width || 0) - (a.width || 0); });
+}
+
+function saveBlob(url, filename, btn, openFallbackLabel) {
+  setBusy(btn, true);
+  fetch(url, { mode: 'cors', credentials: 'omit' })
+    .then(function (resp) {
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      return resp.blob();
+    })
+    .then(function (blob) {
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 4000);
+      showToast('Download started');
+    })
+    .catch(function () {
+      showToast('Direct download blocked — opening the file in a new tab');
+      window.open(url, '_blank', 'noopener');
+    })
+    .then(function () { setBusy(btn, false); });
+}
+
+function downloadImage() {
+  const size = imageSizes[activeImageIndex];
+  if (!size) return;
+  saveBlob(size.url, 'pinterest-pin-' + currentId + '-' + size.key + '.' + extOf(size.url, 'jpg'), $('pinDownload'), false);
+}
+
+function downloadVideo() {
+  const video = videoFiles.filter(function (f) { return /\.(mp4)(\?|$)/i.test(f.url); })[0];
+  if (!video) return;
+  saveBlob(video.url, 'pinterest-pin-' + currentId + '-video.' + extOf(video.url, 'mp4'), $('pinVideoBtn'), false);
+}
+
+/* ── Media panel rendering ─────────────────────────────────────── */
+
+function buildMediaPanel(info) {
+  const panel = $('pinMedia');
+  panel.textContent = '';
+  panel.hidden = true;
+  activeImageIndex = 0;
+
+  const isVideo = videoFiles.some(function (f) { return /\.(mp4)(\?|$)/i.test(f.url); });
+
+  if (imageSizes.length) {
+    const head = document.createElement('div');
+    head.className = 'pin-media-head';
+
+    const meta = document.createElement('p');
+    meta.className = 'pin-hint';
+    meta.id = 'pinMeta';
+    head.appendChild(meta);
+
+    const sizeField = document.createElement('label');
+    sizeField.className = 'pin-size-field';
+    sizeField.htmlFor = 'pinSizes';
+    const sizeLabel = document.createElement('span');
+    sizeLabel.textContent = 'Size';
+    const select = document.createElement('select');
+    select.className = 'input';
+    select.id = 'pinSizes';
+    select.setAttribute('aria-label', 'Image size to preview and download');
+    imageSizes.forEach(function (size, i) {
+      const opt = document.createElement('option');
+      opt.value = String(i);
+      const dims = size.width ? size.width + '×' + (size.height || '?') : size.key;
+      opt.textContent = size.key + ' — ' + dims + (i === 0 ? ' (best)' : '');
+      select.appendChild(opt);
+    });
+    select.addEventListener('change', function () {
+      activeImageIndex = Number(select.value) || 0;
+      updateImage();
+    });
+    sizeField.appendChild(sizeLabel);
+    sizeField.appendChild(select);
+    head.appendChild(sizeField);
+
+    const img = document.createElement('img');
+    img.className = 'pin-image';
+    img.id = 'pinImage';
+    img.loading = 'lazy';
+    img.alt = 'Pin image preview';
+
+    const actions = document.createElement('div');
+    actions.className = 'pin-media-actions';
+
+    const download = document.createElement('button');
+    download.className = 'btn btn-gold';
+    download.type = 'button';
+    download.id = 'pinDownload';
+    download.textContent = 'Download image';
+    const spinner = document.createElement('span');
+    spinner.className = 'btn-spinner';
+    spinner.setAttribute('aria-hidden', 'true');
+    download.insertBefore(spinner, download.firstChild);
+    download.addEventListener('click', downloadImage);
+
+    const open = document.createElement('button');
+    open.className = 'btn btn-outline';
+    open.type = 'button';
+    open.id = 'pinOpenImage';
+    open.textContent = 'Open image';
+    open.addEventListener('click', function () {
+      const size = imageSizes[activeImageIndex];
+      if (size) window.open(size.url, '_blank', 'noopener');
+    });
+
+    const copy = document.createElement('button');
+    copy.className = 'btn btn-outline';
+    copy.type = 'button';
+    copy.id = 'pinCopyImage';
+    copy.textContent = 'Copy image URL';
+    copy.addEventListener('click', function () {
+      const size = imageSizes[activeImageIndex];
+      if (size) copyText(size.url, copy, 'Copy image URL');
+    });
+
+    actions.appendChild(download);
+    actions.appendChild(open);
+    actions.appendChild(copy);
+
+    panel.appendChild(head);
+    panel.appendChild(img);
+    panel.appendChild(actions);
+    updateImage();
+  }
+
+  if (isVideo) {
+    const video = videoFiles.filter(function (f) { return /\.(mp4)(\?|$)/i.test(f.url); })[0];
+    const videoActions = document.createElement('div');
+    videoActions.className = 'pin-media-actions';
+
+    const videoBtn = document.createElement('button');
+    videoBtn.className = 'btn btn-outline';
+    videoBtn.type = 'button';
+    videoBtn.id = 'pinVideoBtn';
+    videoBtn.textContent = 'Download video';
+    const spinner = document.createElement('span');
+    spinner.className = 'btn-spinner';
+    spinner.setAttribute('aria-hidden', 'true');
+    videoBtn.insertBefore(spinner, videoBtn.firstChild);
+    videoBtn.addEventListener('click', downloadVideo);
+
+    const openVideo = document.createElement('button');
+    openVideo.className = 'btn btn-outline';
+    openVideo.type = 'button';
+    openVideo.textContent = 'Open video';
+    openVideo.addEventListener('click', function () { window.open(video.url, '_blank', 'noopener'); });
+
+    videoActions.appendChild(videoBtn);
+    videoActions.appendChild(openVideo);
+    panel.appendChild(videoActions);
+  }
+
+  panel.hidden = !panel.childElementCount;
+}
+
+function updateImage() {
+  const img = $('pinImage');
+  const size = imageSizes[activeImageIndex];
+  if (!img || !size) return;
+  img.removeAttribute('src');
+  img.src = size.url;
+  const dims = size.width ? size.width + '×' + (size.height || '?') + ' px' : 'original file';
+  const meta = $('pinMeta');
+  if (meta) meta.textContent = 'Full-resolution file straight from Pinterest\u2019s CDN \u2014 this ' + dims + ' image is what gets saved.';
+}
+
+/* ── Info loading ──────────────────────────────────────────────── */
+
+function loadPinInfo(id) {
+  imageSizes = [];
+  videoFiles = [];
+  fetch(INFO_BASE + id, { mode: 'cors', credentials: 'omit' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (payload) {
+      if (currentId !== id || !payload) return;
+      const info = (Array.isArray(payload.data) && typeof payload.data[0] === 'object') ? payload.data[0] : null;
+      if (!info) return;
+      imageSizes = collectImages(info);
+      videoFiles = collectVideos(info);
+      buildMediaPanel(info);
+      applyMeta(info);
+    })
+    .catch(function () {
+      showToast('Could not read the pin file list — use the embed preview to save');
+    });
+}
+
+function applyMeta(info) {
+  const name = info && info.pinner && info.pinner.full_name;
+  if (!name) return;
+  const head = $('pinMedia').querySelector('.pin-hint');
+  if (head) head.textContent = head.textContent + ' · by ' + name;
+}
+
+/* ── Embed preview (unchanged behaviour) ───────────────────────── */
+
 function render() {
   const parsed = parsePin($('pinUrl').value);
   if (!parsed.ok) {
@@ -101,6 +347,7 @@ function render() {
   }
   clearError();
   currentId = parsed.id;
+  loadPinInfo(currentId);
 
   const stage = $('pinStage');
   const badge = $('pinBadge');
@@ -169,7 +416,7 @@ function wire() {
   $('pinUrl').addEventListener('input', clearError);
   $('copyPin').addEventListener('click', function () {
     if (!currentId) return;
-    copyText(PIN_BASE + currentId + '/', $('copyPin'));
+    copyText(PIN_BASE + currentId + '/', $('copyPin'), 'Copy link');
   });
 }
 
